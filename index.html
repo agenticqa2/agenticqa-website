@@ -68,6 +68,11 @@
         .animate-gradient { background-size: 200% 200%; animation: gradient-shift 3s ease infinite; }
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
+        /* Fallback: show content even if JS fails */
+        @keyframes revealFallback {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal { animation: revealFallback 0.8s ease-out 0.5s forwards; }
         .card-3d { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
         .card-3d:hover { transform: translateY(-8px) rotateX(2deg); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
         html { scroll-behavior: smooth; }
