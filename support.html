@@ -25,11 +25,23 @@
                 <img src="logo-new.png" alt="AgenticQA" class="h-10 w-auto">
                 <span class="text-xl font-bold">Agentic<span class="text-cyan-400">QA</span></span>
             </a>
-            <div class="flex items-center gap-6">
+            <div class="hidden md:flex items-center gap-6">
                 <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Home</a>
                 <a href="docs.html" class="text-slate-400 hover:text-white transition-colors">Docs</a>
                 <a href="support.html" class="text-cyan-400 font-medium">Support</a>
             </div>
+            <!-- Mobile menu button -->
+            <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="md:hidden p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden px-6 pb-4">
+            <a href="index.html" class="block py-2 text-slate-400">Home</a>
+            <a href="docs.html" class="block py-2 text-slate-400">Docs</a>
+            <a href="support.html" class="block py-2 text-cyan-400">Support</a>
         </div>
     </nav>
 
@@ -41,55 +53,68 @@
                 <span class="inline-block px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-medium mb-4">
                     Support Center
                 </span>
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">How Can We Help?</h1>
-                <p class="text-xl text-slate-400">
+                <h1 class="text-3xl md:text-5xl font-bold mb-4">How Can We Help?</h1>
+                <p class="text-lg md:text-xl text-slate-400">
                     Find answers to common questions or reach out directly
                 </p>
             </div>
 
             <!-- FAQ Section -->
-            <section class="mb-16">
-                <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-                
+            <div class="mb-16">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <span class="text-2xl">❓</span> Frequently Asked Questions
+                </h2>
                 <div class="space-y-4">
-                    <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                        <h3 class="text-lg font-semibold text-white mb-2">What is AgenticQA?</h3>
-                        <p class="text-slate-400">AgenticQA is an AI-native QA automation platform that combines LLMs, RAG, and Agentic AI with Playwright for intelligent test automation. It's designed to make test automation more adaptive and maintainable.</p>
-                    </div>
+                    <details class="group p-4 rounded-xl bg-slate-800/50 border border-slate-700">
+                        <summary class="flex items-center justify-between cursor-pointer list-none">
+                            <span class="font-medium text-white">What technologies do you cover?</span>
+                            <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <p class="mt-4 text-slate-400">We specialize in AI-native QA automation including Playwright, TypeScript, Python, LangChain, RAG systems, Agentic AI, MCP Servers, and LLM integration for testing.</p>
+                    </details>
                     
-                    <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                        <h3 class="text-lg font-semibold text-white mb-2">Who is this for?</h3>
-                        <p class="text-slate-400">This platform and its projects are designed for QA engineers, automation engineers, final year students (BSc, MSc, BE, MCA), and professionals looking to upskill in AI-powered testing.</p>
-                    </div>
+                    <details class="group p-4 rounded-xl bg-slate-800/50 border border-slate-700">
+                        <summary class="flex items-center justify-between cursor-pointer list-none">
+                            <span class="font-medium text-white">Do you offer corporate training?</span>
+                            <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <p class="mt-4 text-slate-400">Yes! We provide customized corporate training programs for teams looking to upskill in AI-native test automation. Contact us for a tailored curriculum.</p>
+                    </details>
                     
-                    <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                        <h3 class="text-lg font-semibold text-white mb-2">Are the projects production-ready?</h3>
-                        <p class="text-slate-400">Yes! Each project is built with production-quality code, proper error handling, and industry best practices. They're designed to be interview-ready and demonstrate real-world skills.</p>
-                    </div>
-                    
-                    <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                        <h3 class="text-lg font-semibold text-white mb-2">Do I need expensive AI APIs?</h3>
-                        <p class="text-slate-400">No! All projects support free local LLMs via Ollama as the primary option. OpenAI/Claude integration is available as an optional paid tier for enhanced performance.</p>
-                    </div>
-                    
-                    <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                        <h3 class="text-lg font-semibold text-white mb-2">When will the AI QA Bootcamp launch?</h3>
-                        <p class="text-slate-400">The bootcamp with 6 additional projects is currently in development. Join the waitlist via the contact form to get early access notifications.</p>
-                    </div>
-                    
-                    <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                        <h3 class="text-lg font-semibold text-white mb-2">Can I use these projects for my college submission?</h3>
-                        <p class="text-slate-400">Yes! The projects are specifically designed to be valuable for final year students. Each project includes documentation, architecture diagrams, and presentation materials.</p>
-                    </div>
+                    <details class="group p-4 rounded-xl bg-slate-800/50 border border-slate-700">
+                        <summary class="flex items-center justify-between cursor-pointer list-none">
+                            <span class="font-medium text-white">What's included in the student internship program?</span>
+                            <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <p class="mt-4 text-slate-400">Our 28-day AI/ML internship includes 1:1 mentorship, hands-on project work, certificate of completion, and flexible scheduling. Visit our Students page for details.</p>
+                    </details>
+
+                    <details class="group p-4 rounded-xl bg-slate-800/50 border border-slate-700">
+                        <summary class="flex items-center justify-between cursor-pointer list-none">
+                            <span class="font-medium text-white">Do you serve clients outside India?</span>
+                            <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <p class="mt-4 text-slate-400">Yes! We now serve clients in the European Union with timezone-friendly scheduling and GDPR-compliant services. We accept both INR and EUR payments.</p>
+                    </details>
                 </div>
-            </section>
+            </div>
 
             <!-- Contact Options -->
-            <section class="mb-16">
-                <h2 class="text-2xl font-bold mb-6">Get In Touch</h2>
+            <div class="mb-16">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <span class="text-2xl">📬</span> Contact Us
+                </h2>
                 
                 <div class="grid md:grid-cols-2 gap-6">
-                    <a href="mailto:admin@agenticqa.io" class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-cyan-500/50 transition-colors group">
+                    <a href="mailto:ganesh@agenticqa.io" class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-cyan-500/50 transition-colors group">
                         <div class="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-4 group-hover:bg-cyan-500/30 transition-colors">
                             <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
@@ -97,7 +122,7 @@
                         </div>
                         <h3 class="text-lg font-semibold text-white mb-2">Email Support</h3>
                         <p class="text-slate-400 mb-2">For general inquiries and support</p>
-                        <span class="text-cyan-400">admin@agenticqa.io</span>
+                        <span class="text-cyan-400">ganesh@agenticqa.io</span>
                     </a>
                     
                     <a href="https://www.linkedin.com/in/ganesan-sivaraman" target="_blank" class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-blue-500/50 transition-colors group">
@@ -118,69 +143,68 @@
                             </svg>
                         </div>
                         <h3 class="text-lg font-semibold text-white mb-2">YouTube</h3>
-                        <p class="text-slate-400 mb-2">Tutorials and demos</p>
+                        <p class="text-slate-400 mb-2">Watch tutorials and demos</p>
                         <span class="text-red-400">@AgenticQA</span>
                     </a>
                     
-                    <a href="https://github.com/E2EINT/genai-qa-automation-pipeline" target="_blank" class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-white/50 transition-colors group">
+                    <a href="https://github.com/agenticqa2" target="_blank" class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-white/50 transition-colors group">
                         <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4 group-hover:bg-white/20 transition-colors">
                             <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                             </svg>
                         </div>
                         <h3 class="text-lg font-semibold text-white mb-2">GitHub</h3>
-                        <p class="text-slate-400 mb-2">Source code and issues</p>
-                        <span class="text-white">E2EINT</span>
+                        <p class="text-slate-400 mb-2">View open source projects</p>
+                        <span class="text-white">agenticqa2</span>
                     </a>
                 </div>
-            </section>
+            </div>
 
             <!-- Contact Form -->
-            <section>
-                <h2 class="text-2xl font-bold mb-6">Send a Message</h2>
-                
-                <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <form action="https://formsubmit.co/admin@agenticqa.io" method="POST">
-                        <input type="hidden" name="_subject" value="Support Request from AgenticQA">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://agenticqa.io/support.html?success=true">
-                        <input type="text" name="_honey" style="display:none">
-                        
-                        <div class="grid md:grid-cols-2 gap-4 mb-4">
-                            <div>
-                                <label class="block text-sm text-slate-400 mb-2">Your Name</label>
-                                <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none" placeholder="John Doe">
-                            </div>
-                            <div>
-                                <label class="block text-sm text-slate-400 mb-2">Email Address</label>
-                                <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none" placeholder="john@example.com">
-                            </div>
+            <div class="p-6 md:p-8 rounded-2xl bg-slate-800/50 border border-slate-700">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <span class="text-2xl">✉️</span> Send a Message
+                </h2>
+                <form action="https://formsubmit.co/ganesh@agenticqa.io" method="POST">
+                    <input type="hidden" name="_subject" value="New Contact from AgenticQA Support">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://agenticqa.io/support.html?success=true">
+                    <input type="text" name="_honey" style="display:none">
+                    
+                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-2">Name</label>
+                            <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none" placeholder="Your name">
                         </div>
-                        
-                        <div class="mb-4">
-                            <label class="block text-sm text-slate-400 mb-2">Subject</label>
-                            <select name="subject" required class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-white focus:border-cyan-500 focus:outline-none">
-                                <option value="">Select a topic...</option>
-                                <option value="Technical Support">Technical Support</option>
-                                <option value="Project Inquiry">Project Inquiry</option>
-                                <option value="Bootcamp Interest">Bootcamp Interest</option>
-                                <option value="Collaboration">Collaboration</option>
-                                <option value="Other">Other</option>
-                            </select>
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-2">Email Address</label>
+                            <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none" placeholder="john@example.com">
                         </div>
-                        
-                        <div class="mb-4">
-                            <label class="block text-sm text-slate-400 mb-2">Message</label>
-                            <textarea name="message" required rows="5" class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none resize-none" placeholder="Describe your question or issue..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-lg hover:from-cyan-400 hover:to-blue-500 transition-all">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-            </section>
-
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm text-slate-400 mb-2">Subject</label>
+                        <select name="subject" required class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-white focus:border-cyan-500 focus:outline-none">
+                            <option value="">Select a topic</option>
+                            <option value="Course Inquiry">Course Inquiry</option>
+                            <option value="Corporate Training">Corporate Training</option>
+                            <option value="Student Internship">Student Internship</option>
+                            <option value="Consulting">Consulting Services</option>
+                            <option value="Partnership">Partnership Opportunity</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm text-slate-400 mb-2">Message</label>
+                        <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none resize-none" placeholder="How can we help you?"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold rounded-lg transition-all hover:scale-105">
+                        Send Message
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -203,7 +227,7 @@
     <!-- Footer -->
     <footer class="py-8 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-6 text-center text-slate-500 text-sm">
-            © 2026 AgenticQA Infotech. All rights reserved. | <a href="privacy.html" class="text-cyan-400 hover:underline">Privacy Policy</a>
+            © 2026 AgenticQA Technologies. All rights reserved. | <a href="privacy.html" class="text-cyan-400 hover:underline">Privacy Policy</a>
         </div>
     </footer>
 

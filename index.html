@@ -21,19 +21,15 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        try {
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        fontFamily: {
-                            'display': ['Inter', 'sans-serif'],
-                            'mono': ['JetBrains Mono', 'monospace'],
-                        }
+        tailwindcss.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Inter', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
                     }
                 }
             }
-        } catch(e) {
-            console.log('Tailwind config skipped');
         }
     </script>
     
@@ -72,11 +68,6 @@
         .animate-gradient { background-size: 200% 200%; animation: gradient-shift 3s ease infinite; }
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        /* Fallback: show content after 1s even if JS fails */
-        @keyframes revealFallback {
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .reveal { animation: revealFallback 0.8s ease-out 1s forwards; }
         .card-3d { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
         .card-3d:hover { transform: translateY(-8px) rotateX(2deg); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
         html { scroll-behavior: smooth; }
@@ -103,9 +94,6 @@
                 <div class="hidden md:flex items-center gap-8">
                     <a href="#projects" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Projects</a>
                     <a href="#bootcamp" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Bootcamp</a>
-                    <a href="#eu-services" class="text-slate-300 hover:text-emerald-400 font-medium transition-colors flex items-center gap-1">
-                        <span class="text-xs">🇪🇺</span> EU Services
-                    </a>
                     <a href="#about" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">About</a>
                     <a href="docs.html" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Docs</a>
                     <a href="students.html" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Students</a>
@@ -129,9 +117,6 @@
         <div class="flex flex-col items-center justify-center h-full gap-8 text-xl">
             <a href="#projects" class="text-white hover:text-cyan-400" onclick="toggleMenu()">Projects</a>
             <a href="#bootcamp" class="text-white hover:text-cyan-400" onclick="toggleMenu()">Bootcamp</a>
-            <a href="#eu-services" class="text-white hover:text-emerald-400 flex items-center gap-2" onclick="toggleMenu()">
-                <span>🇪🇺</span> EU Services
-            </a>
             <a href="#about" class="text-white hover:text-cyan-400" onclick="toggleMenu()">About</a>
             <a href="docs.html" class="text-white hover:text-cyan-400" onclick="toggleMenu()">Docs</a>
             <a href="students.html" class="text-white hover:text-cyan-400" onclick="toggleMenu()">Students</a>
@@ -225,16 +210,6 @@
                         <span class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 font-mono text-sm">OpenAI</span>
                         <span class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 font-mono text-sm">Claude</span>
                     </div>
-                </div>
-                
-                <!-- EU & India Serving Badge -->
-                <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-sm font-medium">
-                        <span>🇮🇳</span> Serving India
-                    </span>
-                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium">
-                        <span>🇪🇺</span> Now Available in EU
-                    </span>
                 </div>
             </div>
         </div>
@@ -733,100 +708,6 @@
         </div>
     </section>
 
-    <!-- EU Services Section -->
-    <section id="eu-services" class="py-24 relative bg-gradient-to-b from-slate-900 to-slate-950">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 mb-6">
-                    <span class="text-2xl">🇪🇺</span>
-                    <span class="text-blue-400 font-semibold">Expanding to Europe</span>
-                </div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
-                    AI Training & Consulting for <span class="text-emerald-400">EU</span>
-                </h2>
-                <p class="text-xl text-slate-400 max-w-3xl mx-auto">
-                    World-class AI-native QA automation expertise, now available for European professionals and enterprises. Timezone-friendly, GDPR-compliant services.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 mb-16">
-                <!-- Education Services -->
-                <div class="reveal p-8 rounded-2xl bg-slate-800/50 border border-slate-700 hover:border-cyan-500/50 transition-all group">
-                    <div class="w-14 h-14 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-6 group-hover:bg-cyan-500/30 transition-colors">
-                        <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">AI QA Courses</h3>
-                    <p class="text-slate-400 mb-4">Comprehensive online courses from fundamentals to advanced AI automation. Flexible scheduling for EU timezones.</p>
-                    <ul class="space-y-2 text-sm text-slate-300">
-                        <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Live sessions in CET timezone</li>
-                        <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> EUR pricing available</li>
-                        <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Certificate of completion</li>
-                    </ul>
-                </div>
-
-                <!-- Consulting Services -->
-                <div class="reveal p-8 rounded-2xl bg-slate-800/50 border border-slate-700 hover:border-purple-500/50 transition-all group" style="animation-delay: 0.1s;">
-                    <div class="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center mb-6 group-hover:bg-purple-500/30 transition-colors">
-                        <svg class="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Enterprise Consulting</h3>
-                    <p class="text-slate-400 mb-4">Strategic consulting for EU companies looking to implement AI-native QA automation.</p>
-                    <ul class="space-y-2 text-sm text-slate-300">
-                        <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Architecture assessment</li>
-                        <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Implementation roadmap</li>
-                        <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Team training programs</li>
-                    </ul>
-                </div>
-
-                <!-- Corporate Training -->
-                <div class="reveal p-8 rounded-2xl bg-slate-800/50 border border-slate-700 hover:border-emerald-500/50 transition-all group" style="animation-delay: 0.2s;">
-                    <div class="w-14 h-14 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-6 group-hover:bg-emerald-500/30 transition-colors">
-                        <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Corporate Training</h3>
-                    <p class="text-slate-400 mb-4">Custom training programs for EU tech companies to upskill their QA teams in AI automation.</p>
-                    <ul class="space-y-2 text-sm text-slate-300">
-                        <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Tailored curriculum</li>
-                        <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> On-site or remote</li>
-                        <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Hands-on workshops</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- EU Target Countries -->
-            <div class="reveal text-center p-8 rounded-2xl bg-slate-800/30 border border-slate-700">
-                <h3 class="text-lg font-semibold text-white mb-4">Currently Serving</h3>
-                <div class="flex flex-wrap items-center justify-center gap-4">
-                    <span class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-sm flex items-center gap-2">
-                        <span>🇳🇱</span> Netherlands
-                    </span>
-                    <span class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-sm flex items-center gap-2">
-                        <span>🇮🇪</span> Ireland
-                    </span>
-                    <span class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-sm flex items-center gap-2">
-                        <span>🇩🇪</span> Germany
-                    </span>
-                    <span class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-sm flex items-center gap-2">
-                        <span>🇸🇪</span> Sweden
-                    </span>
-                    <span class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-sm flex items-center gap-2">
-                        <span>🇵🇱</span> Poland
-                    </span>
-                    <span class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-sm flex items-center gap-2">
-                        <span>🇮🇳</span> India
-                    </span>
-                </div>
-                <p class="text-slate-500 text-sm mt-4">GDPR Compliant • EUR & INR Accepted • Timezone Flexible</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" class="py-24 relative bg-slate-950">
         <div class="max-w-4xl mx-auto px-6">
@@ -847,11 +728,11 @@
                     <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700/50">
                         <h3 class="font-bold text-white mb-4">Quick Contact</h3>
                         <div class="space-y-4">
-                            <a href="mailto:ganesh@agenticqa.io" class="flex items-center gap-3 text-slate-300 hover:text-cyan-400 transition-colors">
+                            <a href="/cdn-cgi/l/email-protection#6f080e010a1c072f0e080a011b060c1e0e410600" class="flex items-center gap-3 text-slate-300 hover:text-cyan-400 transition-colors">
                                 <div class="w-10 h-10 rounded-lg bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center">
                                     <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                                 </div>
-                                ganesh@agenticqa.io
+                                <span class="__cf_email__" data-cfemail="593e38373c2a3119383e3c372d303a2838773036">[email&#160;protected]</span>
                             </a>
                             <a href="https://www.youtube.com/@AgenticQA" target="_blank" class="flex items-center gap-3 text-slate-300 hover:text-red-400 transition-colors">
                                 <div class="w-10 h-10 rounded-lg bg-red-500/20 border border-red-500/30 flex items-center justify-center">
@@ -881,7 +762,7 @@
                 
                 <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700/50">
                     <h3 class="font-bold text-white mb-4">Send a Message</h3>
-                    <form action="https://formsubmit.co/ganesh@agenticqa.io" method="POST">
+                    <form action="https://formsubmit.co/ganesh.ganesh.siva@gmail.com" method="POST">
                         <input type="hidden" name="_subject" value="New Contact from AgenticQA">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_next" value="https://agenticqa.io/?success=true">
@@ -924,7 +805,6 @@
                 <div class="flex items-center gap-6 text-slate-400 text-sm">
                     <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
                     <a href="#bootcamp" class="hover:text-cyan-400 transition-colors">Bootcamp</a>
-                    <a href="#eu-services" class="hover:text-emerald-400 transition-colors">EU Services</a>
                     <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
                     <a href="docs.html" class="hover:text-cyan-400 transition-colors">Docs</a>
                     <a href="students.html" class="hover:text-cyan-400 transition-colors">Students</a>
@@ -944,7 +824,7 @@
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-slate-800 text-center text-slate-500 text-sm">
-                © 2026 AgenticQA Infotech. All rights reserved. | <a href="privacy.html" class="text-cyan-400 hover:text-cyan-300 transition-colors">Privacy Policy</a>
+                © 2026 AgenticQA Technologies. All rights reserved. | <a href="privacy.html" class="text-cyan-400 hover:text-cyan-300 transition-colors">Privacy Policy</a>
             </div>
         </div>
     </footer>
@@ -1266,7 +1146,7 @@
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function toggleMenu() {
             document.getElementById('mobileMenu').classList.toggle('hidden');
         }
