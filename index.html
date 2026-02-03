@@ -104,32 +104,53 @@
                     </a>
                 </div>
                 
-                <button class="md:hidden text-white p-2 -mr-2 z-50" onclick="toggleMenu()">
+                <button id="menuBtn" class="md:hidden text-white p-3 -mr-2" style="position: relative; z-index: 9999; touch-action: manipulation; -webkit-tap-highlight-color: transparent;">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
                 </button>
+                <script>
+                    document.getElementById('menuBtn').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var menu = document.getElementById('mobileMenu');
+                        if (menu) {
+                            menu.classList.toggle('hidden');
+                        }
+                    });
+                </script>
             </div>
         </div>
     </nav>
     
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-slate-950/98 backdrop-blur-xl z-[60] hidden">
+    <div id="mobileMenu" class="fixed inset-0 bg-slate-950 z-[9998] hidden">
         <div class="flex flex-col items-center justify-center h-full gap-8 text-xl">
-            <a href="#projects" class="text-white hover:text-cyan-400" onclick="toggleMenu()">Projects</a>
-            <a href="#bootcamp" class="text-white hover:text-cyan-400" onclick="toggleMenu()">Bootcamp</a>
-            <a href="#about" class="text-white hover:text-cyan-400" onclick="toggleMenu()">About</a>
-            <a href="docs.html" class="text-white hover:text-cyan-400" onclick="toggleMenu()">Docs</a>
-            <a href="students.html" class="text-white hover:text-cyan-400" onclick="toggleMenu()">Students</a>
-            <a href="support.html" class="text-white hover:text-cyan-400" onclick="toggleMenu()">Support</a>
-            <a href="#contact" class="px-6 py-3 bg-cyan-500 text-white font-semibold rounded-lg" onclick="toggleMenu()">Let's Connect</a>
-            <button class="absolute top-6 right-6 text-white" onclick="toggleMenu()">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="#projects" class="text-white hover:text-cyan-400 menuLink">Projects</a>
+            <a href="#bootcamp" class="text-white hover:text-cyan-400 menuLink">Bootcamp</a>
+            <a href="#about" class="text-white hover:text-cyan-400 menuLink">About</a>
+            <a href="docs.html" class="text-white hover:text-cyan-400">Docs</a>
+            <a href="students.html" class="text-white hover:text-cyan-400">Students</a>
+            <a href="support.html" class="text-white hover:text-cyan-400">Support</a>
+            <a href="#contact" class="px-6 py-3 bg-cyan-500 text-white font-semibold rounded-lg menuLink">Let's Connect</a>
+            <button id="closeMenuBtn" class="absolute top-6 right-6 text-white p-3" style="touch-action: manipulation; -webkit-tap-highlight-color: transparent;">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
             </button>
         </div>
     </div>
+    <script>
+        document.getElementById('closeMenuBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('mobileMenu').classList.add('hidden');
+        });
+        document.querySelectorAll('.menuLink').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+    </script>
 
     <!-- Hero Section -->
     <section class="min-h-screen hero-gradient gradient-mesh grid-bg relative overflow-hidden flex items-center pt-20">
@@ -1147,7 +1168,7 @@
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         function toggleMenu() {
             document.getElementById('mobileMenu').classList.toggle('hidden');
         }
