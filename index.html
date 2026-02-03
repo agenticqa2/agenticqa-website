@@ -68,11 +68,6 @@
         .animate-gradient { background-size: 200% 200%; animation: gradient-shift 3s ease infinite; }
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        /* Fallback: show content even if JS fails */
-        @keyframes revealFallback {
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .reveal { animation: revealFallback 0.8s ease-out 0.5s forwards; }
         .card-3d { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
         .card-3d:hover { transform: translateY(-8px) rotateX(2deg); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
         html { scroll-behavior: smooth; }
@@ -733,11 +728,11 @@
                     <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700/50">
                         <h3 class="font-bold text-white mb-4">Quick Contact</h3>
                         <div class="space-y-4">
-                            <a href="/cdn-cgi/l/email-protection#6f080e010a1c072f0e080a011b060c1e0e410600" class="flex items-center gap-3 text-slate-300 hover:text-cyan-400 transition-colors">
+                            <a href="mailto:ganesh@agenticqa.io" class="flex items-center gap-3 text-slate-300 hover:text-cyan-400 transition-colors">
                                 <div class="w-10 h-10 rounded-lg bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center">
                                     <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                                 </div>
-                                <span class="__cf_email__" data-cfemail="593e38373c2a3119383e3c372d303a2838773036">[email&#160;protected]</span>
+                                ganesh@agenticqa.io
                             </a>
                             <a href="https://www.youtube.com/@AgenticQA" target="_blank" class="flex items-center gap-3 text-slate-300 hover:text-red-400 transition-colors">
                                 <div class="w-10 h-10 rounded-lg bg-red-500/20 border border-red-500/30 flex items-center justify-center">
@@ -767,7 +762,7 @@
                 
                 <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700/50">
                     <h3 class="font-bold text-white mb-4">Send a Message</h3>
-                    <form action="https://formsubmit.co/ganesh.ganesh.siva@gmail.com" method="POST">
+                    <form action="https://formsubmit.co/ganesh@agenticqa.io" method="POST">
                         <input type="hidden" name="_subject" value="New Contact from AgenticQA">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_next" value="https://agenticqa.io/?success=true">
@@ -829,7 +824,7 @@
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-slate-800 text-center text-slate-500 text-sm">
-                © 2026 AgenticQA Technologies. All rights reserved. | <a href="privacy.html" class="text-cyan-400 hover:text-cyan-300 transition-colors">Privacy Policy</a>
+                © 2026 AgenticQA Technologies. All rights reserved. | <a href="privacy.html" class="text-cyan-400 hover:text-cyan-300">Privacy Policy</a>
             </div>
         </div>
     </footer>
