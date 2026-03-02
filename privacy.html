@@ -7,7 +7,7 @@
     <meta name="description" content="AgenticQA Privacy Policy - How we collect, use, and protect your personal data. GDPR compliant.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://agenticqa.io/privacy.html">
-    
+
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,75 +16,137 @@
     <style>
         html { scroll-behavior: smooth; }
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #22d3ee; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: #0d1117; }
+        ::-webkit-scrollbar-thumb { background: #2f81f7; border-radius: 4px; }
     </style>
 </head>
-<body class="bg-slate-950 text-white font-['Inter']">
-    
+<body class="bg-slate-950 text-white font-['Inter']" style="background-color: #0d1117;">
+
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/90 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="logo-new.png" alt="AgenticQA" class="h-10 w-auto">
-                <span class="text-xl font-bold">Agentic<span class="text-cyan-400">QA</span></span>
-            </a>
-            <div class="flex items-center gap-6">
-                <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Home</a>
-                <a href="docs.html" class="text-slate-400 hover:text-white transition-colors">Docs</a>
-                <a href="support.html" class="text-slate-400 hover:text-white transition-colors">Support</a>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <img src="logo-new.png" alt="AgenticQA" class="h-10 w-auto group-hover:scale-105 transition-transform">
+                    <div>
+                        <span class="text-xl font-bold text-white">Agentic<span class="text-cyan-400">QA</span></span>
+                        <span class="hidden sm:block text-xs text-slate-400">Intelligence In Testing</span>
+                    </div>
+                </a>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html#exam-prep" class="text-emerald-300 hover:text-emerald-400 font-medium transition-colors">CatalystAI</a>
+                    <a href="index.html#projects" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Projects</a>
+                    <a href="index.html#bootcamp" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Bootcamp</a>
+                    <a href="index.html#about" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">About</a>
+                    <a href="index.html#eu-services" class="text-slate-300 hover:text-blue-400 font-medium transition-colors">🇪🇺 EU</a>
+                    <a href="docs.html" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Docs</a>
+                    <a href="students.html" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Students</a>
+                    <a href="support.html" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Support</a>
+                    <a href="index.html#contact" class="px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-lg transition-all hover:scale-105 shadow-lg shadow-cyan-500/25">
+                        Let's Connect
+                    </a>
+                </div>
+
+                <button id="menuBtn" class="md:hidden text-white p-3 -mr-2" style="position: relative; z-index: 9999; touch-action: manipulation; -webkit-tap-highlight-color: transparent;">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                <script>
+                    document.getElementById('menuBtn').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var menu = document.getElementById('mobileMenu');
+                        if (menu) {
+                            menu.classList.toggle('hidden');
+                        }
+                    });
+                </script>
             </div>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-slate-950 z-[9998] hidden">
+        <div class="flex flex-col items-center justify-center h-full gap-8 text-xl">
+            <a href="index.html#exam-prep" class="text-emerald-400 hover:text-emerald-300 menuLink font-semibold">CatalystAI</a>
+            <a href="index.html#projects" class="text-white hover:text-cyan-400 menuLink">Projects</a>
+            <a href="index.html#bootcamp" class="text-white hover:text-cyan-400 menuLink">Bootcamp</a>
+            <a href="index.html#about" class="text-white hover:text-cyan-400 menuLink">About</a>
+            <a href="index.html#eu-services" class="text-white hover:text-blue-400 menuLink">🇪🇺 EU</a>
+            <a href="docs.html" class="text-white hover:text-cyan-400">Docs</a>
+            <a href="students.html" class="text-white hover:text-cyan-400">Students</a>
+            <a href="support.html" class="text-white hover:text-cyan-400">Support</a>
+            <a href="index.html#contact" class="px-6 py-3 bg-cyan-500 text-white font-semibold rounded-lg menuLink">Let's Connect</a>
+            <button id="closeMenuBtn" class="absolute top-6 right-6 text-white p-3" style="touch-action: manipulation; -webkit-tap-highlight-color: transparent;">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('closeMenuBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('mobileMenu').classList.add('hidden');
+        });
+        document.querySelectorAll('.menuLink').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+    </script>
+
     <div class="pt-24 pb-16">
         <div class="max-w-4xl mx-auto px-6">
-            
+
             <!-- Header -->
             <div class="text-center mb-12">
-                <span class="inline-block px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-medium mb-4">
+                <span class="inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-4" style="background-color: rgba(47, 129, 247, 0.1); border: 1px solid rgba(47, 129, 247, 0.3); color: #2f81f7;">
                     Legal
                 </span>
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Privacy Policy</h1>
-                <p class="text-slate-400">Last updated: January 30, 2026</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">Privacy Policy</h1>
+                <p style="color: #8b949e;">Last updated: January 30, 2026</p>
             </div>
 
             <!-- Content -->
-            <div class="prose prose-invert max-w-none">
-                
+            <div class="max-w-none">
+
                 <!-- Introduction -->
-                <section class="mb-12 p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">Introduction</h2>
-                    <p class="text-slate-300 mb-4">
+                <section class="mb-12 p-6 rounded-xl transition-all" style="background-color: #161b22; border: 1px solid #30363d;">
+                    <h2 class="text-2xl font-bold mb-4" style="color: #2f81f7;">Introduction</h2>
+                    <p class="mb-4" style="color: #c9d1d9;">
                         AgenticQA Technologies ("AgenticQA", "we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website agenticqa.io and use our services.
                     </p>
-                    <p class="text-slate-300">
+                    <p style="color: #c9d1d9;">
                         We comply with the General Data Protection Regulation (GDPR) for users in the European Union and applicable data protection laws in India.
                     </p>
                 </section>
 
                 <!-- Data Controller -->
-                <section class="mb-12 p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">Data Controller</h2>
-                    <p class="text-slate-300 mb-4">
+                <section class="mb-12 p-6 rounded-xl transition-all" style="background-color: #161b22; border: 1px solid #30363d;">
+                    <h2 class="text-2xl font-bold mb-4" style="color: #2f81f7;">Data Controller</h2>
+                    <p class="mb-4" style="color: #c9d1d9;">
                         The data controller responsible for your personal data is:
                     </p>
-                    <div class="bg-slate-900 rounded-lg p-4 text-slate-300">
-                        <p><strong class="text-white">AgenticQA Technologies</strong></p>
-                        <p>Ganesan Sivaraman, Founder</p>
-                        <p>AI QA Architect & MCP Server Developer</p>
-                        <p>Email: <a href="mailto:ganesh@agenticqa.io" class="text-cyan-400">ganesh@agenticqa.io</a></p>
-                        <p>Website: agenticqa.io</p>
+                    <div class="rounded-lg p-4" style="background-color: #0d1117;">
+                        <p style="color: #c9d1d9;"><strong class="text-white">AgenticQA Technologies</strong></p>
+                        <p style="color: #c9d1d9;">Ganesan Sivaraman, Founder</p>
+                        <p style="color: #c9d1d9;">AI QA Architect & MCP Server Developer</p>
+                        <p style="color: #c9d1d9;">Email: <a href="mailto:ganesh@agenticqa.io" style="color: #2f81f7;">ganesh@agenticqa.io</a></p>
+                        <p style="color: #c9d1d9;">Website: agenticqa.io</p>
                     </div>
                 </section>
 
                 <!-- What We Do -->
-                <section class="mb-12 p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">What We Do</h2>
-                    <p class="text-slate-300 mb-4">
+                <section class="mb-12 p-6 rounded-xl transition-all" style="background-color: #161b22; border: 1px solid #30363d;">
+                    <h2 class="text-2xl font-bold mb-4" style="color: #2f81f7;">What We Do</h2>
+                    <p class="mb-4" style="color: #c9d1d9;">
                         AgenticQA Technologies provides AI-native QA automation training and consulting services:
                     </p>
-                    <ul class="list-disc list-inside text-slate-300 space-y-2">
+                    <ul class="list-disc list-inside space-y-2" style="color: #c9d1d9;">
                         <li><strong class="text-white">Online Courses:</strong> AI QA automation training programs covering Playwright, LangChain, RAG, and Agentic AI</li>
                         <li><strong class="text-white">Student Internships:</strong> 28-day project-based AI/ML internship programs for students and job seekers</li>
                         <li><strong class="text-white">Enterprise Consulting:</strong> Strategic consulting for companies implementing AI-native test automation</li>
@@ -93,20 +155,20 @@
                 </section>
 
                 <!-- Information We Collect -->
-                <section class="mb-12 p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">Information We Collect</h2>
-                    
+                <section class="mb-12 p-6 rounded-xl transition-all" style="background-color: #161b22; border: 1px solid #30363d;">
+                    <h2 class="text-2xl font-bold mb-4" style="color: #2f81f7;">Information We Collect</h2>
+
                     <h3 class="text-xl font-semibold text-white mb-3">Personal Information You Provide</h3>
-                    <ul class="list-disc list-inside text-slate-300 mb-6 space-y-2">
+                    <ul class="list-disc list-inside mb-6 space-y-2" style="color: #c9d1d9;">
                         <li>Name and email address (when you contact us or register for courses)</li>
                         <li>Phone number (if provided for WhatsApp communication)</li>
                         <li>Professional information (job title, company, experience level)</li>
                         <li>Payment information (processed securely through third-party providers)</li>
                         <li>Course preferences and learning goals</li>
                     </ul>
-                    
+
                     <h3 class="text-xl font-semibold text-white mb-3">Automatically Collected Information</h3>
-                    <ul class="list-disc list-inside text-slate-300 space-y-2">
+                    <ul class="list-disc list-inside space-y-2" style="color: #c9d1d9;">
                         <li>IP address and browser type</li>
                         <li>Device information and operating system</li>
                         <li>Pages visited and time spent on site</li>
@@ -116,10 +178,10 @@
                 </section>
 
                 <!-- How We Use Your Information -->
-                <section class="mb-12 p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">How We Use Your Information</h2>
-                    <p class="text-slate-300 mb-4">We use your personal data for the following purposes:</p>
-                    <ul class="list-disc list-inside text-slate-300 space-y-2">
+                <section class="mb-12 p-6 rounded-xl transition-all" style="background-color: #161b22; border: 1px solid #30363d;">
+                    <h2 class="text-2xl font-bold mb-4" style="color: #2f81f7;">How We Use Your Information</h2>
+                    <p class="mb-4" style="color: #c9d1d9;">We use your personal data for the following purposes:</p>
+                    <ul class="list-disc list-inside space-y-2" style="color: #c9d1d9;">
                         <li>To provide and deliver our courses and training services</li>
                         <li>To respond to your inquiries and support requests</li>
                         <li>To send course-related communications and updates</li>
@@ -131,10 +193,10 @@
                 </section>
 
                 <!-- Legal Basis (GDPR) -->
-                <section class="mb-12 p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">Legal Basis for Processing (GDPR)</h2>
-                    <p class="text-slate-300 mb-4">For users in the European Union, we process your data based on:</p>
-                    <ul class="list-disc list-inside text-slate-300 space-y-2">
+                <section class="mb-12 p-6 rounded-xl transition-all" style="background-color: #161b22; border: 1px solid #30363d;">
+                    <h2 class="text-2xl font-bold mb-4" style="color: #2f81f7;">Legal Basis for Processing (GDPR)</h2>
+                    <p class="mb-4" style="color: #c9d1d9;">For users in the European Union, we process your data based on:</p>
+                    <ul class="list-disc list-inside space-y-2" style="color: #c9d1d9;">
                         <li><strong class="text-white">Contract:</strong> Processing necessary for providing our services</li>
                         <li><strong class="text-white">Consent:</strong> Marketing communications and non-essential cookies</li>
                         <li><strong class="text-white">Legitimate Interest:</strong> Improving our services and fraud prevention</li>
@@ -143,63 +205,63 @@
                 </section>
 
                 <!-- Your Rights (GDPR) -->
-                <section class="mb-12 p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">Your Rights (GDPR)</h2>
-                    <p class="text-slate-300 mb-4">If you are in the EU, you have the following rights:</p>
+                <section class="mb-12 p-6 rounded-xl transition-all" style="background-color: #161b22; border: 1px solid #30363d;">
+                    <h2 class="text-2xl font-bold mb-4" style="color: #2f81f7;">Your Rights (GDPR)</h2>
+                    <p class="mb-4" style="color: #c9d1d9;">If you are in the EU, you have the following rights:</p>
                     <div class="grid md:grid-cols-2 gap-4">
-                        <div class="bg-slate-900 rounded-lg p-4">
+                        <div class="rounded-lg p-4" style="background-color: #0d1117;">
                             <h4 class="text-white font-semibold mb-2">Right to Access</h4>
-                            <p class="text-slate-400 text-sm">Request a copy of your personal data</p>
+                            <p class="text-sm" style="color: #8b949e;">Request a copy of your personal data</p>
                         </div>
-                        <div class="bg-slate-900 rounded-lg p-4">
+                        <div class="rounded-lg p-4" style="background-color: #0d1117;">
                             <h4 class="text-white font-semibold mb-2">Right to Rectification</h4>
-                            <p class="text-slate-400 text-sm">Correct inaccurate or incomplete data</p>
+                            <p class="text-sm" style="color: #8b949e;">Correct inaccurate or incomplete data</p>
                         </div>
-                        <div class="bg-slate-900 rounded-lg p-4">
+                        <div class="rounded-lg p-4" style="background-color: #0d1117;">
                             <h4 class="text-white font-semibold mb-2">Right to Erasure</h4>
-                            <p class="text-slate-400 text-sm">Request deletion of your data</p>
+                            <p class="text-sm" style="color: #8b949e;">Request deletion of your data</p>
                         </div>
-                        <div class="bg-slate-900 rounded-lg p-4">
+                        <div class="rounded-lg p-4" style="background-color: #0d1117;">
                             <h4 class="text-white font-semibold mb-2">Right to Restriction</h4>
-                            <p class="text-slate-400 text-sm">Limit how we use your data</p>
+                            <p class="text-sm" style="color: #8b949e;">Limit how we use your data</p>
                         </div>
-                        <div class="bg-slate-900 rounded-lg p-4">
+                        <div class="rounded-lg p-4" style="background-color: #0d1117;">
                             <h4 class="text-white font-semibold mb-2">Right to Portability</h4>
-                            <p class="text-slate-400 text-sm">Receive your data in a structured format</p>
+                            <p class="text-sm" style="color: #8b949e;">Receive your data in a structured format</p>
                         </div>
-                        <div class="bg-slate-900 rounded-lg p-4">
+                        <div class="rounded-lg p-4" style="background-color: #0d1117;">
                             <h4 class="text-white font-semibold mb-2">Right to Object</h4>
-                            <p class="text-slate-400 text-sm">Object to processing based on legitimate interest</p>
+                            <p class="text-sm" style="color: #8b949e;">Object to processing based on legitimate interest</p>
                         </div>
                     </div>
-                    <p class="text-slate-300 mt-4">
-                        To exercise these rights, contact us at <a href="mailto:ganesh@agenticqa.io" class="text-cyan-400">ganesh@agenticqa.io</a>. We will respond within 30 days.
+                    <p class="mt-4" style="color: #c9d1d9;">
+                        To exercise these rights, contact us at <a href="mailto:ganesh@agenticqa.io" style="color: #2f81f7;">ganesh@agenticqa.io</a>. We will respond within 30 days.
                     </p>
                 </section>
 
                 <!-- Cookies -->
-                <section class="mb-12 p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">Cookies</h2>
-                    <p class="text-slate-300 mb-4">
+                <section class="mb-12 p-6 rounded-xl transition-all" style="background-color: #161b22; border: 1px solid #30363d;">
+                    <h2 class="text-2xl font-bold mb-4" style="color: #2f81f7;">Cookies</h2>
+                    <p class="mb-4" style="color: #c9d1d9;">
                         We use cookies and similar technologies to enhance your experience. These include:
                     </p>
-                    <ul class="list-disc list-inside text-slate-300 space-y-2">
+                    <ul class="list-disc list-inside space-y-2" style="color: #c9d1d9;">
                         <li><strong class="text-white">Essential Cookies:</strong> Required for website functionality</li>
                         <li><strong class="text-white">Analytics Cookies:</strong> Help us understand how visitors use our site</li>
                         <li><strong class="text-white">Marketing Cookies:</strong> Used to deliver relevant advertisements (with consent)</li>
                     </ul>
-                    <p class="text-slate-300 mt-4">
+                    <p class="mt-4" style="color: #c9d1d9;">
                         You can manage cookie preferences through your browser settings.
                     </p>
                 </section>
 
                 <!-- Data Sharing -->
-                <section class="mb-12 p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">Data Sharing</h2>
-                    <p class="text-slate-300 mb-4">
+                <section class="mb-12 p-6 rounded-xl transition-all" style="background-color: #161b22; border: 1px solid #30363d;">
+                    <h2 class="text-2xl font-bold mb-4" style="color: #2f81f7;">Data Sharing</h2>
+                    <p class="mb-4" style="color: #c9d1d9;">
                         We do not sell your personal data. We may share your information with:
                     </p>
-                    <ul class="list-disc list-inside text-slate-300 space-y-2">
+                    <ul class="list-disc list-inside space-y-2" style="color: #c9d1d9;">
                         <li><strong class="text-white">Service Providers:</strong> Payment processors, email services, hosting providers</li>
                         <li><strong class="text-white">Legal Requirements:</strong> When required by law or to protect our rights</li>
                         <li><strong class="text-white">Business Transfers:</strong> In case of merger or acquisition</li>
@@ -207,47 +269,123 @@
                 </section>
 
                 <!-- Data Retention -->
-                <section class="mb-12 p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">Data Retention</h2>
-                    <p class="text-slate-300">
+                <section class="mb-12 p-6 rounded-xl transition-all" style="background-color: #161b22; border: 1px solid #30363d;">
+                    <h2 class="text-2xl font-bold mb-4" style="color: #2f81f7;">Data Retention</h2>
+                    <p style="color: #c9d1d9;">
                         We retain your personal data only for as long as necessary to fulfill the purposes outlined in this policy, unless a longer retention period is required by law. Course enrollment data is retained for 3 years after course completion. Marketing data is retained until you unsubscribe.
                     </p>
                 </section>
 
                 <!-- International Transfers -->
-                <section class="mb-12 p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">International Data Transfers</h2>
-                    <p class="text-slate-300">
+                <section class="mb-12 p-6 rounded-xl transition-all" style="background-color: #161b22; border: 1px solid #30363d;">
+                    <h2 class="text-2xl font-bold mb-4" style="color: #2f81f7;">International Data Transfers</h2>
+                    <p style="color: #c9d1d9;">
                         Your data may be transferred to and processed in India. We ensure appropriate safeguards are in place to protect your data in accordance with GDPR requirements, including standard contractual clauses where applicable.
                     </p>
                 </section>
 
                 <!-- Security -->
-                <section class="mb-12 p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">Data Security</h2>
-                    <p class="text-slate-300">
+                <section class="mb-12 p-6 rounded-xl transition-all" style="background-color: #161b22; border: 1px solid #30363d;">
+                    <h2 class="text-2xl font-bold mb-4" style="color: #2f81f7;">Data Security</h2>
+                    <p style="color: #c9d1d9;">
                         We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. This includes encryption, secure servers, and access controls.
                     </p>
                 </section>
 
                 <!-- Contact -->
-                <section class="mb-12 p-6 rounded-xl bg-cyan-500/10 border border-cyan-500/30">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">Contact Us</h2>
-                    <p class="text-slate-300 mb-4">
+                <section class="mb-12 p-6 rounded-xl transition-all" style="background-color: rgba(47, 129, 247, 0.1); border: 1px solid rgba(47, 129, 247, 0.3);">
+                    <h2 class="text-2xl font-bold mb-4" style="color: #2f81f7;">Contact Us</h2>
+                    <p class="mb-4" style="color: #c9d1d9;">
                         For any privacy-related questions or to exercise your rights, please contact:
                     </p>
-                    <div class="bg-slate-900 rounded-lg p-4 text-slate-300">
-                        <p><strong class="text-white">Company:</strong> AgenticQA Technologies</p>
-                        <p><strong class="text-white">Email:</strong> <a href="mailto:ganesh@agenticqa.io" class="text-cyan-400">ganesh@agenticqa.io</a></p>
-                        <p><strong class="text-white">Response Time:</strong> Within 30 days</p>
+                    <div class="rounded-lg p-4" style="background-color: #0d1117;">
+                        <p style="color: #c9d1d9;"><strong class="text-white">Company:</strong> AgenticQA Technologies</p>
+                        <p style="color: #c9d1d9;"><strong class="text-white">Email:</strong> <a href="mailto:ganesh@agenticqa.io" style="color: #2f81f7;">ganesh@agenticqa.io</a></p>
+                        <p style="color: #c9d1d9;"><strong class="text-white">Response Time:</strong> Within 30 days</p>
                     </div>
-                    <p class="text-slate-300 mt-4">
+                    <p class="mt-4" style="color: #c9d1d9;">
                         EU residents also have the right to lodge a complaint with their local Data Protection Authority.
                     </p>
                 </section>
 
                 <!-- Updates -->
-                <section class="p-6 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">Policy Updates</h2>
-                    <p class="text-slate-300">
-                        We may update this Privacy Policy from time to time. The updated version will be indicated by the "Last updated" date at the top. We encourage you to 
+                <section class="p-6 rounded-xl transition-all" style="background-color: #161b22; border: 1px solid #30363d;">
+                    <h2 class="text-2xl font-bold mb-4" style="color: #2f81f7;">Policy Updates</h2>
+                    <p style="color: #c9d1d9;">
+                        We may update this Privacy Policy from time to time. The updated version will be indicated by the "Last updated" date at the top. We encourage you to review this policy periodically for any changes.
+                    </p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#30363d] bg-[#0d1117]">
+        <div class="max-w-[1280px] mx-auto px-6 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <!-- Column 1: Brand -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="logo-new.png" alt="AgenticQA" class="h-6 w-auto">
+                        <span class="font-bold text-white">AgenticQA</span>
+                    </div>
+                    <p class="text-sm text-[#8b949e] mb-4">Intelligence In Testing</p>
+                    <p class="text-xs text-[#6e7681] mb-4">Building production-ready AI test automation systems</p>
+                    <div class="flex gap-3">
+                        <a href="https://www.youtube.com/@AgenticQA" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ganesan-sivaraman" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="https://github.com/E2EINT/genai-qa-automation-pipeline" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- Column 2: Platform -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 text-sm">Platform</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#projects" class="text-[#8b949e] hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="index.html#bootcamp" class="text-[#8b949e] hover:text-white transition-colors">Bootcamp</a></li>
+                        <li><a href="index.html#exam-prep" class="text-[#8b949e] hover:text-white transition-colors">CatalystAI</a></li>
+                        <li><a href="docs.html" class="text-[#8b949e] hover:text-white transition-colors">Documentation</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Resources -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 text-sm">Resources</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="students.html" class="text-[#8b949e] hover:text-white transition-colors">Students Program</a></li>
+                        <li><a href="support.html" class="text-[#8b949e] hover:text-white transition-colors">Support</a></li>
+                        <li><a href="privacy.html" class="text-[#8b949e] hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Company -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 text-sm">Company</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#about" class="text-[#8b949e] hover:text-white transition-colors">About</a></li>
+                        <li><a href="index.html#eu-services" class="text-[#8b949e] hover:text-white transition-colors">EU Services</a></li>
+                        <li><a href="index.html#contact" class="text-[#8b949e] hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Column 5: Connect -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 text-sm">Connect</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://www.youtube.com/@AgenticQA" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">YouTube</a></li>
+                        <li><a href="https://www.linkedin.com/in/ganesan-sivaraman" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">LinkedIn</a></li>
+                        <li><a href="https://github.com/E2EINT/genai-qa-automation-pipeline" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">GitHub</a></li>
+                        <li><a href="index.html#contact" class="text-[#8b949e] hover:text-white transition-colors">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-[#30363d] mt-8 pt-8 text-center text-sm text-[#8b949e]">
+                © 2026 Agenticqa Technologies LLP. All rights reserved. | <a href="privacy.html" class="text-[#8b949e] hover:text-white transition-colors">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

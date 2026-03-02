@@ -3,1420 +3,1687 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentation | AgenticQA</title>
+    <meta name="description" content="AgenticQA Documentation - Complete guide to AI-native test automation, RAG pipelines, agentic AI, and MCP servers.">
+    <meta name="keywords" content="AI QA, Test Automation, RAG, LLM, MCP Server, Playwright, Agentic AI">
+    <meta name="author" content="Ganesan Sivaraman">
+    <title>Docs | AgenticQA</title>
+
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwindcss.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Inter', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-card: #1e293b;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --accent-cyan: #22d3ee;
-            --accent-blue: #3b82f6;
-            --accent-purple: #a855f7;
-            --accent-green: #22c55e;
-            --accent-orange: #f97316;
-            --accent-yellow: #eab308;
-            --accent-red: #ef4444;
-            --border-color: #334155;
+            --github-bg: #0d1117;
+            --github-secondary: #161b22;
+            --github-border: #30363d;
+            --github-text: #f0f6fc;
+            --github-text-secondary: #8b949e;
+            --github-blue: #2f81f7;
+            --github-green: #238636;
+            --github-orange: #fb8500;
+            --github-red: #da3633;
         }
-        
+
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.7;
+            background-color: var(--github-bg);
+            color: var(--github-text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
         }
-        
+
+        a { color: inherit; text-decoration: none; }
+
+        /* Skip to content */
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+        .sr-only:focus { position: relative; width: auto; height: auto; padding: 1rem; margin: 0; overflow: visible; clip: auto; }
+
         /* Navigation */
-        .nav {
+        nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            height: 64px;
-            background: rgba(15, 23, 42, 0.98);
+            background-color: rgba(13, 17, 23, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--github-border);
+            z-index: 100;
+            height: 60px;
+        }
+
+        .nav-container {
+            max-width: 100%;
+            padding: 0 1.5rem;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 2rem;
-            z-index: 100;
         }
-        
+
         .nav-logo {
             display: flex;
             align-items: center;
             gap: 0.75rem;
             text-decoration: none;
-            color: var(--text-primary);
+            color: var(--github-text);
+            font-weight: 600;
+            font-size: 1.1rem;
         }
-        
-        .nav-logo img { height: 36px; }
-        
-        .nav-logo-text {
-            display: flex;
-            flex-direction: column;
+
+        .nav-logo img {
+            height: 28px;
+            width: auto;
         }
-        
-        .nav-logo-title {
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--accent-cyan);
-        }
-        
-        .nav-logo-sub {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            letter-spacing: 0.5px;
-        }
-        
+
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
+            list-style: none;
             align-items: center;
         }
-        
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+
         .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
+            color: var(--github-text-secondary);
+            font-size: 0.95rem;
             transition: color 0.2s;
         }
-        
-        .nav-links a:hover,
-        .nav-links a.active { color: var(--accent-cyan); }
-        
-        .nav-links .btn-contact {
-            background: var(--accent-cyan);
-            color: var(--bg-primary);
-            padding: 0.5rem 1.25rem;
-            border-radius: 8px;
-            font-weight: 600;
+
+        .nav-links a:hover {
+            color: var(--github-text);
         }
-        
-        /* Mobile Menu Button */
+
+        .nav-links a.active {
+            color: var(--github-blue);
+        }
+
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
             cursor: pointer;
             padding: 0.5rem;
-            z-index: 200;
+            color: var(--github-text-secondary);
         }
-        
-        .mobile-menu-btn span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--accent-cyan);
-            margin: 5px 0;
-            transition: all 0.3s ease;
-            border-radius: 2px;
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
         }
-        
-        .mobile-menu-btn.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        
-        .mobile-menu-btn.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .mobile-menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-        
-        /* Sidebar Overlay for Mobile */
-        .sidebar-overlay {
-            display: none;
+
+        /* Mobile menu */
+        .mobile-menu {
             position: fixed;
-            top: 64px;
+            top: 60px;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 89;
+            background-color: var(--github-secondary);
+            border-bottom: 1px solid var(--github-border);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            z-index: 99;
         }
-        
-        .sidebar-overlay.active {
+
+        .mobile-menu.active {
+            max-height: 500px;
+        }
+
+        .mobile-menu-content {
+            padding: 1rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .mobile-menu-content a {
+            color: var(--github-text-secondary);
             display: block;
+            padding: 0.5rem 0;
         }
-        
+
+        .mobile-menu-content a:hover {
+            color: var(--github-text);
+        }
+
+        .mobile-menu-content a.active {
+            color: var(--github-blue);
+        }
+
+        /* Main layout */
+        .main-wrapper {
+            display: flex;
+            margin-top: 60px;
+        }
+
         /* Sidebar */
         .sidebar {
             position: fixed;
-            top: 64px;
             left: 0;
+            top: 60px;
             width: 280px;
-            height: calc(100vh - 64px);
-            background: var(--bg-primary);
-            border-right: 1px solid var(--border-color);
+            height: calc(100vh - 60px);
+            background-color: var(--github-bg);
+            border-right: 1px solid var(--github-border);
             padding: 2rem 1.5rem;
             overflow-y: auto;
-            z-index: 90;
-            transition: transform 0.3s ease;
+            z-index: 50;
         }
-        
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--github-border);
+                padding: 1.5rem;
+            }
+        }
+
         .sidebar-section {
             margin-bottom: 2rem;
         }
-        
+
         .sidebar-title {
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--accent-cyan);
-            margin-bottom: 0.75rem;
-        }
-        
-        .sidebar-links {
-            list-style: none;
-        }
-        
-        .sidebar-links li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .sidebar-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-            display: block;
-            padding: 0.25rem 0;
-        }
-        
-        .sidebar-links a:hover { color: var(--text-primary); }
-        
-        /* Main Content */
-        .main {
-            margin-left: 280px;
-            margin-top: 64px;
-            padding: 3rem 4rem;
-            max-width: 1200px;
-        }
-        
-        h1, h2, h3, h4 {
-            color: var(--text-primary);
+            color: var(--github-text-secondary);
             margin-bottom: 1rem;
         }
-        
-        h1 {
-            font-size: 2.5rem;
+
+        .sidebar-links {
+            list-style: none;
             display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        h2 {
-            font-size: 1.75rem;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
+            flex-direction: column;
             gap: 0.5rem;
         }
-        
-        h3 { font-size: 1.25rem; margin-top: 2rem; }
-        h4 { font-size: 1rem; color: var(--accent-cyan); }
-        
-        p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+
+        .sidebar-links a {
+            color: var(--github-text-secondary);
+            font-size: 0.9rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            display: block;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
         }
-        
-        .highlight { color: var(--accent-cyan); }
-        
+
+        .sidebar-links a:hover {
+            color: var(--github-text);
+            background-color: var(--github-secondary);
+            border-left-color: var(--github-blue);
+        }
+
+        .sidebar-links a.active {
+            color: var(--github-blue);
+            background-color: rgba(47, 129, 247, 0.1);
+            border-left-color: var(--github-blue);
+        }
+
+        /* Content area */
+        .content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 2rem 2rem 4rem 2rem;
+            max-width: 900px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                margin-left: 0;
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        /* Headings */
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 0 0 1rem 0;
+            color: var(--github-text);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem 0;
+            color: var(--github-text);
+            padding-top: 1rem;
+            border-top: 1px solid var(--github-border);
+        }
+
+        h2:first-child {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.75rem 0 1rem 0;
+            color: var(--github-text);
+        }
+
+        h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem 0;
+            color: var(--github-text);
+        }
+
+        /* Paragraph and text */
+        p {
+            color: var(--github-text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            margin-left: 1.5rem;
+            color: var(--github-text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            color: var(--github-text);
+            font-weight: 600;
+        }
+
+        code {
+            background-color: var(--github-secondary);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
+            padding: 0.2rem 0.4rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #79c0ff;
+        }
+
         /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
             margin: 2rem 0;
         }
-        
+
         .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            background-color: var(--github-secondary);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
             padding: 1.5rem;
             text-align: center;
+            transition: all 0.2s;
         }
-        
+
+        .stat-card:hover {
+            border-color: var(--github-blue);
+            background-color: rgba(47, 129, 247, 0.05);
+        }
+
         .stat-number {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--accent-cyan);
+            color: var(--github-blue);
+            margin-bottom: 0.5rem;
         }
-        
+
         .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+            font-size: 0.9rem;
+            color: var(--github-text-secondary);
         }
-        
-        /* Info Box */
+
+        /* Info box */
         .info-box {
-            background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(59, 130, 246, 0.1));
-            border: 1px solid rgba(34, 211, 238, 0.3);
-            border-radius: 12px;
-            padding: 1.25rem 1.5rem;
+            background-color: rgba(47, 129, 247, 0.05);
+            border: 1px solid rgba(47, 129, 247, 0.2);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
             margin: 1.5rem 0;
         }
-        
+
         .info-box-title {
-            color: var(--accent-cyan);
+            color: var(--github-blue);
             font-weight: 600;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-        
-        .info-box p { margin: 0; font-size: 0.95rem; }
-        
-        /* Architecture Layers */
-        .arch-layer {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1rem 0;
+
+        .info-box p {
+            margin: 0;
+            font-size: 0.95rem;
         }
-        
+
+        .info-box a {
+            color: var(--github-blue);
+        }
+
+        .info-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Architecture layers */
+        .arch-layer {
+            background-color: var(--github-secondary);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            transition: all 0.2s;
+        }
+
+        .arch-layer:hover {
+            border-color: var(--github-blue);
+        }
+
         .layer-header {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
         }
-        
+
         .layer-number {
-            width: 32px;
-            height: 32px;
-            background: var(--accent-cyan);
-            color: var(--bg-primary);
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--github-blue);
+            color: white;
+            border-radius: 6px;
             font-weight: 700;
+            font-size: 1.1rem;
         }
-        
-        .layer-title { font-size: 1.1rem; font-weight: 600; }
-        
+
+        .layer-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--github-text);
+        }
+
         .layer-badge {
-            font-size: 0.7rem;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            background: rgba(34, 211, 238, 0.2);
-            color: var(--accent-cyan);
+            background-color: rgba(35, 134, 54, 0.15);
+            border: 1px solid rgba(35, 134, 54, 0.3);
+            color: var(--github-green);
+            padding: 0.25rem 0.75rem;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
-        
+
         .layer-badge.warning {
-            background: rgba(249, 115, 22, 0.2);
-            color: var(--accent-orange);
+            background-color: rgba(251, 133, 0, 0.15);
+            border-color: rgba(251, 133, 0, 0.3);
+            color: var(--github-orange);
         }
-        
+
         .layer-items {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
         }
-        
+
         .layer-item {
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
             padding: 1rem;
             text-align: center;
         }
-        
-        .layer-item-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .layer-item-name { font-weight: 500; font-size: 0.9rem; }
-        .layer-item-desc { font-size: 0.75rem; color: var(--text-secondary); }
-        
-        /* Warning Box */
+
+        .layer-item-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .layer-item-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--github-text);
+            margin-bottom: 0.25rem;
+        }
+
+        .layer-item-desc {
+            font-size: 0.8rem;
+            color: var(--github-text-secondary);
+        }
+
+        /* Warning box */
         .warning-box {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-radius: 12px;
-            padding: 1.25rem 1.5rem;
+            background-color: rgba(218, 54, 51, 0.1);
+            border: 1px solid rgba(218, 54, 51, 0.3);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
             margin: 1.5rem 0;
         }
-        
+
         .warning-box-title {
-            color: var(--accent-red);
+            color: var(--github-red);
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            margin-bottom: 0.5rem;
         }
-        
-        /* Tech Stack Grid */
+
+        .warning-box p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Tech Grid */
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
         }
-        
+
         .tech-category {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            background-color: var(--github-secondary);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
             padding: 1.5rem;
         }
-        
+
         .tech-category h4 {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            margin-top: 0;
+            color: var(--github-blue);
         }
-        
+
         .tech-item {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: start;
+            gap: 1rem;
             padding: 0.75rem 0;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--github-border);
         }
-        
-        .tech-item:last-child { border-bottom: none; }
-        
-        .tech-name { font-weight: 500; }
-        .tech-desc { font-size: 0.85rem; color: var(--text-secondary); }
-        
+
+        .tech-item:last-child {
+            border-bottom: none;
+        }
+
+        .tech-name {
+            font-weight: 600;
+            color: var(--github-text);
+            font-size: 0.95rem;
+        }
+
+        .tech-desc {
+            font-size: 0.85rem;
+            color: var(--github-text-secondary);
+        }
+
         .tech-badge {
-            font-size: 0.7rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            background: rgba(34, 211, 238, 0.2);
-            color: var(--accent-cyan);
+            background-color: rgba(47, 129, 247, 0.15);
+            border: 1px solid rgba(47, 129, 247, 0.3);
+            color: var(--github-blue);
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
         }
-        
+
         /* RAG Flow */
         .rag-flow {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin: 1.5rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
         }
-        
+
         .rag-step {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            background-color: var(--github-secondary);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
             padding: 1.5rem;
             text-align: center;
+            transition: all 0.2s;
         }
-        
-        .rag-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-        .rag-title { font-weight: 600; margin-bottom: 0.5rem; }
-        .rag-desc { font-size: 0.85rem; color: var(--text-secondary); }
-        
-        /* Embeddings */
+
+        .rag-step:hover {
+            border-color: var(--github-green);
+            background-color: rgba(35, 134, 54, 0.05);
+        }
+
+        .rag-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .rag-title {
+            font-weight: 600;
+            color: var(--github-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .rag-desc {
+            font-size: 0.9rem;
+            color: var(--github-text-secondary);
+        }
+
+        /* Embeddings example */
         .embed-example {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            background-color: var(--github-secondary);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
             padding: 1.5rem;
+            margin: 1.5rem 0;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
         }
-        
+
         .embed-row {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin: 0.5rem 0;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
         }
-        
-        .embed-text { color: var(--accent-green); }
-        .embed-vector { color: var(--text-secondary); }
-        .embed-similar { color: var(--accent-cyan); font-size: 0.8rem; }
-        
-        /* Agent Loop */
+
+        .embed-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .embed-text {
+            background-color: rgba(47, 129, 247, 0.15);
+            border: 1px solid rgba(47, 129, 247, 0.3);
+            color: #79c0ff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+        }
+
+        .embed-vector {
+            color: var(--github-text-secondary);
+        }
+
+        .embed-similar {
+            background-color: rgba(35, 134, 54, 0.15);
+            color: var(--github-green);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* Agent loop */
         .agent-loop {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin: 1.5rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
         }
-        
+
         .agent-step {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            background-color: var(--github-secondary);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
             padding: 1.5rem;
             text-align: center;
+            transition: all 0.2s;
         }
-        
-        .agent-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-        .agent-title { font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.5rem; }
-        .agent-desc { font-size: 0.85rem; color: var(--text-secondary); }
-        
+
+        .agent-step:hover {
+            border-color: var(--github-orange);
+        }
+
+        .agent-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .agent-title {
+            font-weight: 600;
+            color: var(--github-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .agent-desc {
+            font-size: 0.9rem;
+            color: var(--github-text-secondary);
+        }
+
         /* MCP Tools */
         .mcp-tools {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
             margin: 1.5rem 0;
         }
-        
+
         .mcp-tool {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+            background-color: var(--github-secondary);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
             padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.2s;
+        }
+
+        .mcp-tool:hover {
+            border-color: var(--github-blue);
+            background-color: rgba(47, 129, 247, 0.05);
+        }
+
+        .mcp-tool-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .mcp-tool-name {
+            font-weight: 600;
+            color: var(--github-text);
+            font-size: 0.9rem;
+        }
+
+        .mcp-tool-desc {
+            font-size: 0.8rem;
+            color: var(--github-text-secondary);
+        }
+
+        /* Project sections */
+        .project-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid var(--github-border);
+            margin: 1.5rem 0;
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .project-card {
+            background-color: var(--github-secondary);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
+            padding: 1.5rem;
+        }
+
+        .project-card h4 {
+            margin-top: 0;
+            color: var(--github-blue);
+        }
+
+        .project-card ul {
+            margin-left: 1.25rem;
+        }
+
+        .project-card li {
+            color: var(--github-text-secondary);
+        }
+
+        /* Interview Q&A */
+        .interview-card {
+            background-color: var(--github-secondary);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .interview-q {
+            font-weight: 600;
+            color: var(--github-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .interview-a {
+            color: var(--github-text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ADR Cards */
+        .adr-card {
+            background-color: var(--github-secondary);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .adr-title {
+            font-weight: 600;
+            color: var(--github-blue);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .adr-card p {
+            margin-bottom: 0;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--github-border);
+            background-color: var(--github-bg);
+            padding: 3rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .footer-main {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .footer-brand {
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
-        
-        .mcp-tool-icon { font-size: 1.25rem; }
-        .mcp-tool-name { font-weight: 600; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
-        .mcp-tool-desc { font-size: 0.75rem; color: var(--text-secondary); }
-        
-        /* Project Section */
-        .project-section {
-            margin: 2rem 0;
+
+        .footer-brand img {
+            height: 28px;
+            width: auto;
         }
-        
-        .project-image {
-            width: 100%;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 1.5rem;
+
+        .footer-brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
         }
-        
-        .project-details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+
+        .footer-brand-title {
+            font-weight: 600;
+            color: var(--github-text);
         }
-        
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
+
+        .footer-brand-subtitle {
+            font-size: 0.75rem;
+            color: var(--github-text-secondary);
         }
-        
-        .project-card h4 { margin-bottom: 1rem; }
-        
-        .project-card ul {
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
             list-style: none;
         }
-        
-        .project-card li {
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-        
-        /* Interview Prep */
-        .interview-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
-        
-        .interview-q {
-            color: var(--accent-cyan);
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-        
-        .interview-a {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-        
-        /* ADR */
-        .adr-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
-        
-        .adr-title {
-            color: var(--accent-purple);
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-        
-        /* Footer */
-        .footer {
-            margin-left: 280px;
-            padding: 2rem 4rem;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-            color: var(--text-secondary);
+
+        .footer-links a {
+            color: var(--github-text-secondary);
             font-size: 0.9rem;
+            transition: color 0.2s;
         }
-        
-        /* Icon badges */
-        .icon-badge {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+
+        .footer-links a:hover {
+            color: var(--github-text);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .footer-socials a {
+            color: var(--github-text-secondary);
+            transition: color 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
         }
-        
-        .icon-badge.cyan { background: rgba(34, 211, 238, 0.2); }
-        .icon-badge.purple { background: rgba(168, 85, 247, 0.2); }
-        .icon-badge.green { background: rgba(34, 197, 94, 0.2); }
-        
-        /* ========== RESPONSIVE STYLES ========== */
-        
-        /* Tablet (1024px and below) */
-        @media (max-width: 1024px) {
-            .nav { padding: 0 1.5rem; }
-            .nav-links { gap: 1.5rem; }
-            .main { padding: 2rem 2.5rem; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .layer-items { grid-template-columns: repeat(2, 1fr); }
-            .tech-grid { grid-template-columns: 1fr; }
-            .rag-flow { grid-template-columns: repeat(2, 1fr); }
-            .agent-loop { grid-template-columns: repeat(2, 1fr); }
-            .mcp-tools { grid-template-columns: repeat(2, 1fr); }
+
+        .footer-socials a:hover {
+            color: var(--github-text);
         }
-        
-        /* Mobile (768px and below) */
-        @media (max-width: 768px) {
-            /* Show mobile menu button */
-            .mobile-menu-btn { display: block; }
-            
-            /* Hide desktop nav links */
-            .nav-links { display: none; }
-            
-            /* Nav adjustments */
-            .nav { padding: 0 1rem; }
-            .nav-logo img { height: 30px; }
-            .nav-logo-title { font-size: 1.1rem; }
-            .nav-logo-sub { font-size: 0.6rem; }
-            
-            /* Sidebar - hidden by default on mobile */
-            .sidebar {
-                transform: translateX(-100%);
-                width: 280px;
-                padding: 1.5rem;
-            }
-            
-            .sidebar.active {
-                transform: translateX(0);
-            }
-            
-            /* Main content - full width */
-            .main {
-                margin-left: 0;
-                padding: 1.5rem 1rem;
-                max-width: 100%;
-            }
-            
-            /* Footer - full width */
-            .footer {
-                margin-left: 0;
-                padding: 1.5rem 1rem;
-            }
-            
-            /* Typography */
-            h1 { 
-                font-size: 1.75rem; 
-                flex-wrap: wrap;
-            }
-            h2 { 
-                font-size: 1.4rem; 
-                flex-wrap: wrap;
-            }
-            h3 { font-size: 1.1rem; }
-            
-            /* Stats Grid - 2 columns on mobile */
-            .stats-grid { 
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 0.75rem;
-            }
-            .stat-card { padding: 1rem; }
-            .stat-number { font-size: 1.5rem; }
-            .stat-label { font-size: 0.75rem; }
-            
-            /* Architecture Layers - stack items */
-            .layer-items { 
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 0.75rem;
-            }
-            .layer-item { padding: 0.75rem; }
-            .layer-item-icon { font-size: 1.25rem; }
-            .layer-item-name { font-size: 0.8rem; }
-            .layer-item-desc { font-size: 0.7rem; }
-            .arch-layer { padding: 1rem; }
-            .layer-header { flex-wrap: wrap; gap: 0.5rem; }
-            .layer-title { font-size: 1rem; }
-            
-            /* Tech Grid - single column */
-            .tech-grid { 
-                grid-template-columns: 1fr; 
-                gap: 1rem;
-            }
-            .tech-category { padding: 1rem; }
-            
-            /* RAG Flow - single column */
-            .rag-flow { 
-                grid-template-columns: 1fr; 
-                gap: 1rem;
-            }
-            .rag-step { padding: 1.25rem; }
-            
-            /* Embeddings */
-            .embed-example { 
-                padding: 1rem; 
-                font-size: 0.8rem;
-                overflow-x: auto;
-            }
-            .embed-row { 
-                flex-wrap: wrap; 
-                gap: 0.5rem;
-            }
-            
-            /* Agent Loop - single column */
-            .agent-loop { 
-                grid-template-columns: 1fr; 
-                gap: 1rem;
-            }
-            
-            /* MCP Tools - 2 columns */
-            .mcp-tools { 
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 0.75rem;
-            }
-            .mcp-tool { 
-                padding: 0.75rem; 
-                flex-direction: column;
-                text-align: center;
-                gap: 0.5rem;
-            }
-            .mcp-tool-name { font-size: 0.8rem; }
-            
-            /* Project Section */
-            .project-image {
-                border-radius: 8px;
-                margin-bottom: 1rem;
-            }
-            .project-details { 
-                grid-template-columns: 1fr; 
-                gap: 1rem;
-            }
-            .project-card { padding: 1rem; }
-            .project-card ul { font-size: 0.9rem; }
-            .project-card li { margin-bottom: 0.5rem; }
-            
-            /* Interview Cards */
-            .interview-card { padding: 1rem; }
-            .interview-q { font-size: 0.95rem; }
-            .interview-a { font-size: 0.85rem; }
-            
-            /* ADR Cards */
-            .adr-card { padding: 1rem; }
-            .adr-title { font-size: 0.95rem; }
-            
-            /* Info/Warning boxes */
-            .info-box, .warning-box { 
-                padding: 1rem; 
-                margin: 1rem 0;
-            }
-            .info-box p, .warning-box p { font-size: 0.85rem; }
+
+        .footer-socials svg {
+            width: 20px;
+            height: 20px;
         }
-        
-        /* Small Mobile (480px and below) */
-        @media (max-width: 480px) {
-            .nav { height: 56px; }
-            .sidebar { top: 56px; height: calc(100vh - 56px); }
-            .main { margin-top: 56px; padding: 1rem 0.75rem; }
-            
-            h1 { font-size: 1.5rem; }
-            h2 { font-size: 1.25rem; }
-            
-            /* Stats - 2 columns but smaller */
-            .stats-grid { gap: 0.5rem; }
-            .stat-card { padding: 0.75rem; }
-            .stat-number { font-size: 1.25rem; }
-            .stat-label { font-size: 0.65rem; }
-            
-            /* Layer items - single column */
-            .layer-items { grid-template-columns: 1fr; }
-            
-            /* MCP Tools - single column */
-            .mcp-tools { grid-template-columns: 1fr; }
-            .mcp-tool { flex-direction: row; text-align: left; }
-            
-            /* Project taglines */
-            .project-section > p { font-size: 0.95rem !important; }
+
+        .footer-divider {
+            border-top: 1px solid var(--github-border);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: var(--github-text-secondary);
+            font-size: 0.85rem;
         }
-        
-        /* Smooth scrolling with offset for fixed header */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
+
+        .footer-divider a {
+            color: var(--github-blue);
         }
-        
-        @media (max-width: 768px) {
-            html { scroll-padding-top: 70px; }
+
+        .footer-divider a:hover {
+            text-decoration: underline;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--github-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--github-border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--github-text-secondary);
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-950">
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+
     <!-- Navigation -->
-    <nav class="nav">
-        <a href="index.html" class="nav-logo">
-            <img src="logo-new.png" alt="AgenticQA">
-            <div class="nav-logo-text">
-                <span class="nav-logo-title">AgenticQA</span>
-                <span class="nav-logo-sub">Intelligence In Testing</span>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <img src="logo-new.png" alt="AgenticQA" class="h-10 w-auto group-hover:scale-105 transition-transform">
+                    <div>
+                        <span class="text-xl font-bold text-white">Agentic<span class="text-cyan-400">QA</span></span>
+                        <span class="hidden sm:block text-xs text-slate-400">Intelligence In Testing</span>
+                    </div>
+                </a>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html#exam-prep" class="text-emerald-300 hover:text-emerald-400 font-medium transition-colors">CatalystAI</a>
+                    <a href="index.html#projects" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Projects</a>
+                    <a href="index.html#bootcamp" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Bootcamp</a>
+                    <a href="index.html#about" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">About</a>
+                    <a href="index.html#eu-services" class="text-slate-300 hover:text-blue-400 font-medium transition-colors">🇪🇺 EU</a>
+                    <a href="docs.html" class="text-blue-500 hover:text-blue-400 font-medium transition-colors" style="color: #2f81f7;">Docs</a>
+                    <a href="students.html" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Students</a>
+                    <a href="support.html" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Support</a>
+                    <a href="index.html#contact" class="px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-lg transition-all hover:scale-105 shadow-lg shadow-cyan-500/25">
+                        Let's Connect
+                    </a>
+                </div>
+
+                <button id="menuBtn" class="md:hidden text-white p-3 -mr-2" style="position: relative; z-index: 9999; touch-action: manipulation; -webkit-tap-highlight-color: transparent;">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                <script>
+                    document.getElementById('menuBtn').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var menu = document.getElementById('mobileMenu');
+                        if (menu) {
+                            menu.classList.toggle('hidden');
+                        }
+                    });
+                </script>
             </div>
-        </a>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="docs.html" class="active">Docs</a>
-            <a href="support.html">Support</a>
-            <a href="index.html#contact" class="btn-contact">Contact</a>
         </div>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
     </nav>
 
-    <!-- Mobile Sidebar Overlay -->
-    <div class="sidebar-overlay" onclick="toggleMobileMenu()"></div>
-
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="sidebar-section">
-            <div class="sidebar-title">Getting Started</div>
-            <ul class="sidebar-links">
-                <li><a href="#introduction">Introduction</a></li>
-                <li><a href="#architecture">Architecture Overview</a></li>
-                <li><a href="#tech-stack">Tech Stack</a></li>
-            </ul>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-slate-950 z-[9998] hidden">
+        <div class="flex flex-col items-center justify-center h-full gap-8 text-xl">
+            <a href="index.html#exam-prep" class="text-emerald-400 hover:text-emerald-300 menuLink font-semibold">CatalystAI</a>
+            <a href="index.html#projects" class="text-white hover:text-cyan-400 menuLink">Projects</a>
+            <a href="index.html#bootcamp" class="text-white hover:text-cyan-400 menuLink">Bootcamp</a>
+            <a href="index.html#about" class="text-white hover:text-cyan-400 menuLink">About</a>
+            <a href="index.html#eu-services" class="text-white hover:text-blue-400 menuLink">🇪🇺 EU</a>
+            <a href="docs.html" class="text-white hover:text-cyan-400" style="color: #2f81f7;">Docs</a>
+            <a href="students.html" class="text-white hover:text-cyan-400">Students</a>
+            <a href="support.html" class="text-white hover:text-cyan-400">Support</a>
+            <a href="index.html#contact" class="px-6 py-3 bg-cyan-500 text-white font-semibold rounded-lg menuLink">Let's Connect</a>
+            <button id="closeMenuBtn" class="absolute top-6 right-6 text-white p-3" style="touch-action: manipulation; -webkit-tap-highlight-color: transparent;">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
         </div>
-        <div class="sidebar-section">
-            <div class="sidebar-title">Core Concepts</div>
-            <ul class="sidebar-links">
-                <li><a href="#rag">RAG Pipeline</a></li>
-                <li><a href="#embeddings">Embeddings</a></li>
-                <li><a href="#agents">Agentic AI</a></li>
-                <li><a href="#mcp">MCP Server</a></li>
-                <li><a href="#intent-execution">Intent-Execution Pattern</a></li>
-            </ul>
-        </div>
-        <div class="sidebar-section">
-            <div class="sidebar-title">Projects</div>
-            <ul class="sidebar-links">
-                <li><a href="#testcaseforge">TestCaseForge-AI</a></li>
-                <li><a href="#resumegenie">ResumeGenie AI</a></li>
-                <li><a href="#studymate">StudyMate AI</a></li>
-                <li><a href="#feedbackpulse">FeedbackPulse AI</a></li>
-                <li><a href="#meetingmind">MeetingMind AI</a></li>
-                <li><a href="#agenticbrowser">Agentic Browser QA</a></li>
-            </ul>
-        </div>
-        <div class="sidebar-section">
-            <div class="sidebar-title">Resources</div>
-            <ul class="sidebar-links">
-                <li><a href="#interview-prep">Interview Prep</a></li>
-                <li><a href="#adrs">Architecture Decisions</a></li>
-            </ul>
-        </div>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="main">
-        <!-- Introduction -->
-        <section id="introduction">
-            <h1><span class="icon-badge cyan">📖</span> AgenticQA Documentation</h1>
-            <p>Welcome to AgenticQA documentation. This guide covers the architecture and implementation of <span class="highlight">AI-native test automation systems</span> combining LLMs, RAG, and Agentic AI with Playwright.</p>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">11</div>
-                    <div class="stat-label">AI Projects</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Layer Architecture</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">5</div>
-                    <div class="stat-label">Core Patterns</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">11</div>
-                    <div class="stat-label">AI Projects</div>
-                </div>
-            </div>
-            
-            <div class="info-box">
-                <div class="info-box-title">◉ Living Documentation</div>
-                <p>This documentation evolves with projects. Subscribe to <a href="https://www.youtube.com/@AgenticQA" style="color: var(--accent-cyan);">YouTube @AgenticQA</a> for tutorials.</p>
-            </div>
-        </section>
-
-        <!-- Architecture Overview -->
-        <section id="architecture">
-            <h2><span class="icon-badge purple">🏗️</span> Architecture Overview</h2>
-            <p>AgenticQA follows a <strong>three-layer architecture</strong> that separates AI planning from deterministic execution for CI/CD reliability.</p>
-            
-            <h3>Three-Layer Architecture</h3>
-            
-            <div class="arch-layer">
-                <div class="layer-header">
-                    <span class="layer-number">1</span>
-                    <span class="layer-title">Intent Generation Layer</span>
-                    <span class="layer-badge">AI-Powered</span>
-                </div>
-                <div class="layer-items">
-                    <div class="layer-item">
-                        <div class="layer-item-icon">📝</div>
-                        <div class="layer-item-name">Natural Language</div>
-                        <div class="layer-item-desc">Test Requirements</div>
-                    </div>
-                    <div class="layer-item">
-                        <div class="layer-item-icon">🔍</div>
-                        <div class="layer-item-name">RAG Context</div>
-                        <div class="layer-item-desc">Domain Knowledge</div>
-                    </div>
-                    <div class="layer-item">
-                        <div class="layer-item-icon">🧠</div>
-                        <div class="layer-item-name">LLM Planning</div>
-                        <div class="layer-item-desc">Claude / GPT-4</div>
-                    </div>
-                    <div class="layer-item">
-                        <div class="layer-item-icon">📋</div>
-                        <div class="layer-item-name">Test Intent JSON</div>
-                        <div class="layer-item-desc">Structured Output</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="arch-layer">
-                <div class="layer-header">
-                    <span class="layer-number">2</span>
-                    <span class="layer-title">Validation Layer</span>
-                    <span class="layer-badge">Critic Agent</span>
-                </div>
-                <div class="layer-items">
-                    <div class="layer-item">
-                        <div class="layer-item-icon">✅</div>
-                        <div class="layer-item-name">Schema Validation</div>
-                        <div class="layer-item-desc">JSON Structure Check</div>
-                    </div>
-                    <div class="layer-item">
-                        <div class="layer-item-icon">🎯</div>
-                        <div class="layer-item-name">Selector Verification</div>
-                        <div class="layer-item-desc">DOM Existence</div>
-                    </div>
-                    <div class="layer-item">
-                        <div class="layer-item-icon">⚠️</div>
-                        <div class="layer-item-name">Safety Guards</div>
-                        <div class="layer-item-desc">Action Limits</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="arch-layer">
-                <div class="layer-header">
-                    <span class="layer-number">3</span>
-                    <span class="layer-title">Execution Layer</span>
-                    <span class="layer-badge warning">Deterministic</span>
-                    <span class="layer-badge warning">No LLM Here!</span>
-                </div>
-                <div class="layer-items">
-                    <div class="layer-item">
-                        <div class="layer-item-icon">🔌</div>
-                        <div class="layer-item-name">MCP Server</div>
-                        <div class="layer-item-desc">Tool Protocol</div>
-                    </div>
-                    <div class="layer-item">
-                        <div class="layer-item-icon">🎭</div>
-                        <div class="layer-item-name">Playwright</div>
-                        <div class="layer-item-desc">Browser Actions</div>
-                    </div>
-                    <div class="layer-item">
-                        <div class="layer-item-icon">📸</div>
-                        <div class="layer-item-name">Screenshots</div>
-                        <div class="layer-item-desc">Evidence Capture</div>
-                    </div>
-                    <div class="layer-item">
-                        <div class="layer-item-icon">📊</div>
-                        <div class="layer-item-name">Test Results</div>
-                        <div class="layer-item-desc">Pass/Fail Report</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="warning-box">
-                <div class="warning-box-title">🔴 Critical Design Rule</div>
-                <p style="margin: 0.5rem 0 0 0; color: var(--text-secondary);"><strong>NO LLM calls in Layer 3 - EVER.</strong> This ensures 100% deterministic CI/CD execution. Same intent = Same actions = Reproducible results.</p>
-            </div>
-        </section>
-
-        <!-- Tech Stack -->
-        <section id="tech-stack">
-            <h2><span class="icon-badge green">⚙️</span> Tech Stack</h2>
-            
-            <div class="tech-grid">
-                <div class="tech-category">
-                    <h4>🧠 AI/ML Stack</h4>
-                    <div class="tech-item">
-                        <div>
-                            <div class="tech-name">LangChain</div>
-                            <div class="tech-desc">LLM Orchestration & Chains</div>
-                        </div>
-                        <span class="tech-badge">Core</span>
-                    </div>
-                    <div class="tech-item">
-                        <div>
-                            <div class="tech-name">ChromaDB</div>
-                            <div class="tech-desc">Vector Database</div>
-                        </div>
-                        <span class="tech-badge">RAG</span>
-                    </div>
-                    <div class="tech-item">
-                        <div>
-                            <div class="tech-name">Ollama / OpenAI / Claude</div>
-                            <div class="tech-desc">LLM Providers</div>
-                        </div>
-                        <span class="tech-badge">Flexible</span>
-                    </div>
-                </div>
-                
-                <div class="tech-category">
-                    <h4>🎭 Automation Stack</h4>
-                    <div class="tech-item">
-                        <div>
-                            <div class="tech-name">Playwright</div>
-                            <div class="tech-desc">Browser Automation</div>
-                        </div>
-                        <span class="tech-badge">Core</span>
-                    </div>
-                    <div class="tech-item">
-                        <div>
-                            <div class="tech-name">TypeScript</div>
-                            <div class="tech-desc">Type-safe Test Code</div>
-                        </div>
-                        <span class="tech-badge">Language</span>
-                    </div>
-                    <div class="tech-item">
-                        <div>
-                            <div class="tech-name">MCP Server</div>
-                            <div class="tech-desc">Model Context Protocol</div>
-                        </div>
-                        <span class="tech-badge">Tools</span>
-                    </div>
-                </div>
-                
-                <div class="tech-category">
-                    <h4>🐍 Backend Stack</h4>
-                    <div class="tech-item">
-                        <div>
-                            <div class="tech-name">Python 3.11+</div>
-                            <div class="tech-desc">RAG & Agent Logic</div>
-                        </div>
-                        <span class="tech-badge">Core</span>
-                    </div>
-                    <div class="tech-item">
-                        <div>
-                            <div class="tech-name">Pydantic</div>
-                            <div class="tech-desc">Data Validation</div>
-                        </div>
-                        <span class="tech-badge">Validation</span>
-                    </div>
-                    <div class="tech-item">
-                        <div>
-                            <div class="tech-name">Streamlit</div>
-                            <div class="tech-desc">Web UI for AI Apps</div>
-                        </div>
-                        <span class="tech-badge">UI</span>
-                    </div>
-                </div>
-                
-                <div class="tech-category">
-                    <h4>🚀 DevOps Stack</h4>
-                    <div class="tech-item">
-                        <div>
-                            <div class="tech-name">GitHub Actions</div>
-                            <div class="tech-desc">CI/CD Pipeline</div>
-                        </div>
-                        <span class="tech-badge">CI/CD</span>
-                    </div>
-                    <div class="tech-item">
-                        <div>
-                            <div class="tech-name">Docker</div>
-                            <div class="tech-desc">Containerization</div>
-                        </div>
-                        <span class="tech-badge">Deploy</span>
-                    </div>
-                    <div class="tech-item">
-                        <div>
-                            <div class="tech-name">Playwright Reports</div>
-                            <div class="tech-desc">HTML Reports & Artifacts</div>
-                        </div>
-                        <span class="tech-badge">Reports</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- RAG Pipeline -->
-        <section id="rag">
-            <h2>RAG Pipeline</h2>
-            <p>Retrieval-Augmented Generation (RAG) enhances LLM responses with relevant context from your documentation, eliminating hallucinations.</p>
-            
-            <h3>RAG Pipeline Flow</h3>
-            <div class="rag-flow">
-                <div class="rag-step">
-                    <div class="rag-icon">📄</div>
-                    <div class="rag-title">1. Document Ingestion</div>
-                    <div class="rag-desc">PDF → Chunk → Embed → Store</div>
-                </div>
-                <div class="rag-step">
-                    <div class="rag-icon">🔍</div>
-                    <div class="rag-title">2. Query Processing</div>
-                    <div class="rag-desc">Query → Embed → Similarity Search</div>
-                </div>
-                <div class="rag-step">
-                    <div class="rag-icon">🎯</div>
-                    <div class="rag-title">3. Context Assembly</div>
-                    <div class="rag-desc">Retrieved Chunks + Query → LLM</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Embeddings -->
-        <section id="embeddings">
-            <h2>Embeddings</h2>
-            <h4>How Embeddings Work</h4>
-            <div class="embed-example">
-                <div class="embed-row">
-                    <span class="embed-text">"login button"</span>
-                    <span>→</span>
-                    <span class="embed-vector">[0.23, -0.45, 0.78, ...]</span>
-                </div>
-                <div class="embed-row">
-                    <span class="embed-text">"sign in link"</span>
-                    <span>→</span>
-                    <span class="embed-vector">[0.21, -0.42, 0.81, ...]</span>
-                    <span class="embed-similar">← Similar!</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Agentic AI -->
-        <section id="agents">
-            <h2>Agentic AI</h2>
-            <div class="agent-loop">
-                <div class="agent-step">
-                    <div class="agent-icon">👁️</div>
-                    <div class="agent-title">Observe</div>
-                    <div class="agent-desc">Analyze page DOM, current state, screenshots</div>
-                </div>
-                <div class="agent-step">
-                    <div class="agent-icon">🧠</div>
-                    <div class="agent-title">Think</div>
-                    <div class="agent-desc">Plan next action based on test goal</div>
-                </div>
-                <div class="agent-step">
-                    <div class="agent-icon">⚡</div>
-                    <div class="agent-title">Act</div>
-                    <div class="agent-desc">Execute via MCP tools (click, type, assert)</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- MCP Server -->
-        <section id="mcp">
-            <h2>MCP Server</h2>
-            <h4>Available MCP Tools</h4>
-            <div class="mcp-tools">
-                <div class="mcp-tool">
-                    <span class="mcp-tool-icon">🔗</span>
-                    <div>
-                        <div class="mcp-tool-name">navigate</div>
-                        <div class="mcp-tool-desc">Go to URL</div>
-                    </div>
-                </div>
-                <div class="mcp-tool">
-                    <span class="mcp-tool-icon">👆</span>
-                    <div>
-                        <div class="mcp-tool-name">click</div>
-                        <div class="mcp-tool-desc">Click element</div>
-                    </div>
-                </div>
-                <div class="mcp-tool">
-                    <span class="mcp-tool-icon">⌨️</span>
-                    <div>
-                        <div class="mcp-tool-name">fill</div>
-                        <div class="mcp-tool-desc">Type into input</div>
-                    </div>
-                </div>
-                <div class="mcp-tool">
-                    <span class="mcp-tool-icon">✅</span>
-                    <div>
-                        <div class="mcp-tool-name">assert</div>
-                        <div class="mcp-tool-desc">Verify element</div>
-                    </div>
-                </div>
-                <div class="mcp-tool">
-                    <span class="mcp-tool-icon">📸</span>
-                    <div>
-                        <div class="mcp-tool-name">screenshot</div>
-                        <div class="mcp-tool-desc">Capture page</div>
-                    </div>
-                </div>
-                <div class="mcp-tool">
-                    <span class="mcp-tool-icon">🔍</span>
-                    <div>
-                        <div class="mcp-tool-name">smart_locate</div>
-                        <div class="mcp-tool-desc">AI selector healing</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ResumeGenie AI -->
-        <section id="resumegenie" class="project-section">
-            <h2>ResumeGenie AI</h2>
-            <img src="ResumeGenieAI.png" alt="ResumeGenie AI Architecture" class="project-image">
-            <div class="project-details">
-                <div class="project-card">
-                    <h4>What It Does</h4>
-                    <ul>
-                        <li>• Analyzes resume vs job description</li>
-                        <li>• Calculates match score (0-100)</li>
-                        <li>• Provides actionable feedback</li>
-                        <li>• Identifies missing keywords</li>
-                    </ul>
-                </div>
-                <div class="project-card">
-                    <h4>Tech Stack</h4>
-                    <ul>
-                        <li>• Streamlit (Web UI)</li>
-                        <li>• Python (Core Logic)</li>
-                        <li>• Ollama / OpenAI (AI Analysis)</li>
-                        <li>• Smart Prompt Engineering</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- StudyMate AI -->
-        <section id="studymate" class="project-section">
-            <h2>StudyMate AI</h2>
-            <img src="StudyMateAI.png" alt="StudyMate AI Architecture" class="project-image">
-            <div class="project-details">
-                <div class="project-card">
-                    <h4>What It Does</h4>
-                    <ul>
-                        <li>• Transforms PDFs into interactive learning tools</li>
-                        <li>• Generates summaries, quizzes, flashcards & Q&A</li>
-                        <li>• RAG-powered intelligence for accurate answers</li>
-                        <li>• Creates interactive mind map visualizations</li>
-                    </ul>
-                </div>
-                <div class="project-card">
-                    <h4>Tech Stack</h4>
-                    <ul>
-                        <li>• 7 Core Packages (Ultra-lightweight)</li>
-                        <li>• Markmap.js (Mind Map Visualizations)</li>
-                        <li>• RAG (Retrieval-Augmented Generation)</li>
-                        <li>• OpenAI API (~$0.02/session)</li>
-                        <li>• Privacy-first in-memory processing</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- FeedbackPulse AI -->
-        <section id="feedbackpulse" class="project-section">
-            <h2>FeedbackPulse AI</h2>
-            <p style="color: var(--accent-cyan); margin-bottom: 1rem; font-size: 1.1rem;">Turning Customer Sentiment into Actionable Intelligence</p>
-            <img src="FeedBack_Pulse.png" alt="FeedbackPulse AI - Customer Sentiment Analysis" class="project-image">
-            <div class="project-details">
-                <div class="project-card">
-                    <h4>What It Does</h4>
-                    <ul>
-                        <li>• AI Sentiment Analysis with 85-90% accuracy</li>
-                        <li>• Customer Health Scores for quick assessment</li>
-                        <li>• Sentiment Classification (Positive/Neutral/Negative)</li>
-                        <li>• Theme Extraction - identifies recurring topics</li>
-                        <li>• Urgent Alert Detection for critical feedback</li>
-                        <li>• Multi-Source Comparison (E-commerce, App Stores, Social)</li>
-                        <li>• Interactive Visualizations with drill-down charts</li>
-                        <li>• Multi-Format Export (JSON, CSV, Markdown)</li>
-                    </ul>
-                </div>
-                <div class="project-card">
-                    <h4>Tech Stack</h4>
-                    <ul>
-                        <li>• Python (Core processing engine)</li>
-                        <li>• Pandas (Data manipulation & analysis)</li>
-                        <li>• Streamlit (Interactive web interface)</li>
-                        <li>• Plotly (Interactive visualizations)</li>
-                        <li>• OpenAI / Ollama (LLM-driven analysis)</li>
-                    </ul>
-                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
-                        <h4 style="color: var(--accent-orange);">⚡ Key Metrics</h4>
-                        <ul>
-                            <li>• 90-second rapid analysis (70+ reviews)</li>
-                            <li>• 85-90% sentiment accuracy</li>
-                            <li>• Free Local LLM Support included</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- MeetingMind AI -->
-        <section id="meetingmind" class="project-section">
-            <h2>MeetingMind AI</h2>
-            <p style="color: var(--accent-cyan); margin-bottom: 1rem; font-size: 1.1rem;">Reclaiming the $37 Billion Lost to Unproductive Meetings</p>
-            <img src="MeetingMind_AI_.png" alt="MeetingMind AI - Enterprise Meeting Intelligence" class="project-image">
-            <div class="project-details">
-                <div class="project-card">
-                    <h4>What It Does</h4>
-                    <ul>
-                        <li>• Risk & Blocker Detection with severity levels</li>
-                        <li>• Real-Time Meeting Cost Calculator</li>
-                        <li>• Ask AI (Natural language Q&A on meetings)</li>
-                        <li>• AI Action Items - automates takeaways & follow-ups</li>
-                        <li>• Sentiment Analysis for participant mood</li>
-                        <li>• Risk & Cost Tracking dashboard</li>
-                    </ul>
-                </div>
-                <div class="project-card">
-                    <h4>Tech Stack</h4>
-                    <ul>
-                        <li>• Local AI Engine (Privacy-first processing)</li>
-                        <li>• Python (Core backend logic)</li>
-                        <li>• Streamlit (Interactive dashboard UI)</li>
-                        <li>• Ollama (Free local LLM provider)</li>
-                        <li>• NLP Processing (Advanced text extraction)</li>
-                    </ul>
-                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
-                        <h4 style="color: var(--accent-green);">💰 Enterprise Power, Zero Cost</h4>
-                        <ul>
-                            <li>• MeetingMind AI: <strong style="color: var(--accent-green);">FREE</strong></li>
-                            <li>• Competitors (Fireflies/Otter): <strong style="color: var(--accent-red);">$5,000+</strong></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interview Prep -->
-        <section id="interview-prep">
-            <h2>Interview Prep</h2>
-            
-            <div class="interview-card">
-                <div class="interview-q">Q: Why Playwright over Selenium?</div>
-                <div class="interview-a">Playwright offers auto-wait, better TypeScript support, multiple browser contexts, and network interception. It's Anthropic's MCP protocol's native choice for browser automation.</div>
-            </div>
-            
-            <div class="interview-card">
-                <div class="interview-q">Q: What is RAG and why use it?</div>
-                <div class="interview-a">RAG retrieves relevant context from documents before LLM generates response. It eliminates hallucinations, provides sources, and can be updated instantly without retraining.</div>
-            </div>
-            
-            <div class="interview-card">
-                <div class="interview-q">Q: Why separate intent from execution?</div>
-                <div class="interview-a">LLMs are non-deterministic. If in execution path, tests become flaky. By generating intent JSON first and executing deterministically, we get CI/CD reliability with AI flexibility.</div>
-            </div>
-        </section>
-
-        <!-- Architecture Decision Records -->
-        <section id="adrs">
-            <h2>Architecture Decision Records</h2>
-            
-            <div class="adr-card">
-                <div class="adr-title">ADR-001: Intent-Execution Separation</div>
-                <p><strong>Decision:</strong> LLMs generate test intents (JSON), deterministic code executes them.<br>
-                <strong>Rationale:</strong> CI/CD tests must be 100% deterministic.</p>
-            </div>
-            
-            <div class="adr-card">
-                <div class="adr-title">ADR-002: Three-Layer Architecture</div>
-                <p><strong>Decision:</strong> Separate Intent → Validation → Execution.<br>
-                <strong>Key Rule:</strong> NO LLM calls in Layer 3 (Execution). Ever.</p>
-            </div>
-            
-            <div class="adr-card">
-                <div class="adr-title">ADR-003: RAG over Fine-tuning</div>
-                <p><strong>Decision:</strong> Use RAG (not fine-tuning) for domain knowledge.<br>
-                <strong>Benefits:</strong> Instant updates, lower cost, transparent retrieval.</p>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>© 2026 AgenticQA Technologies. All rights reserved. | <a href="privacy.html" style="color: #22d3ee;">Privacy Policy</a></p>
-    </footer>
-
-    <!-- Mobile Menu JavaScript -->
+    </div>
     <script>
-        function toggleMobileMenu() {
-            const sidebar = document.querySelector('.sidebar');
-            const overlay = document.querySelector('.sidebar-overlay');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
-            menuBtn.classList.toggle('active');
-            
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
-        }
-        
-        // Close menu when clicking sidebar links (for smooth navigation)
-        document.querySelectorAll('.sidebar-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    toggleMobileMenu();
-                }
+        document.getElementById('closeMenuBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('mobileMenu').classList.add('hidden');
+        });
+        document.querySelectorAll('.menuLink').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('mobileMenu').classList.add('hidden');
             });
         });
-        
-        // Close menu on window resize if open
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                const sidebar = document.querySelector('.sidebar');
-                const overlay = document.querySelector('.sidebar-overlay');
-                const menuBtn = document.querySelector('.mobile-menu-btn');
-                
-                sidebar.classList.remove('active');
-                overlay.classList.remove('active');
-                menuBtn.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+    </script>
+
+    <div class="main-wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Getting Started</div>
+                <ul class="sidebar-links">
+                    <li><a href="#introduction" class="sidebar-link">Introduction</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Architecture</div>
+                <ul class="sidebar-links">
+                    <li><a href="#architecture" class="sidebar-link">Overview</a></li>
+                    <li><a href="#tech-stack" class="sidebar-link">Tech Stack</a></li>
+                    <li><a href="#rag" class="sidebar-link">RAG Pipeline</a></li>
+                    <li><a href="#embeddings" class="sidebar-link">Embeddings</a></li>
+                    <li><a href="#agents" class="sidebar-link">Agentic AI</a></li>
+                    <li><a href="#mcp" class="sidebar-link">MCP Server</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Projects</div>
+                <ul class="sidebar-links">
+                    <li><a href="#resumegenie" class="sidebar-link">ResumeGenie AI</a></li>
+                    <li><a href="#studymate" class="sidebar-link">StudyMate AI</a></li>
+                    <li><a href="#feedbackpulse" class="sidebar-link">FeedbackPulse AI</a></li>
+                    <li><a href="#meetingmind" class="sidebar-link">MeetingMind AI</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Learning</div>
+                <ul class="sidebar-links">
+                    <li><a href="#interview-prep" class="sidebar-link">Interview Prep</a></li>
+                    <li><a href="#adrs" class="sidebar-link">ADRs</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content" id="main-content">
+            <!-- Introduction -->
+            <section id="introduction">
+                <h1>📖 AgenticQA Documentation</h1>
+                <p>Welcome to AgenticQA documentation. This guide covers the architecture and implementation of <strong>AI-native test automation systems</strong> combining LLMs, RAG, and Agentic AI with Playwright.</p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">11</div>
+                        <div class="stat-label">AI Projects</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Layer Architecture</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Core Patterns</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Possibilities</div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">◉ Living Documentation</div>
+                    <p>This documentation evolves with projects. Subscribe to <a href="https://www.youtube.com/@AgenticQA" target="_blank">YouTube @AgenticQA</a> for tutorials and updates.</p>
+                </div>
+            </section>
+
+            <!-- Architecture Overview -->
+            <section id="architecture">
+                <h2>🏗️ Architecture Overview</h2>
+                <p>AgenticQA follows a <strong>three-layer architecture</strong> that separates AI planning from deterministic execution for CI/CD reliability.</p>
+
+                <h3>Three-Layer Architecture</h3>
+
+                <div class="arch-layer">
+                    <div class="layer-header">
+                        <div class="layer-number">1</div>
+                        <div class="layer-title">Intent Generation Layer</div>
+                        <div class="layer-badge">AI-Powered</div>
+                    </div>
+                    <div class="layer-items">
+                        <div class="layer-item">
+                            <div class="layer-item-icon">📝</div>
+                            <div class="layer-item-name">Natural Language</div>
+                            <div class="layer-item-desc">Test Requirements</div>
+                        </div>
+                        <div class="layer-item">
+                            <div class="layer-item-icon">🔍</div>
+                            <div class="layer-item-name">RAG Context</div>
+                            <div class="layer-item-desc">Domain Knowledge</div>
+                        </div>
+                        <div class="layer-item">
+                            <div class="layer-item-icon">🧠</div>
+                            <div class="layer-item-name">LLM Planning</div>
+                            <div class="layer-item-desc">Claude / GPT-4</div>
+                        </div>
+                        <div class="layer-item">
+                            <div class="layer-item-icon">📋</div>
+                            <div class="layer-item-name">Test Intent JSON</div>
+                            <div class="layer-item-desc">Structured Output</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arch-layer">
+                    <div class="layer-header">
+                        <div class="layer-number">2</div>
+                        <div class="layer-title">Validation Layer</div>
+                        <div class="layer-badge">Critic Agent</div>
+                    </div>
+                    <div class="layer-items">
+                        <div class="layer-item">
+                            <div class="layer-item-icon">✅</div>
+                            <div class="layer-item-name">Schema Validation</div>
+                            <div class="layer-item-desc">JSON Structure Check</div>
+                        </div>
+                        <div class="layer-item">
+                            <div class="layer-item-icon">🎯</div>
+                            <div class="layer-item-name">Selector Verification</div>
+                            <div class="layer-item-desc">DOM Existence</div>
+                        </div>
+                        <div class="layer-item">
+                            <div class="layer-item-icon">⚠️</div>
+                            <div class="layer-item-name">Safety Guards</div>
+                            <div class="layer-item-desc">Action Limits</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arch-layer">
+                    <div class="layer-header">
+                        <div class="layer-number">3</div>
+                        <div class="layer-title">Execution Layer</div>
+                        <div class="layer-badge warning">Deterministic</div>
+                        <div class="layer-badge warning">No LLM Here!</div>
+                    </div>
+                    <div class="layer-items">
+                        <div class="layer-item">
+                            <div class="layer-item-icon">🔌</div>
+                            <div class="layer-item-name">MCP Server</div>
+                            <div class="layer-item-desc">Tool Protocol</div>
+                        </div>
+                        <div class="layer-item">
+                            <div class="layer-item-icon">🎭</div>
+                            <div class="layer-item-name">Playwright</div>
+                            <div class="layer-item-desc">Browser Actions</div>
+                        </div>
+                        <div class="layer-item">
+                            <div class="layer-item-icon">📸</div>
+                            <div class="layer-item-name">Screenshots</div>
+                            <div class="layer-item-desc">Evidence Capture</div>
+                        </div>
+                        <div class="layer-item">
+                            <div class="layer-item-icon">📊</div>
+                            <div class="layer-item-name">Test Results</div>
+                            <div class="layer-item-desc">Pass/Fail Report</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-box-title">🔴 Critical Design Rule</div>
+                    <p><strong>NO LLM calls in Layer 3 - EVER.</strong> This ensures 100% deterministic CI/CD execution. Same intent = Same actions = Reproducible results.</p>
+                </div>
+            </section>
+
+            <!-- Tech Stack -->
+            <section id="tech-stack">
+                <h2>⚙️ Tech Stack</h2>
+
+                <div class="tech-grid">
+                    <div class="tech-category">
+                        <h4>🧠 AI/ML Stack</h4>
+                        <div class="tech-item">
+                            <div>
+                                <div class="tech-name">LangChain</div>
+                                <div class="tech-desc">LLM Orchestration & Chains</div>
+                            </div>
+                            <span class="tech-badge">Core</span>
+                        </div>
+                        <div class="tech-item">
+                            <div>
+                                <div class="tech-name">ChromaDB</div>
+                                <div class="tech-desc">Vector Database</div>
+                            </div>
+                            <span class="tech-badge">RAG</span>
+                        </div>
+                        <div class="tech-item">
+                            <div>
+                                <div class="tech-name">Ollama / OpenAI / Claude</div>
+                                <div class="tech-desc">LLM Providers</div>
+                            </div>
+                            <span class="tech-badge">Flexible</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category">
+                        <h4>🎭 Automation Stack</h4>
+                        <div class="tech-item">
+                            <div>
+                                <div class="tech-name">Playwright</div>
+                                <div class="tech-desc">Browser Automation</div>
+                            </div>
+                            <span class="tech-badge">Core</span>
+                        </div>
+                        <div class="tech-item">
+                            <div>
+                                <div class="tech-name">TypeScript</div>
+                                <div class="tech-desc">Type-safe Test Code</div>
+                            </div>
+                            <span class="tech-badge">Language</span>
+                        </div>
+                        <div class="tech-item">
+                            <div>
+                                <div class="tech-name">MCP Server</div>
+                                <div class="tech-desc">Model Context Protocol</div>
+                            </div>
+                            <span class="tech-badge">Tools</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category">
+                        <h4>🐍 Backend Stack</h4>
+                        <div class="tech-item">
+                            <div>
+                                <div class="tech-name">Python 3.11+</div>
+                                <div class="tech-desc">RAG & Agent Logic</div>
+                            </div>
+                            <span class="tech-badge">Core</span>
+                        </div>
+                        <div class="tech-item">
+                            <div>
+                                <div class="tech-name">Pydantic</div>
+                                <div class="tech-desc">Data Validation</div>
+                            </div>
+                            <span class="tech-badge">Validation</span>
+                        </div>
+                        <div class="tech-item">
+                            <div>
+                                <div class="tech-name">Streamlit</div>
+                                <div class="tech-desc">Web UI for AI Apps</div>
+                            </div>
+                            <span class="tech-badge">UI</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-category">
+                        <h4>🚀 DevOps Stack</h4>
+                        <div class="tech-item">
+                            <div>
+                                <div class="tech-name">GitHub Actions</div>
+                                <div class="tech-desc">CI/CD Pipeline</div>
+                            </div>
+                            <span class="tech-badge">CI/CD</span>
+                        </div>
+                        <div class="tech-item">
+                            <div>
+                                <div class="tech-name">Docker</div>
+                                <div class="tech-desc">Containerization</div>
+                            </div>
+                            <span class="tech-badge">Deploy</span>
+                        </div>
+                        <div class="tech-item">
+                            <div>
+                                <div class="tech-name">Playwright Reports</div>
+                                <div class="tech-desc">HTML Reports & Artifacts</div>
+                            </div>
+                            <span class="tech-badge">Reports</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RAG Pipeline -->
+            <section id="rag">
+                <h2>RAG Pipeline</h2>
+                <p>Retrieval-Augmented Generation (RAG) enhances LLM responses with relevant context from your documentation, eliminating hallucinations.</p>
+
+                <h3>RAG Pipeline Flow</h3>
+                <div class="rag-flow">
+                    <div class="rag-step">
+                        <div class="rag-icon">📄</div>
+                        <div class="rag-title">1. Document Ingestion</div>
+                        <div class="rag-desc">PDF → Chunk → Embed → Store</div>
+                    </div>
+                    <div class="rag-step">
+                        <div class="rag-icon">🔍</div>
+                        <div class="rag-title">2. Query Processing</div>
+                        <div class="rag-desc">Query → Embed → Similarity Search</div>
+                    </div>
+                    <div class="rag-step">
+                        <div class="rag-icon">🎯</div>
+                        <div class="rag-title">3. Context Assembly</div>
+                        <div class="rag-desc">Retrieved Chunks + Query → LLM</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Embeddings -->
+            <section id="embeddings">
+                <h2>Embeddings</h2>
+                <h3>How Embeddings Work</h3>
+                <div class="embed-example">
+                    <div class="embed-row">
+                        <span class="embed-text">"login button"</span>
+                        <span>→</span>
+                        <span class="embed-vector">[0.23, -0.45, 0.78, ...]</span>
+                    </div>
+                    <div class="embed-row">
+                        <span class="embed-text">"sign in link"</span>
+                        <span>→</span>
+                        <span class="embed-vector">[0.21, -0.42, 0.81, ...]</span>
+                        <span class="embed-similar">← Similar!</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agentic AI -->
+            <section id="agents">
+                <h2>Agentic AI</h2>
+                <div class="agent-loop">
+                    <div class="agent-step">
+                        <div class="agent-icon">👁️</div>
+                        <div class="agent-title">Observe</div>
+                        <div class="agent-desc">Analyze page DOM, current state, screenshots</div>
+                    </div>
+                    <div class="agent-step">
+                        <div class="agent-icon">🧠</div>
+                        <div class="agent-title">Think</div>
+                        <div class="agent-desc">Plan next action based on test goal</div>
+                    </div>
+                    <div class="agent-step">
+                        <div class="agent-icon">⚡</div>
+                        <div class="agent-title">Act</div>
+                        <div class="agent-desc">Execute via MCP tools (click, type, assert)</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MCP Server -->
+            <section id="mcp">
+                <h2>MCP Server</h2>
+                <h3>Available MCP Tools</h3>
+                <div class="mcp-tools">
+                    <div class="mcp-tool">
+                        <span class="mcp-tool-icon">🔗</span>
+                        <div>
+                            <div class="mcp-tool-name">navigate</div>
+                            <div class="mcp-tool-desc">Go to URL</div>
+                        </div>
+                    </div>
+                    <div class="mcp-tool">
+                        <span class="mcp-tool-icon">👆</span>
+                        <div>
+                            <div class="mcp-tool-name">click</div>
+                            <div class="mcp-tool-desc">Click element</div>
+                        </div>
+                    </div>
+                    <div class="mcp-tool">
+                        <span class="mcp-tool-icon">⌨️</span>
+                        <div>
+                            <div class="mcp-tool-name">fill</div>
+                            <div class="mcp-tool-desc">Type into input</div>
+                        </div>
+                    </div>
+                    <div class="mcp-tool">
+                        <span class="mcp-tool-icon">✅</span>
+                        <div>
+                            <div class="mcp-tool-name">assert</div>
+                            <div class="mcp-tool-desc">Verify element</div>
+                        </div>
+                    </div>
+                    <div class="mcp-tool">
+                        <span class="mcp-tool-icon">📸</span>
+                        <div>
+                            <div class="mcp-tool-name">screenshot</div>
+                            <div class="mcp-tool-desc">Capture page</div>
+                        </div>
+                    </div>
+                    <div class="mcp-tool">
+                        <span class="mcp-tool-icon">🔍</span>
+                        <div>
+                            <div class="mcp-tool-name">smart_locate</div>
+                            <div class="mcp-tool-desc">AI selector healing</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ResumeGenie AI -->
+            <section id="resumegenie">
+                <h2>ResumeGenie AI</h2>
+                <img src="ResumeGenieAI.png" alt="ResumeGenie AI Architecture" class="project-image">
+                <div class="project-details">
+                    <div class="project-card">
+                        <h4>What It Does</h4>
+                        <ul>
+                            <li>Analyzes resume vs job description</li>
+                            <li>Calculates match score (0-100)</li>
+                            <li>Provides actionable feedback</li>
+                            <li>Identifies missing keywords</li>
+                        </ul>
+                    </div>
+                    <div class="project-card">
+                        <h4>Tech Stack</h4>
+                        <ul>
+                            <li>Streamlit (Web UI)</li>
+                            <li>Python (Core Logic)</li>
+                            <li>Ollama / OpenAI (AI Analysis)</li>
+                            <li>Smart Prompt Engineering</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- StudyMate AI -->
+            <section id="studymate">
+                <h2>StudyMate AI</h2>
+                <img src="StudyMateAI.png" alt="StudyMate AI Architecture" class="project-image">
+                <div class="project-details">
+                    <div class="project-card">
+                        <h4>What It Does</h4>
+                        <ul>
+                            <li>Transforms PDFs into interactive learning tools</li>
+                            <li>Generates summaries, quizzes, flashcards & Q&A</li>
+                            <li>RAG-powered intelligence for accurate answers</li>
+                            <li>Creates interactive mind map visualizations</li>
+                        </ul>
+                    </div>
+                    <div class="project-card">
+                        <h4>Tech Stack</h4>
+                        <ul>
+                            <li>7 Core Packages (Ultra-lightweight)</li>
+                            <li>Markmap.js (Mind Map Visualizations)</li>
+                            <li>RAG (Retrieval-Augmented Generation)</li>
+                            <li>OpenAI API (~$0.02/session)</li>
+                            <li>Privacy-first in-memory processing</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FeedbackPulse AI -->
+            <section id="feedbackpulse">
+                <h2>FeedbackPulse AI</h2>
+                <p style="color: var(--github-blue); margin-bottom: 1rem; font-size: 1.1rem;">Turning Customer Sentiment into Actionable Intelligence</p>
+                <img src="FeedBack_Pulse.png" alt="FeedbackPulse AI - Customer Sentiment Analysis" class="project-image">
+                <div class="project-details">
+                    <div class="project-card">
+                        <h4>What It Does</h4>
+                        <ul>
+                            <li>AI Sentiment Analysis with 85-90% accuracy</li>
+                            <li>Customer Health Scores for quick assessment</li>
+                            <li>Sentiment Classification (Positive/Neutral/Negative)</li>
+                            <li>Theme Extraction - identifies recurring topics</li>
+                            <li>Urgent Alert Detection for critical feedback</li>
+                            <li>Multi-Source Comparison (E-commerce, App Stores, Social)</li>
+                            <li>Interactive Visualizations with drill-down charts</li>
+                            <li>Multi-Format Export (JSON, CSV, Markdown)</li>
+                        </ul>
+                    </div>
+                    <div class="project-card">
+                        <h4>Tech Stack</h4>
+                        <ul>
+                            <li>Python (Core processing engine)</li>
+                            <li>Pandas (Data manipulation & analysis)</li>
+                            <li>Streamlit (Interactive web interface)</li>
+                            <li>Plotly (Interactive visualizations)</li>
+                            <li>OpenAI / Ollama (LLM-driven analysis)</li>
+                        </ul>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--github-border);">
+                            <h4 style="color: var(--github-orange);">⚡ Key Metrics</h4>
+                            <ul>
+                                <li>90-second rapid analysis (70+ reviews)</li>
+                                <li>85-90% sentiment accuracy</li>
+                                <li>Free Local LLM Support included</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MeetingMind AI -->
+            <section id="meetingmind">
+                <h2>MeetingMind AI</h2>
+                <p style="color: var(--github-blue); margin-bottom: 1rem; font-size: 1.1rem;">Reclaiming the $37 Billion Lost to Unproductive Meetings</p>
+                <img src="MeetingMind_AI_.png" alt="MeetingMind AI - Enterprise Meeting Intelligence" class="project-image">
+                <div class="project-details">
+                    <div class="project-card">
+                        <h4>What It Does</h4>
+                        <ul>
+                            <li>Risk & Blocker Detection with severity levels</li>
+                            <li>Real-Time Meeting Cost Calculator</li>
+                            <li>Ask AI (Natural language Q&A on meetings)</li>
+                            <li>AI Action Items - automates takeaways & follow-ups</li>
+                            <li>Sentiment Analysis for participant mood</li>
+                            <li>Risk & Cost Tracking dashboard</li>
+                        </ul>
+                    </div>
+                    <div class="project-card">
+                        <h4>Tech Stack</h4>
+                        <ul>
+                            <li>Local AI Engine (Privacy-first processing)</li>
+                            <li>Python (Core backend logic)</li>
+                            <li>Streamlit (Interactive dashboard UI)</li>
+                            <li>Ollama (Free local LLM provider)</li>
+                            <li>NLP Processing (Advanced text extraction)</li>
+                        </ul>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--github-border);">
+                            <h4 style="color: var(--github-green);">💰 Enterprise Power, Zero Cost</h4>
+                            <ul>
+                                <li>MeetingMind AI: <strong style="color: var(--github-green);">FREE</strong></li>
+                                <li>Competitors (Fireflies/Otter): <strong style="color: var(--github-red);">$5,000+</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interview Prep -->
+            <section id="interview-prep">
+                <h2>Interview Prep</h2>
+
+                <div class="interview-card">
+                    <div class="interview-q">Q: Why Playwright over Selenium?</div>
+                    <div class="interview-a">Playwright offers auto-wait, better TypeScript support, multiple browser contexts, and network interception. It's Anthropic's MCP protocol's native choice for browser automation.</div>
+                </div>
+
+                <div class="interview-card">
+                    <div class="interview-q">Q: What is RAG and why use it?</div>
+                    <div class="interview-a">RAG retrieves relevant context from documents before LLM generates response. It eliminates hallucinations, provides sources, and can be updated instantly without retraining.</div>
+                </div>
+
+                <div class="interview-card">
+                    <div class="interview-q">Q: Why separate intent from execution?</div>
+                    <div class="interview-a">LLMs are non-deterministic. If in execution path, tests become flaky. By generating intent JSON first and executing deterministically, we get CI/CD reliability with AI flexibility.</div>
+                </div>
+            </section>
+
+            <!-- Architecture Decision Records -->
+            <section id="adrs">
+                <h2>Architecture Decision Records</h2>
+
+                <div class="adr-card">
+                    <div class="adr-title">ADR-001: Intent-Execution Separation</div>
+                    <p><strong>Decision:</strong> LLMs generate test intents (JSON), deterministic code executes them.<br>
+                    <strong>Rationale:</strong> CI/CD tests must be 100% deterministic.</p>
+                </div>
+
+                <div class="adr-card">
+                    <div class="adr-title">ADR-002: Three-Layer Architecture</div>
+                    <p><strong>Decision:</strong> Separate Intent → Validation → Execution.<br>
+                    <strong>Key Rule:</strong> NO LLM calls in Layer 3 (Execution). Ever.</p>
+                </div>
+
+                <div class="adr-card">
+                    <div class="adr-title">ADR-003: RAG over Fine-tuning</div>
+                    <p><strong>Decision:</strong> Use RAG (not fine-tuning) for domain knowledge.<br>
+                    <strong>Benefits:</strong> Instant updates, lower cost, transparent retrieval.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="border-t border-[#30363d] bg-[#0d1117]">
+        <div class="max-w-[1280px] mx-auto px-6 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <!-- Column 1: Brand -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="logo-new.png" alt="AgenticQA" class="h-6 w-auto">
+                        <span class="font-bold text-white">AgenticQA</span>
+                    </div>
+                    <p class="text-sm text-[#8b949e] mb-4">Intelligence In Testing</p>
+                    <p class="text-xs text-[#6e7681] mb-4">Building production-ready AI test automation systems</p>
+                    <div class="flex gap-3">
+                        <a href="https://www.youtube.com/@AgenticQA" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ganesan-sivaraman" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="https://github.com/E2EINT/genai-qa-automation-pipeline" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- Column 2: Platform -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 text-sm">Platform</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#projects" class="text-[#8b949e] hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="index.html#bootcamp" class="text-[#8b949e] hover:text-white transition-colors">Bootcamp</a></li>
+                        <li><a href="index.html#exam-prep" class="text-[#8b949e] hover:text-white transition-colors">CatalystAI</a></li>
+                        <li><a href="docs.html" class="text-[#8b949e] hover:text-white transition-colors">Documentation</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Resources -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 text-sm">Resources</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="students.html" class="text-[#8b949e] hover:text-white transition-colors">Students Program</a></li>
+                        <li><a href="support.html" class="text-[#8b949e] hover:text-white transition-colors">Support</a></li>
+                        <li><a href="privacy.html" class="text-[#8b949e] hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Company -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 text-sm">Company</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#about" class="text-[#8b949e] hover:text-white transition-colors">About</a></li>
+                        <li><a href="index.html#eu-services" class="text-[#8b949e] hover:text-white transition-colors">EU Services</a></li>
+                        <li><a href="index.html#contact" class="text-[#8b949e] hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Column 5: Connect -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 text-sm">Connect</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://www.youtube.com/@AgenticQA" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">YouTube</a></li>
+                        <li><a href="https://www.linkedin.com/in/ganesan-sivaraman" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">LinkedIn</a></li>
+                        <li><a href="https://github.com/E2EINT/genai-qa-automation-pipeline" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">GitHub</a></li>
+                        <li><a href="index.html#contact" class="text-[#8b949e] hover:text-white transition-colors">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-[#30363d] mt-8 pt-8 text-center text-sm text-[#8b949e]">
+                © 2026 Agenticqa Technologies LLP. All rights reserved. | <a href="privacy.html" class="text-[#8b949e] hover:text-white transition-colors">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.mobile-menu-content a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Sidebar active link highlighting
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+        const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu-content a');
+
+        function updateActiveLinks() {
+            const currentSection = document.location.hash.slice(1) || 'introduction';
+
+            sidebarLinks.forEach(link => {
+                const href = link.getAttribute('href').slice(1);
+                link.classList.toggle('active', href === currentSection);
+            });
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                link.classList.toggle('active', href === 'docs.html');
+            });
+        }
+
+        window.addEventListener('hashchange', updateActiveLinks);
+        updateActiveLinks();
+
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
         });
     </script>
 </body>
