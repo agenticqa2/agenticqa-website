@@ -47,6 +47,14 @@
     els.forEach(function (el) { io.observe(el); });
   } else { els.forEach(function (el) { el.classList.add('visible'); }); }
 
+  // Demo CTA: preselect interest in the form
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-interest="demo"]');
+    var sel = document.getElementById('f-interest');
+    if (a && sel) { sel.value = 'Free demo class (30 min)'; var subj = document.querySelector('#waitlist-form [name=_subject]'); if (subj) subj.value = 'Free demo class request'; }
+  });
+  if (location.hash === '#contact' && document.getElementById('f-interest')) document.getElementById('f-interest').value = 'Free demo class (30 min)';
+
   // Waitlist / contact form: AJAX to formsubmit.co, fall back to mailto
   var form = document.getElementById('waitlist-form');
   if (form) {
@@ -54,7 +62,7 @@
     function mailtoFallback() {
       var d = new FormData(form);
       var body = 'Name: ' + (d.get('name') || '') + '\nEmail: ' + (d.get('email') || '') +
-        '\nI am: ' + (d.get('profile') || '') + '\n\n' + (d.get('message') || '');
+        '\nInterest: ' + (d.get('interest') || '') + '\nI am: ' + (d.get('profile') || '') + '\n\n' + (d.get('message') || '');
       window.location.href = 'mailto:ganesh@agenticqa.io?subject=' + encodeURIComponent(d.get('_subject') || 'Agentic QA enquiry') +
         '&body=' + encodeURIComponent(body);
     }
