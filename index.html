@@ -2,212 +2,234 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgenticQA — Playwright QA Bootcamp | Learn Automation the Industry Way</title>
-  <meta name="description" content="Zero-to-framework Playwright bootcamp: POM, BDD, CI/CD, MCP and AI agents. Taught by a career test architect. Join the waitlist.">
-  <meta property="og:title" content="AgenticQA — Playwright QA Bootcamp">
-  <meta property="og:description" content="Rebuild a real automation framework from scratch. POM · BDD · CI/CD · MCP agents.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agentic QA — Live Playwright Course for Beginners | Agentic QA Technologies</title>
+  <meta name="description" content="Learn Playwright test automation in live, beginner-friendly classes: Page Object Model, SDET skills, 90-minute classes with hands-on practice, 30 days + 5 capstone days.">
+  <link rel="canonical" href="https://www.agenticqa.io/">
+  <meta name="theme-color" content="#4f46e5">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://agenticqa.io">
+  <meta property="og:site_name" content="Agentic QA Technologies">
+  <meta property="og:title" content="Agentic QA — Live Playwright Course for Beginners | Agentic QA Technologies">
+  <meta property="og:description" content="Learn Playwright test automation in live, beginner-friendly classes: Page Object Model, SDET skills, 90-minute classes with hands-on practice, 30 days + 5 capstone days.">
+  <meta property="og:url" content="https://www.agenticqa.io/">
+  <meta property="og:image" content="https://www.agenticqa.io/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Agentic QA — Live Playwright Course for Beginners | Agentic QA Technologies">
+  <meta name="twitter:description" content="Learn Playwright test automation in live, beginner-friendly classes: Page Object Model, SDET skills, 90-minute classes with hands-on practice, 30 days + 5 capstone days.">
+  <meta name="twitter:image" content="https://www.agenticqa.io/og-image.png">
   <link rel="icon" type="image/png" href="favicon.png">
+  <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Agentic QA Technologies","legalName":"Agentic QA Technologies LLP","url":"https://www.agenticqa.io/","logo":"https://www.agenticqa.io/logo-new.png","email":"ganesh@agenticqa.io","founder":{"@type":"Person","name":"Ganesan Sivaraman"},"sameAs":["https://www.youtube.com/@AgenticQA","https://www.linkedin.com/in/ganesan-sivaraman"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"Agentic QA \u2014 Playwright Test Automation (Live)","description":"Beginner-friendly live Playwright course: TypeScript basics, Page Object Model, BDD, CI/CD and SDET skills. 30 days of 90-minute classes plus 5 capstone days.","url":"https://www.agenticqa.io/#course","provider":{"@type":"Organization","name":"Agentic QA Technologies","url":"https://www.agenticqa.io/"},"inLanguage":"en","educationalLevel":"Beginner","teaches":["Playwright","Page Object Model","TypeScript","BDD","CI/CD","SDET skills"],"hasCourseInstance":{"@type":"CourseInstance","courseMode":"Online","courseWorkload":"PT1H30M per class; 30 class days + 5 capstone days","instructor":{"@type":"Person","name":"Ganesan Sivaraman"}}}</script>
 </head>
 <body>
-
+<a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="#top"><img src="logo-new.png" alt="AgenticQA logo"><b>AgenticQA</b></a>
-    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
-    <nav class="site-nav" aria-label="Primary">
-      <a href="#bootcamp">Bootcamp</a>
-      <a href="#curriculum">Syllabus</a>
-      <a href="#instructor">Instructor</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+    <a class="brand" href="index.html"><img src="logo-new.webp" alt="" width="34" height="34"><span>Agentic QA<small>Technologies</small></span></a>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a href="index.html#course">Course</a>
+      <a href="index.html#syllabus">Syllabus</a>
+      <a href="students.html">Students</a>
+      <a href="docs.html">Docs</a>
+      <a href="support.html">Support</a>
     </nav>
+    <a class="btn btn-primary btn-sm hdr-cta" href="index.html#waitlist">Join waitlist</a>
+    <button class="icon-btn theme-toggle" type="button" aria-label="Toggle dark mode"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    <button class="icon-btn nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
 </header>
+<main id="main">
 
-<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill"><span class="dot" aria-hidden="true"></span>Live Playwright course · waitlist open</span>
+      <h1>Become a confident <span class="grad">Playwright automation tester.</span></h1>
+      <p class="lede">Agentic QA is a beginner-friendly, live course that takes you from your first test to a real Page Object Model framework — with the SDET skills teams hire for.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#waitlist">Join the waitlist</a>
+        <a class="btn btn-ghost" href="#syllabus">View the syllabus</a>
+      </div>
+      <ul class="trust">
+        <li>No prior coding needed</li><li>Live, not pre-recorded</li><li>Hands-on in every class</li>
+      </ul>
+    </div>
+    <dl class="facts" aria-label="Course at a glance">
+      <div class="fact"><dt>Class length</dt><dd>90<small> min</small></dd></div>
+      <div class="fact"><dt>Live class days</dt><dd>30</dd></div>
+      <div class="fact"><dt>Capstone days</dt><dd>5</dd></div>
+      <div class="fact"><dt>Course fee</dt><dd><!-- PLACEHOLDER: course fee --><small class="placeholder">To be announced</small></dd></div>
+    </dl>
+  </div>
+</section>
 
-  <section class="hero">
-    <div class="wrap hero-grid">
+<section id="course">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How the course works</span>
+      <h2>Short theory, lots of practice, every single class.</h2>
+      <p class="lede">Each live class is 90 minutes: 60 minutes of teaching followed by 30 minutes of guided hands-on work, so you leave every session having written real code.</p>
+    </div>
+    <div class="format reveal" aria-label="90-minute class format">
+      <div class="teach"><b>60 min</b>Live teaching &amp; demos</div>
+      <div class="hands"><b>30 min</b>Hands-on practice</div>
+    </div>
+    <ol class="journey reveal" style="margin-top:28px">
+      <li><span>Stage 1</span><h3>Foundations</h3><p>Testing basics, setup from scratch, the JavaScript / TypeScript you actually need.</p></li>
+      <li><span>Stage 2</span><h3>Playwright core</h3><p>Locators, auto-waiting, assertions, fixtures, traces and debugging.</p></li>
+      <li><span>Stage 3</span><h3>Framework &amp; SDET</h3><p>Page Object Model, BDD, reports, CI/CD and flaky-test handling.</p></li>
+      <li class="cap"><span>+5 days</span><h3>Capstone</h3><p>Build a complete framework from an empty folder and present it.</p></li>
+    </ol>
+    <p class="muted" style="margin-top:16px">30 days of live classes + 5 capstone days.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">What you will be able to do</span>
+      <h2>Skills employers look for in an SDET.</h2>
+    </div>
+    <div class="grid g3">
+      <article class="card reveal"><div class="ico">01</div><h3>Write reliable tests</h3><p class="muted">Use resilient locators, auto-waiting and web-first assertions to write tests that do not flake.</p></article>
+      <article class="card reveal"><div class="ico">02</div><h3>Design with Page Objects</h3><p class="muted">Structure a maintainable framework with the Page Object Model, fixtures and clean test data.</p></article>
+      <article class="card reveal"><div class="ico">03</div><h3>Debug like an SDET</h3><p class="muted">Read traces, screenshots and videos to find root causes quickly instead of guessing.</p></article>
+      <article class="card reveal"><div class="ico">04</div><h3>Run in CI/CD</h3><p class="muted">Run tests in parallel on GitHub Actions and publish HTML / Allure reports.</p></article>
+      <article class="card reveal"><div class="ico">05</div><h3>Write BDD specs</h3><p class="muted">Express behaviour in Gherkin (Given / When / Then) that the whole team can read.</p></article>
+      <article class="card reveal"><div class="ico">06</div><h3>Prepare for interviews</h3><p class="muted">Practise common automation interview questions and demo your capstone with confidence.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="syllabus">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Syllabus</span>
+      <h2>From zero to a working framework.</h2>
+      <p class="muted">Every topic ends with common mistakes to avoid, an exercise and a short quiz. <a href="docs.html">See the detailed syllabus →</a></p>
+    </div>
+    <div class="grid g3 syllabus">
+      <div class="card"><h3>Foundations</h3><ol><li><b>Automation testing basics</b> — manual vs automated, setup</li><li><b>What is Playwright</b> — browsers, locators, auto-waiting</li><li><b>JS + TS essentials</b> — just what the framework uses</li><li><b>BDD with Gherkin</b> — Given / When / Then, tags</li></ol></div>
+      <div class="card"><h3>Framework craft</h3><ol><li><b>Page Object Model</b> — BasePage, fixtures</li><li><b>Framework tour</b> — every folder, end to end</li><li><b>Hard topics</b> — iframes, shadow DOM, sessions, Allure</li><li><b>Capstone</b> — empty folder to green suite</li></ol></div>
+      <div class="card"><h3>Professional edge</h3><ol><li><b>CI &amp; debugging</b> — sharding, traces, pipelines</li><li><b>Playwright MCP &amp; agents</b> — an introduction</li><li><b>Interview preparation</b> — Q&amp;A practice, mock interview</li><li><b>Test strategy</b> — metrics, flaky-test policy</li></ol></div>
+    </div>
+  </div>
+</section>
+
+<section id="instructor" class="alt">
+  <div class="wrap instructor">
+    <!-- PLACEHOLDER: replace this block with <img src="ganesh.webp" alt="Ganesan Sivaraman" width="320" height="400"> -->
+    <div class="photo-ph" role="img" aria-label="Instructor photo coming soon"><div><b>GS</b>Instructor photo<br>coming soon</div></div>
+    <div>
+      <span class="eyebrow">Your instructor</span>
+      <h2>Ganesan Sivaraman (Ganesh)</h2>
+      <p class="muted"><strong>AI QA Architect · MCP Server Developer · Founder, Agentic QA Technologies</strong></p>
+      <p>Ganesh spent his career in software testing before founding Agentic QA to teach automation full-time. <!-- PLACEHOLDER: years of experience, e.g. "He has NN years of experience in…" --> He builds production AI test systems — RAG pipelines, LangChain apps and MCP servers — and brings real debugging stories into every class.</p>
+      <ul class="list">
+        <li>Teaches every live class personally</li>
+        <li>Builds AI-powered testing tools and MCP servers</li>
+        <li>Free tutorials on YouTube — <a href="https://www.youtube.com/@AgenticQA" rel="noopener">@AgenticQA</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="teaser reveal">
       <div>
-        <p class="kicker">Playwright QA Bootcamp · admissions open</p>
-        <h1>Learn test automation the way <em>industry actually does it.</em></h1>
-        <p class="lede">Go from zero to rebuilding a real framework from scratch — page objects, BDD specs, CI pipelines, and AI agents that triage failures. Taught by a career test architect, not a slideshow.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#contact">Join the waitlist</a>
-          <a class="btn btn-ghost" href="#curriculum">See the syllabus</a>
-        </div>
+        <span class="eyebrow">Coming next</span>
+        <h2>Testing LLMs and AI agents.</h2>
+        <p>Our next course teaches QA engineers how to test what AI builds — and AI itself. Join the waitlist to hear first.</p>
+        <a class="btn btn-ghost" href="#waitlist" style="margin-top:8px">Notify me</a>
       </div>
-      <aside class="hero-proof" aria-label="Why Playwright now">
-        <dl>
-          <div><dt>QA adoption, Playwright</dt><dd>~45<small>%</small></dd></div>
-          <div><dt>QA adoption, Selenium</dt><dd>~22<small>%</small></dd></div>
-          <div><dt>Scenarios you will build</dt><dd>7</dd></div>
-          <div><dt>Interview Q&amp;A in the bank</dt><dd>30</dd></div>
-        </dl>
-        <p>Sources: TestGuild 2026 survey of 40,000 testers; npm download trends. New builds are Playwright-first.</p>
-      </aside>
+      <ul>
+        <li>Evaluating LLM outputs: accuracy, grounding, hallucinations</li>
+        <li>Testing RAG pipelines and AI agents end to end</li>
+        <li>Playwright MCP and agent-driven test automation</li>
+        <li>Guardrails, safety checks and regression for AI features</li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="bootcamp">
-    <div class="wrap">
-      <p class="kicker">What you walk out with</p>
-      <h2>A working framework in your GitHub, not a certificate PDF.</h2>
-      <ol class="outcome-list">
-        <li><span class="n">01</span><div><b>Rebuild a framework from an empty folder</b><span>Page objects, Gherkin specs, fixtures, parallel CI — green on your machine, proven in a day.</span></div></li>
-        <li><span class="n">02</span><div><b>Debug like an SDET</b><span>Traces, screenshots, locator strategy, flake quarantine — the exact workflow teams use on red pipelines.</span></div></li>
-        <li><span class="n">03</span><div><b>Ship CI/CD and reports</b><span>Sharded GitHub Actions runs, HTML + Allure reports, and a failure agent that writes manager-ready root-cause notes.</span></div></li>
-        <li><span class="n">04</span><div><b>Automate with AI agents</b><span>Playwright MCP, agent loops, guardrails — build a healer that fixes flaky locators and opens the PR.</span></div></li>
-        <li><span class="n">05</span><div><b>Clear interviews</b><span>30-question bank across 5 days, capstone project to demo, mock-interview scoring rubric.</span></div></li>
-      </ol>
+<section id="projects" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Built by the instructor</span>
+      <h2>Real AI projects, not toy demos.</h2>
     </div>
-  </section>
-
-  <section id="curriculum">
-    <div class="wrap">
-      <p class="kicker">The syllabus — 13 chapters, zero fluff</p>
-      <h2>Every lesson ends with mistakes to avoid, an exercise, and a quiz.</h2>
-      <div class="syllabus">
-        <div>
-          <h3>Foundations</h3>
-          <ol>
-            <li>Zero to automation testing</li>
-            <li>What is Playwright</li>
-            <li>JavaScript + TypeScript essentials</li>
-            <li>BDD with Gherkin</li>
-          </ol>
-        </div>
-        <div>
-          <h3>Framework craft</h3>
-          <ol>
-            <li>Page Object Model</li>
-            <li>Framework tour (real repo)</li>
-            <li>Study checklist + capstone</li>
-            <li>Solved rebuild in a day</li>
-          </ol>
-        </div>
-        <div>
-          <h3>Professional edge</h3>
-          <ol>
-            <li>Hard topics: iframes, shadow DOM, sessions, Allure</li>
-            <li>Interview bank (30 Q&amp;A)</li>
-            <li>Architect level: strategy, metrics, flake policy</li>
-            <li>Playwright MCP + agents</li>
-          </ol>
-        </div>
-      </div>
+    <div class="grid g4">
+      <article class="card project reveal"><img src="ResumeGenieAI.webp" alt="ResumeGenie AI dashboard" width="1200" height="657" loading="lazy"><div class="body"><span class="tag">RAG · LLM</span><h3>ResumeGenie AI</h3><p>Resume analysis and improvement suggestions powered by LLM feedback.</p></div></article>
+      <article class="card project reveal"><img src="StudyMateAI.webp" alt="StudyMate AI interface" width="1200" height="653" loading="lazy"><div class="body"><span class="tag">RAG · ChromaDB</span><h3>StudyMate AI</h3><p>Ask questions over large PDFs with a retrieval-augmented study assistant.</p></div></article>
+      <article class="card project reveal"><img src="FeedBack_Pulse.webp" alt="FeedbackPulse sentiment dashboard" width="1200" height="664" loading="lazy"><div class="body"><span class="tag">NLP · Sentiment</span><h3>FeedbackPulse AI</h3><p>Batch sentiment analysis of customer reviews for product teams.</p></div></article>
+      <article class="card project reveal"><img src="MeetingMind_AI_.webp" alt="MeetingMind AI screen" width="1200" height="657" loading="lazy"><div class="body"><span class="tag">LLM · Summaries</span><h3>MeetingMind AI</h3><p>AI meeting assistant project. <!-- PLACEHOLDER: confirm one-line description --></p></div></article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="instructor">
-    <div class="wrap instructor-grid">
-      <div class="instructor-card">
-        <p class="name">Ganesan Sivaraman</p>
-        <p class="role">AI QA Architect · MCP Server Developer · Founder, AgenticQA Technologies LLP</p>
-        <ul>
-          <li>A full career in software testing before founding AgenticQA</li>
-          <li>Builds production AI test systems: RAG, LangChain, MCP servers</li>
-          <li>11+ AI projects shipped, interview-ready with docs</li>
-        </ul>
-      </div>
-      <div>
-        <p class="kicker">Why learn from him</p>
-        <h2>Taught by someone who shipped, not someone who only teaches.</h2>
-        <p>After a career in testing, Ganesan left his job to teach this full-time. Every lesson in the bootcamp comes from a real failure he has debugged — the flaky logout, the wrong browser revision, the suite that took three hours. You learn the fix, not the theory.</p>
-      </div>
+<section id="faq">
+  <div class="wrap" style="max-width:820px">
+    <div class="section-head center"><span class="eyebrow">FAQ</span><h2>Common questions.</h2></div>
+    <details><summary>Do I need coding experience?</summary><p>No. The course starts from zero and teaches the JavaScript / TypeScript you need as you go.</p></details>
+    <details><summary>How long is the course?</summary><p>30 days of live classes plus 5 capstone days. Each class is 90 minutes — 60 minutes teaching and 30 minutes hands-on.</p></details>
+    <details><summary>Are classes live or recorded?</summary><p>Classes are taught live by Ganesh, with hands-on practice in every session.</p></details>
+    <details><summary>What laptop do I need?</summary><p>Any ordinary laptop that can run a modern browser and Node.js. No GPU required.</p></details>
+    <details><summary>Will this guarantee me a job?</summary><p>No course can promise that. You will leave with a framework you built, a capstone you can demo and interview practice.</p></details>
+    <p class="muted" style="text-align:center;margin-top:20px">More answers on the <a href="support.html">support page</a>.</p>
+  </div>
+</section>
+<section id="waitlist" class="alt">
+  <div class="wrap contact">
+    <div>
+      <span class="eyebrow">Next batch · limited seats</span>
+      <h2>Join the waitlist for the next batch.</h2>
+      <p class="muted">Tell us a little about yourself and we will send you the batch details and an invite to a demo class.</p>
+      <!-- PLACEHOLDER: next batch start date, e.g. "Batch starts 5 January 2027" -->
+      <p><span class="placeholder">Next batch date: to be announced</span></p>
+      <ul class="links">
+        <li><a href="mailto:ganesh@agenticqa.io?subject=Agentic%20QA%20Playwright%20waitlist">✉ ganesh@agenticqa.io</a></li>
+        <li><a href="https://www.youtube.com/@AgenticQA" rel="noopener">▶ YouTube — @AgenticQA</a></li>
+        <li><a href="https://www.linkedin.com/in/ganesan-sivaraman" rel="noopener">in LinkedIn — Ganesan Sivaraman</a></li>
+      </ul>
     </div>
-  </section>
-
-  <section id="projects">
-    <div class="wrap">
-      <p class="kicker">Proof of work</p>
-      <h2>Production AI systems, not toy demos.</h2>
-      <div class="project reveal">
-        <img src="ResumeGenieAI.png" alt="ResumeGenie AI screenshot" loading="lazy">
-        <div class="project-text">
-          <span class="tag">RAG · LLM</span>
-          <h3>ResumeGenie AI</h3>
-          <p>Resume analysis and optimization — poor resumes get no interview calls; this fixes them with LLM feedback.</p>
-        </div>
+    <form class="form" id="waitlist-form" action="https://formsubmit.co/ganesh@agenticqa.io" data-ajax="https://formsubmit.co/ajax/ganesh@agenticqa.io" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="Agentic QA Playwright waitlist">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="row2">
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
       </div>
-      <div class="project reveal">
-        <img src="StudyMateAI.png" alt="StudyMate AI screenshot" loading="lazy">
-        <div class="project-text">
-          <span class="tag">RAG · ChromaDB</span>
-          <h3>StudyMate AI</h3>
-          <p>RAG study assistant for large documents — ask questions over PDFs instead of drowning in pages.</p>
-        </div>
-      </div>
-      <div class="project reveal">
-        <img src="FeedBack_Pulse.png" alt="FeedbackPulse screenshot" loading="lazy">
-        <div class="project-text">
-          <span class="tag">NLP · Sentiment</span>
-          <h3>FeedbackPulse AI</h3>
-          <p>Batch customer-review sentiment analysis for product teams.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="catalyst" class="secondary">
-    <div class="wrap">
-      <p class="kicker">Also from AgenticQA</p>
-      <h2>CatalystAI — exam prep for NEET &amp; JEE.</h2>
-      <p>AI-powered study plans, visual explanations, and doubt-solving for India's toughest entrance exams. A separate track from the QA bootcamp.</p>
-      <div class="tracks">
-        <div class="track">
-          <h3>NEET track</h3>
-          <ul><li>Biology, Chemistry, Physics — NCERT-aligned</li><li>Smart flashcards + weak-area focus</li></ul>
-        </div>
-        <div class="track">
-          <h3>JEE track</h3>
-          <ul><li>Maths, Physics, Chemistry with step-by-step solutions</li><li>Concept maps + daily practice sets</li></ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="wrap">
-      <div class="contact-box">
-        <div>
-          <p class="kicker">Batch 1 — limited seats</p>
-          <h2>Join the waitlist. Get the free demo class.</h2>
-          <p>Write to us with the subject <strong>“Bootcamp Batch 1”</strong> and tell us where you are: student, working tester, or lead. We reply with the demo invite and the full syllabus.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="mailto:ganesh@agenticqa.io?subject=Bootcamp%20Batch%201">Email ganesh@agenticqa.io</a>
-          </div>
-        </div>
-        <ul class="contact-links">
-          <li><a href="https://www.linkedin.com/in/ganesan-sivaraman">LinkedIn — Ganesan Sivaraman</a></li>
-          <li><a href="https://www.youtube.com/@AgenticQA">YouTube — @AgenticQA</a></li>
-          <li><a href="https://github.com/E2EINT/genai-qa-automation-pipeline">GitHub — projects &amp; code</a></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
+      <div class="field"><label for="f-profile">I am a…</label>
+        <select id="f-profile" name="profile"><option>Student / fresher</option><option>Manual tester moving to automation</option><option>Automation engineer / SDET</option><option>QA lead or manager</option><option>Company / team training</option></select></div>
+      <div class="field"><label for="f-msg">Anything we should know? <span class="muted">(optional)</span></label><textarea id="f-msg" name="message" rows="4"></textarea></div>
+      <button class="btn btn-primary" type="submit" style="width:100%">Join the waitlist</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+      <p class="form-note">We only use your details to reply about the course. Prefer email? Write to <a href="mailto:ganesh@agenticqa.io?subject=Agentic%20QA%20Playwright%20waitlist">ganesh@agenticqa.io</a>. See our <a href="privacy.html">privacy policy</a>.</p>
+    </form>
+  </div>
+</section>
 </main>
-
 <footer>
   <div class="wrap">
-    <span>© <span id="year">2026</span> AgenticQA Technologies LLP · agenticqa.io</span>
-    <nav aria-label="Footer">
-      <a href="privacy.html">Privacy</a>
-      <a href="students.html">Students</a>
-      <a href="support.html">Support</a>
-      <a href="docs.html">Docs</a>
-    </nav>
+    <div class="foot">
+      <div>
+        <a class="brand" href="index.html"><img src="logo-new.webp" alt="" width="34" height="34" loading="lazy"><span>Agentic QA<small>Technologies</small></span></a>
+        <p class="muted" style="margin-top:14px;max-width:340px">Beginner-friendly live classes in Playwright test automation — and next, testing LLMs and AI agents.</p>
+      </div>
+      <div><h4>Learn</h4><ul><li><a href="index.html#course">Playwright course</a></li><li><a href="index.html#syllabus">Syllabus</a></li><li><a href="docs.html">Docs</a></li><li><a href="students.html">Students</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="support.html">Support &amp; FAQ</a></li><li><a href="catalyst.html">CatalystAI (NEET/JEE)</a></li><li><a href="privacy.html">Privacy</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="mailto:ganesh@agenticqa.io">ganesh@agenticqa.io</a></li><li><a href="https://www.youtube.com/@AgenticQA" rel="noopener">YouTube @AgenticQA</a></li><li><a href="https://www.linkedin.com/in/ganesan-sivaraman" rel="noopener">LinkedIn</a></li><li><a href="https://github.com/E2EINT/genai-qa-automation-pipeline" rel="noopener">GitHub</a></li></ul></div>
+    </div>
+    <p class="copy">© <span id="year">2026</span> Agentic QA Technologies LLP · agenticqa.io</p>
   </div>
 </footer>
-
-<script src="site.js"></script>
+<script src="site.js" defer></script>
 </body>
 </html>
