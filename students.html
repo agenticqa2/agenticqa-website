@@ -1,1256 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Internship Program | AgenticQA - Student & Job Seeker Projects</title>
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="28-Day AI/ML Internship Program by AgenticQA. 8 portfolio-ready projects for students and job seekers. Learn Python, Streamlit, LangChain, TensorFlow and get job-ready skills.">
-    <meta name="keywords" content="AI internship, ML projects for students, Python AI projects, job seeker portfolio, GenAI projects, AgenticQA training, AI course India">
-    <meta name="author" content="Ganesan Sivaraman">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://agenticqa.io/students">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://agenticqa.io/students">
-    <meta property="og:title" content="AI Internship Program | AgenticQA - 8 Portfolio-Ready Projects">
-    <meta property="og:description" content="28-Day AI/ML Internship for students & job seekers. Build real AI projects, get GitHub portfolio, and become job-ready.">
-    <meta property="og:image" content="https://agenticqa.io/og-image.png">
-
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-        tailwindcss.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'display': ['Inter', 'sans-serif'],
-                        'mono': ['JetBrains Mono', 'monospace'],
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0d1117;
-            color: #f0f6fc;
-            line-height: 1.7;
-        }
-
-        /* GitHub-inspired Color Palette */
-        :root {
-            --bg-primary: #0d1117;
-            --bg-card: #161b22;
-            --border-color: #30363d;
-            --text-primary: #f0f6fc;
-            --text-secondary: #8b949e;
-            --accent-blue: #2f81f7;
-            --accent-green: #238636;
-            --accent-cyan: #58a6ff;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-50;
-            background: rgba(13, 17, 23, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .nav-container {
-            max-width: 7xl;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
-
-        .nav-logo:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-logo img {
-            height: 2.5rem;
-            width: auto;
-        }
-
-        .nav-logo-text span:first-child {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .nav-logo-text span:last-child {
-            color: var(--accent-cyan);
-        }
-
-        .nav-logo-sub {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            display: none;
-        }
-
-        @media (min-width: 640px) {
-            .nav-logo-sub { display: block; }
-        }
-
-        .nav-links {
-            display: none;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .nav-links { display: flex; }
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-cyan);
-        }
-
-        .nav-links a.active {
-            color: var(--accent-cyan);
-            font-weight: 600;
-        }
-
-        .nav-cta {
-            padding: 0.625rem 1.25rem;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            color: var(--bg-primary);
-            border-radius: 0.5rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .nav-cta:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(47, 129, 247, 0.3);
-        }
-
-        .mobile-menu-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .mobile-menu-btn { display: none; }
-        }
-
-        .mobile-menu-btn svg {
-            width: 1.75rem;
-            height: 1.75rem;
-            color: var(--text-primary);
-        }
-
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 64px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(13, 17, 23, 0.98);
-            z-index: 99;
-            flex-direction: column;
-            padding: 2rem;
-            gap: 1rem;
-        }
-
-        .mobile-nav.active {
-            display: flex;
-        }
-
-        .mobile-nav a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 1.25rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 64px;
-            padding: 4rem 1.5rem;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(47, 129, 247, 0.05), rgba(88, 166, 255, 0.03));
-            border-bottom: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 3rem 1.5rem;
-            }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(47, 129, 247, 0.1);
-            border: 1px solid rgba(47, 129, 247, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            color: var(--accent-cyan);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 2.25rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        @media (min-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-        }
-
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero p {
-                font-size: 1.25rem;
-            }
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .hero-stat {
-            text-align: center;
-        }
-
-        .hero-stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--accent-cyan);
-        }
-
-        @media (min-width: 768px) {
-            .hero-stat-number {
-                font-size: 2.5rem;
-            }
-        }
-
-        .hero-stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.875rem 2rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            border: 1px solid transparent;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            color: var(--bg-primary);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(47, 129, 247, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(47, 129, 247, 0.1);
-        }
-
-        /* Main Content */
-        .main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-header h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .section-header h2 {
-                font-size: 2.25rem;
-            }
-        }
-
-        .section-header p {
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 0.5rem;
-            padding: 1.75rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card:hover {
-            border-color: rgba(47, 129, 247, 0.5);
-            background: rgba(47, 129, 247, 0.02);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-number {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-            border-radius: 0.375rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--bg-primary);
-            flex-shrink: 0;
-        }
-
-        .project-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .project-subtitle {
-            font-size: 0.85rem;
-            color: var(--accent-cyan);
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-tag {
-            background: rgba(47, 129, 247, 0.1);
-            border: 1px solid rgba(47, 129, 247, 0.2);
-            color: var(--accent-cyan);
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .project-job {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .job-badge {
-            background: rgba(35, 134, 54, 0.1);
-            border: 1px solid rgba(35, 134, 54, 0.3);
-            color: var(--accent-green);
-            padding: 0.35rem 0.75rem;
-            border-radius: 0.375rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .job-label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        /* Features Section */
-        .features-section {
-            padding: 4rem 1.5rem;
-            background: rgba(47, 129, 247, 0.02);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 768px) {
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .features-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .feature-card {
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(47, 129, 247, 0.1);
-            border-radius: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            margin: 0 auto 1rem;
-        }
-
-        .feature-title {
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .feature-desc {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        /* Outcomes Section */
-        .outcomes-section {
-            padding: 4rem 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .outcomes-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .outcomes-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .outcomes-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .outcome-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            transition: all 0.2s;
-        }
-
-        .outcome-card:hover {
-            border-color: rgba(47, 129, 247, 0.5);
-            background: rgba(47, 129, 247, 0.02);
-        }
-
-        .outcome-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
-            border-radius: 0.375rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            flex-shrink: 0;
-        }
-
-        .outcome-text h4 {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-            color: var(--text-primary);
-        }
-
-        .outcome-text p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 4rem 1.5rem;
-            text-align: center;
-            background: rgba(47, 129, 247, 0.05);
-            border-radius: 0.5rem;
-            margin: 2rem 1.5rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            border: 1px solid var(--border-color);
-        }
-
-        .cta-section h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .cta-price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent-cyan);
-            margin-bottom: 0.5rem;
-        }
-
-        .cta-price-note {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .cta-tags {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .cta-tag {
-            background: rgba(47, 129, 247, 0.1);
-            border: 1px solid rgba(47, 129, 247, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border-color);
-            background: var(--bg-primary);
-        }
-
-        .footer-container {
-            max-width: 7xl;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-        }
-
-        .footer-top {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-top {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .footer-logo img {
-            height: 2rem;
-            width: auto;
-        }
-
-        .footer-logo-text span:first-child {
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .footer-logo-text span:last-child {
-            color: var(--accent-cyan);
-        }
-
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-        }
-
-        @media (min-width: 768px) {
-            .footer-links {
-                gap: 1.5rem;
-                justify-content: flex-start;
-            }
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-cyan);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        @media (min-width: 768px) {
-            .footer-social {
-                justify-content: flex-end;
-            }
-        }
-
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border: 1px solid var(--border-color);
-            border-radius: 0.375rem;
-            color: var(--text-secondary);
-            transition: all 0.2s;
-        }
-
-        .footer-social a:hover {
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--border-color);
-            padding-top: 2rem;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-
-        @media (min-width: 640px) {
-            .footer-bottom {
-                text-align: left;
-            }
-        }
-
-        .footer-bottom a {
-            color: var(--accent-cyan);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-bottom a:hover {
-            color: var(--text-primary);
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        /* Scroll Bar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-primary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-blue);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students — Playwright QA Bootcamp & AI Internship | AgenticQA</title>
+  <meta name="description" content="Two paths to a testing career: the Playwright QA Bootcamp (zero to framework + interview bank) and the 28-day AI internship.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-slate-950 text-white font-display antialiased" style="background: #0d1117; color: #f0f6fc;">
-    <!-- Navigation -->
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="index.html" class="flex items-center gap-3 group">
-                    <img src="logo-new.png" alt="AgenticQA" class="h-10 w-auto group-hover:scale-105 transition-transform">
-                    <div>
-                        <span class="text-xl font-bold text-white">Agentic<span class="text-cyan-400">QA</span></span>
-                        <span class="hidden sm:block text-xs text-slate-400">Intelligence In Testing</span>
-                    </div>
-                </a>
+<body>
 
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="index.html#exam-prep" class="text-emerald-300 hover:text-emerald-400 font-medium transition-colors">CatalystAI</a>
-                    <a href="index.html#projects" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Projects</a>
-                    <a href="index.html#bootcamp" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Bootcamp</a>
-                    <a href="index.html#about" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">About</a>
-                    <a href="index.html#eu-services" class="text-slate-300 hover:text-blue-400 font-medium transition-colors">🇪🇺 EU</a>
-                    <a href="docs.html" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Docs</a>
-                    <a href="students.html" class="text-blue-500 hover:text-blue-400 font-medium transition-colors" style="color: #2f81f7;">Students</a>
-                    <a href="support.html" class="text-slate-300 hover:text-cyan-400 font-medium transition-colors">Support</a>
-                    <a href="index.html#contact" class="px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-lg transition-all hover:scale-105 shadow-lg shadow-cyan-500/25">
-                        Let's Connect
-                    </a>
-                </div>
-
-                <button id="menuBtn" class="md:hidden text-white p-3 -mr-2" style="position: relative; z-index: 9999; touch-action: manipulation; -webkit-tap-highlight-color: transparent;">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
-                <script>
-                    document.getElementById('menuBtn').addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        var menu = document.getElementById('mobileMenu');
-                        if (menu) {
-                            menu.classList.toggle('hidden');
-                        }
-                    });
-                </script>
-            </div>
-        </div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="logo-new.png" alt="AgenticQA logo"><b>AgenticQA</b></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="index.html#bootcamp">Bootcamp</a>
+      <a href="docs.html">Syllabus</a>
+      <a href="index.html#instructor">Instructor</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#contact">Contact</a>
     </nav>
+  </div>
+</header>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-slate-950 z-[9998] hidden">
-        <div class="flex flex-col items-center justify-center h-full gap-8 text-xl">
-            <a href="index.html#exam-prep" class="text-emerald-400 hover:text-emerald-300 menuLink font-semibold">CatalystAI</a>
-            <a href="index.html#projects" class="text-white hover:text-cyan-400 menuLink">Projects</a>
-            <a href="index.html#bootcamp" class="text-white hover:text-cyan-400 menuLink">Bootcamp</a>
-            <a href="index.html#about" class="text-white hover:text-cyan-400 menuLink">About</a>
-            <a href="index.html#eu-services" class="text-white hover:text-blue-400 menuLink">🇪🇺 EU</a>
-            <a href="docs.html" class="text-white hover:text-cyan-400">Docs</a>
-            <a href="students.html" class="text-white hover:text-cyan-400" style="color: #2f81f7;">Students</a>
-            <a href="support.html" class="text-white hover:text-cyan-400">Support</a>
-            <a href="index.html#contact" class="px-6 py-3 bg-cyan-500 text-white font-semibold rounded-lg menuLink">Let's Connect</a>
-            <button id="closeMenuBtn" class="absolute top-6 right-6 text-white p-3" style="touch-action: manipulation; -webkit-tap-highlight-color: transparent;">
-                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kicker">Students &amp; job seekers</p>
+        <h1>Become the tester companies <em>fight to hire.</em></h1>
+        <p class="lede">Two paths, one promise: real work in your GitHub. Master Playwright automation in the QA Bootcamp, or ship 8 AI projects in the 28-day internship — or do both.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="mailto:ganesh@agenticqa.io?subject=Bootcamp%20Batch%201">Apply for Batch 1</a>
+          <a class="btn btn-ghost" href="docs.html">Read the full syllabus</a>
         </div>
+      </div>
+      <aside class="hero-proof" aria-label="Program facts">
+        <dl>
+          <div><dt>Chapters, zero to hero</dt><dd>13</dd></div>
+          <div><dt>Interview Q&amp;A bank</dt><dd>30</dd></div>
+          <div><dt>Internship projects</dt><dd>8</dd></div>
+          <div><dt>Hands-on, not slides</dt><dd>100<small>%</small></dd></div>
+        </dl>
+        <p>No prerequisites for the bootcamp. A low-end laptop is enough — everything runs on cloud tools and a real browser.</p>
+      </aside>
     </div>
-    <script>
-        document.getElementById('closeMenuBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('mobileMenu').classList.add('hidden');
-        });
-        document.querySelectorAll('.menuLink').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.getElementById('mobileMenu').classList.add('hidden');
-            });
-        });
-    </script>
+  </section>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">
-                🎓 AI Internship Program • February 2026
-            </div>
-            <h1>Build <span>Real AI Projects</span><br>in 28 Days</h1>
-            <p>Transform from student to job-ready AI developer. 8 portfolio projects, hands-on training, and career guidance by industry experts.</p>
-
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <div class="hero-stat-number">28</div>
-                    <div class="hero-stat-label">Days Program</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">8</div>
-                    <div class="hero-stat-label">AI Projects</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">100%</div>
-                    <div class="hero-stat-label">Hands-on</div>
-                </div>
-            </div>
-
-            <div class="hero-cta">
-                <a href="index.html#contact" class="btn btn-primary">📅 Schedule Free Consultation</a>
-                <a href="#projects" class="btn btn-secondary">View Projects</a>
-            </div>
+  <section>
+    <div class="wrap">
+      <p class="kicker">Pick your path</p>
+      <h2>One goal, two routes.</h2>
+      <div class="tracks">
+        <div class="track">
+          <h3>Playwright QA Bootcamp (flagship)</h3>
+          <p>Zero to rebuilding a real automation framework: POM, BDD specs, CI/CD, Allure reports, MCP agents — capped by a solved capstone and a 30-question interview bank.</p>
+          <ul>
+            <li>13 chapters: testing basics → framework → architect level</li>
+            <li>Every lesson: mistakes box, exercise, quiz with answers</li>
+            <li>Capstone: empty folder → green suite in a day</li>
+            <li>Outcome: framework in your GitHub + mock interview</li>
+          </ul>
         </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features-section">
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">💻</div>
-                <div class="feature-title">No Prerequisites</div>
-                <div class="feature-desc">Start from scratch - we teach everything from Python basics to AI deployment</div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <div class="feature-title">Job-Focused</div>
-                <div class="feature-desc">Each project maps to specific job roles - AI Engineer, Data Scientist, GenAI Developer</div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📱</div>
-                <div class="feature-title">Low-End Laptop OK</div>
-                <div class="feature-desc">All projects use cloud APIs - no expensive GPU or high-end system needed</div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🏆</div>
-                <div class="feature-title">Certificate</div>
-                <div class="feature-desc">Get AgenticQA certification + GitHub portfolio + LinkedIn-ready profile</div>
-            </div>
+        <div class="track">
+          <h3>28-day AI internship</h3>
+          <!-- end of internship track -->
+          <p>Ship 8 portfolio-ready AI projects with 1:1 mentorship — for students who want an AI Engineer, Data Scientist, or GenAI Developer profile.</p>
+          <ul>
+            <li>Chatbot, resume analyzer, sentiment analysis + 5 more</li>
+            <li>Python → LLMs → RAG → deployment, from scratch</li>
+            <li>Certificate + LinkedIn-ready profile review</li>
+            <li>Flexible scheduling alongside college</li>
+          </ul>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Projects Section -->
-    <section class="main" id="projects">
-        <div class="section-header">
-            <h2>🚀 8 Portfolio-Ready AI Projects</h2>
-            <p>Choose your project based on your career goal. Each project is designed to showcase specific skills that employers look for.</p>
+  <section>
+    <div class="wrap">
+      <p class="kicker">What you leave with</p>
+      <h2>Employers check GitHub, not certificates.</h2>
+      <ol class="outcome-list">
+        <li><span class="n">01</span><div><b>A framework in your GitHub</b><span>Bootcamp capstone: 7 green scenarios, CI pipeline, failure-agent reports — demo it live in interviews.</span></div></li>
+        <li><span class="n">02</span><div><b>8 AI projects (internship)</b><span>Each mapped to a job role: AI Engineer, Data Scientist, GenAI Developer.</span></div></li>
+        <li><span class="n">03</span><div><b>Interview readiness</b><span>30-question bank, 5-day drill plan, mock interview with scoring rubric.</span></div></li>
+        <li><span class="n">04</span><div><b>Profile that gets calls</b><span>LinkedIn review, resume-dictated project descriptions, certificate of completion.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="secondary">
+    <div class="wrap">
+      <p class="kicker">Fair questions</p>
+      <h2>Asked before every batch.</h2>
+      <div class="tracks">
+        <div class="track">
+          <h3>Do I need experience?</h3>
+          <p>No. The bootcamp starts at absolute zero — terminal, Node, your first green test. Working testers skim ahead on a separate track.</p>
         </div>
-
-        <div class="projects-grid">
-            <!-- Project 1 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-number">1</div>
-                    <div>
-                        <div class="project-title">AI Chatbot Assistant</div>
-                        <div class="project-subtitle">Conversational AI with Memory</div>
-                    </div>
-                </div>
-                <p class="project-description">Build an intelligent chatbot that understands context, remembers conversation history, and provides helpful responses using LLM APIs.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Streamlit</span>
-                    <span class="tech-tag">Groq API</span>
-                    <span class="tech-tag">Python</span>
-                </div>
-                <div class="project-job">
-                    <span class="job-label">Job Fit →</span>
-                    <span class="job-badge">AI Engineer</span>
-                </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-number">2</div>
-                    <div>
-                        <div class="project-title">Smart Resume Analyzer</div>
-                        <div class="project-subtitle">AI-Powered Resume Scoring</div>
-                    </div>
-                </div>
-                <p class="project-description">Analyze resumes against job descriptions, extract skills, calculate match scores, and provide improvement suggestions using NLP.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">NLP</span>
-                    <span class="tech-tag">spaCy</span>
-                    <span class="tech-tag">Streamlit</span>
-                </div>
-                <div class="project-job">
-                    <span class="job-label">Job Fit →</span>
-                    <span class="job-badge">HR Tech / Data Analyst</span>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-number">3</div>
-                    <div>
-                        <div class="project-title">Sentiment Analyzer</div>
-                        <div class="project-subtitle">Customer Feedback Analysis</div>
-                    </div>
-                </div>
-                <p class="project-description">Analyze customer reviews at scale, classify sentiment (positive/negative/neutral), extract themes, and generate reports.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">ML</span>
-                    <span class="tech-tag">VADER</span>
-                    <span class="tech-tag">Pandas</span>
-                </div>
-                <div class="project-job">
-                    <span class="job-label">Job Fit →</span>
-                    <span class="job-badge">Data Scientist</span>
-                </div>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-number">4</div>
-                    <div>
-                        <div class="project-title">Disease Predictor</div>
-                        <div class="project-subtitle">ML-Based Health Prediction</div>
-                    </div>
-                </div>
-                <p class="project-description">Build a machine learning model that predicts disease risk based on symptoms and patient data using classification algorithms.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Scikit-learn</span>
-                    <span class="tech-tag">Classification</span>
-                    <span class="tech-tag">ML</span>
-                </div>
-                <div class="project-job">
-                    <span class="job-label">Job Fit →</span>
-                    <span class="job-badge">Healthcare AI</span>
-                </div>
-            </div>
-
-            <!-- Project 5 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-number">5</div>
-                    <div>
-                        <div class="project-title">Image Classifier</div>
-                        <div class="project-subtitle">Computer Vision with AI</div>
-                    </div>
-                </div>
-                <p class="project-description">Classify and understand images using Google Gemini Vision API. Describe images, extract text, identify objects - all via cloud API.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Gemini Vision</span>
-                    <span class="tech-tag">API</span>
-                    <span class="tech-tag">Streamlit</span>
-                </div>
-                <div class="project-job">
-                    <span class="job-label">Job Fit →</span>
-                    <span class="job-badge">Computer Vision</span>
-                </div>
-            </div>
-
-            <!-- Project 6 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-number">6</div>
-                    <div>
-                        <div class="project-title">RAG PDF Q&A Bot</div>
-                        <div class="project-subtitle">Chat with Documents</div>
-                    </div>
-                </div>
-                <p class="project-description">Build a RAG system that lets users upload PDFs and ask questions. Uses embeddings and vector search for accurate answers with citations.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">LangChain</span>
-                    <span class="tech-tag">Cohere API</span>
-                    <span class="tech-tag">RAG</span>
-                </div>
-                <div class="project-job">
-                    <span class="job-label">Job Fit →</span>
-                    <span class="job-badge">GenAI Engineer</span>
-                </div>
-            </div>
-
-            <!-- Project 7 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-number">7</div>
-                    <div>
-                        <div class="project-title">Fake News Detector</div>
-                        <div class="project-subtitle">AI Truth Verification</div>
-                    </div>
-                </div>
-                <p class="project-description">Detect fake news using NLP and machine learning. Analyze text patterns, classify articles, and show confidence scores.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">NLP</span>
-                    <span class="tech-tag">ML</span>
-                    <span class="tech-tag">TF-IDF</span>
-                </div>
-                <div class="project-job">
-                    <span class="job-label">Job Fit →</span>
-                    <span class="job-badge">NLP Engineer</span>
-                </div>
-            </div>
-
-            <!-- Project 8 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-number">8</div>
-                    <div>
-                        <div class="project-title">Smart To-Do with AI</div>
-                        <div class="project-subtitle">Full-Stack AI App</div>
-                    </div>
-                </div>
-                <p class="project-description">Build a complete task management app with AI-powered suggestions, priority setting, and smart categorization. Full-stack development.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Flask</span>
-                    <span class="tech-tag">SQLite</span>
-                    <span class="tech-tag">API</span>
-                </div>
-                <div class="project-job">
-                    <span class="job-label">Job Fit →</span>
-                    <span class="job-badge">Full Stack Developer</span>
-                </div>
-            </div>
+        <div class="track">
+          <h3>Will this get me a job?</h3>
+          <p>No course can promise that. What we promise: a public GitHub portfolio, a capstone you can demo, and interview drills — the three things that actually move interviews.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- What You Get Section -->
-    <section class="outcomes-section">
-        <div class="section-header">
-            <h2>✅ What You'll Walk Away With</h2>
-            <p>Everything you need to land your first AI job</p>
+  <section>
+    <div class="wrap">
+      <div class="contact-box">
+        <div>
+          <p class="kicker">Batch 1 — limited seats</p>
+          <h2>Apply with one email.</h2>
+          <p>Subject <strong>“Student Application”</strong>, tell us your background and which path you want. We reply with the demo class invite.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="mailto:ganesh@agenticqa.io?subject=Student%20Application">Email ganesh@agenticqa.io</a>
+          </div>
         </div>
+        <ul class="contact-links">
+          <li><a href="docs.html">Read the syllabus first</a></li>
+          <li><a href="https://www.youtube.com/@AgenticQA">Watch free tutorials</a></li>
+          <li><a href="https://www.linkedin.com/in/ganesan-sivaraman">Connect on LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-        <div class="outcomes-grid">
-            <div class="outcome-card">
-                <div class="outcome-icon">📁</div>
-                <div class="outcome-text">
-                    <h4>Working AI Project</h4>
-                    <p>Fully functional, deployable project you built yourself</p>
-                </div>
-            </div>
-            <div class="outcome-card">
-                <div class="outcome-icon">🐙</div>
-                <div class="outcome-text">
-                    <h4>GitHub Portfolio</h4>
-                    <p>Professional GitHub profile with documented code</p>
-                </div>
-            </div>
-            <div class="outcome-card">
-                <div class="outcome-icon">💼</div>
-                <div class="outcome-text">
-                    <h4>LinkedIn Optimization</h4>
-                    <p>AI-ready profile with project showcases</p>
-                </div>
-            </div>
-            <div class="outcome-card">
-                <div class="outcome-icon">🎥</div>
-                <div class="outcome-text">
-                    <h4>Demo Video</h4>
-                    <p>Professional project demo for interviews</p>
-                </div>
-            </div>
-            <div class="outcome-card">
-                <div class="outcome-icon">📜</div>
-                <div class="outcome-text">
-                    <h4>Certificate</h4>
-                    <p>AgenticQA completion certificate</p>
-                </div>
-            </div>
-            <div class="outcome-card">
-                <div class="outcome-icon">🎤</div>
-                <div class="outcome-text">
-                    <h4>Interview Prep</h4>
-                    <p>Mock interviews + common Q&A preparation</p>
-                </div>
-            </div>
-        </div>
-    </section>
+</main>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <h2>Ready to Start Your AI Journey?</h2>
-        <p>Join our next batch and build production-ready AI automation skills in just 28 days.</p>
-        <div class="cta-tags">
-            <div class="cta-tag">🎯 1:1 Mentorship</div>
-            <div class="cta-tag">📜 Certificate Included</div>
-            <div class="cta-tag">🌍 India & EU Students</div>
-        </div>
-        <a href="index.html#contact" class="btn btn-primary">📅 Schedule Free Consultation</a>
-    </section>
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> AgenticQA Technologies LLP · agenticqa.io</span>
+    <nav aria-label="Footer">
+      <a href="privacy.html">Privacy</a>
+      <a href="students.html">Students</a>
+      <a href="support.html">Support</a>
+      <a href="docs.html">Docs</a>
+    </nav>
+  </div>
+</footer>
 
-    <!-- Footer -->
-    <footer class="border-t border-[#30363d] bg-[#0d1117]">
-        <div class="max-w-[1280px] mx-auto px-6 py-12">
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
-                <!-- Column 1: Brand -->
-                <div>
-                    <div class="flex items-center gap-2 mb-4">
-                        <img src="logo-new.png" alt="AgenticQA" class="h-6 w-auto">
-                        <span class="font-bold text-white">AgenticQA</span>
-                    </div>
-                    <p class="text-sm text-[#8b949e] mb-4">Intelligence In Testing</p>
-                    <p class="text-xs text-[#6e7681] mb-4">Building production-ready AI test automation systems</p>
-                    <div class="flex gap-3">
-                        <a href="https://www.youtube.com/@AgenticQA" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/ganesan-sivaraman" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                        </a>
-                        <a href="https://github.com/E2EINT/genai-qa-automation-pipeline" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        </a>
-                    </div>
-                </div>
-                <!-- Column 2: Platform -->
-                <div>
-                    <h3 class="font-semibold text-white mb-4 text-sm">Platform</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="index.html#projects" class="text-[#8b949e] hover:text-white transition-colors">Projects</a></li>
-                        <li><a href="index.html#bootcamp" class="text-[#8b949e] hover:text-white transition-colors">Bootcamp</a></li>
-                        <li><a href="index.html#exam-prep" class="text-[#8b949e] hover:text-white transition-colors">CatalystAI</a></li>
-                        <li><a href="docs.html" class="text-[#8b949e] hover:text-white transition-colors">Documentation</a></li>
-                    </ul>
-                </div>
-                <!-- Column 3: Resources -->
-                <div>
-                    <h3 class="font-semibold text-white mb-4 text-sm">Resources</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="students.html" class="text-[#8b949e] hover:text-white transition-colors">Students Program</a></li>
-                        <li><a href="support.html" class="text-[#8b949e] hover:text-white transition-colors">Support</a></li>
-                        <li><a href="privacy.html" class="text-[#8b949e] hover:text-white transition-colors">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <!-- Column 4: Company -->
-                <div>
-                    <h3 class="font-semibold text-white mb-4 text-sm">Company</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="index.html#about" class="text-[#8b949e] hover:text-white transition-colors">About</a></li>
-                        <li><a href="index.html#eu-services" class="text-[#8b949e] hover:text-white transition-colors">EU Services</a></li>
-                        <li><a href="index.html#contact" class="text-[#8b949e] hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                <!-- Column 5: Connect -->
-                <div>
-                    <h3 class="font-semibold text-white mb-4 text-sm">Connect</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="https://www.youtube.com/@AgenticQA" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">YouTube</a></li>
-                        <li><a href="https://www.linkedin.com/in/ganesan-sivaraman" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">LinkedIn</a></li>
-                        <li><a href="https://github.com/E2EINT/genai-qa-automation-pipeline" target="_blank" class="text-[#8b949e] hover:text-white transition-colors">GitHub</a></li>
-                        <li><a href="index.html#contact" class="text-[#8b949e] hover:text-white transition-colors">Email</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-[#30363d] mt-8 pt-8 text-center text-sm text-[#8b949e]">
-                © 2026 Agenticqa Technologies LLP. All rights reserved. | <a href="privacy.html" class="text-[#8b949e] hover:text-white transition-colors">Privacy Policy</a>
-            </div>
-        </div>
-    </footer>
+<script src="site.js"></script>
 </body>
 </html>
