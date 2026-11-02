@@ -48,7 +48,7 @@
   } else { els.forEach(function (el) { el.classList.add('visible'); }); }
 
   // Waitlist / contact form: AJAX to formsubmit.co, fall back to mailto
-  var form = document.getElementById('waitlist');
+  var form = document.getElementById('waitlist-form');
   if (form) {
     var status = form.querySelector('.form-status');
     function mailtoFallback() {
