@@ -241,3 +241,6 @@ footer a:hover{color:var(--brand)}
 .pay-note{padding:12px 16px;border-radius:12px;background:var(--accent-soft);font-weight:500;margin:4px 0 0}
 @media (max-width:820px){.pay{grid-template-columns:1fr;padding:24px;gap:28px}.qr-frame{max-width:300px;margin:0 auto}}
 a[href^="tel:"]{white-space:nowrap}
+.success-fig{max-width:460px;margin:24px auto 0;text-align:center}
+.success-fig img{width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.success-fig figcaption{margin-top:12px;color:var(--muted);font-size:.95em}
