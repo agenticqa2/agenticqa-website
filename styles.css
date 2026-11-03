@@ -228,3 +228,16 @@ footer a:hover{color:var(--brand)}
 .values span{color:var(--muted);font-size:.93rem}
 .values b{display:block;color:var(--text);font-size:1rem}
 @media (max-width:820px){.values{grid-template-columns:1fr}.values li+li{border-left:0;border-top:1px solid var(--border)}}
+
+/* Pay & enroll */
+.pay{display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:center;max-width:960px;margin:0 auto;padding:36px;border-radius:24px;background:linear-gradient(var(--surface),var(--surface)) padding-box,linear-gradient(135deg,var(--brand),var(--brand-2)) border-box;border:1.5px solid transparent;box-shadow:var(--shadow)}
+.qr-frame{margin:0;padding:18px;border-radius:20px;background:#fff;border:1px solid var(--border);text-align:center;box-shadow:var(--shadow)}
+.qr-frame img{width:100%;max-width:260px;margin:0 auto;border-radius:12px}
+.qr-frame figcaption{margin-top:10px;font-size:.88rem;font-weight:600;color:#55607a}
+.steps{list-style:none;counter-reset:s;margin:0;padding:0}
+.steps li{counter-increment:s;position:relative;padding:0 0 18px 52px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font:800 1rem var(--display);color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+.steps b{display:block}.steps span{color:var(--muted);font-size:.95rem}
+.pay-note{padding:12px 16px;border-radius:12px;background:var(--accent-soft);font-weight:500;margin:4px 0 0}
+@media (max-width:820px){.pay{grid-template-columns:1fr;padding:24px;gap:28px}.qr-frame{max-width:300px;margin:0 auto}}
+a[href^="tel:"]{white-space:nowrap}
