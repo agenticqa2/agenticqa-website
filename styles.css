@@ -47,7 +47,12 @@ section{padding:96px 0}
 .site-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.6) blur(12px);-webkit-backdrop-filter:saturate(1.6) blur(12px);border-bottom:1px solid var(--border)}
 .site-header .wrap{display:flex;align-items:center;gap:20px;height:68px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:var(--display);font-weight:800;font-size:1.05rem;margin-right:auto}
-.brand img{width:34px;height:34px;object-fit:contain}
+.brand img{display:block;height:40px;width:auto;object-fit:contain}
+.brand .logo-d{display:none}
+[data-theme="dark"] .brand .logo-l{display:none}[data-theme="dark"] .brand .logo-d{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .brand .logo-l{display:none}:root:not([data-theme="light"]) .brand .logo-d{display:block}}
+.brand-foot img{height:58px}
+.brand-tag{margin:8px 0 0;font:600 .78rem var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .brand small{display:block;font:500 .7rem var(--font);color:var(--muted);letter-spacing:.02em}
 .site-nav{display:flex;gap:4px;align-items:center}
 .site-nav a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem;padding:8px 12px;border-radius:10px}
