@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.agenticqa.io/</loc><lastmod>2026-11-03</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.agenticqa.io/students.html</loc><lastmod>2026-11-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.agenticqa.io/docs.html</loc><lastmod>2026-11-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.agenticqa.io/support.html</loc><lastmod>2026-11-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.agenticqa.io/catalyst.html</loc><lastmod>2026-11-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://www.agenticqa.io/privacy.html</loc><lastmod>2026-11-03</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+<url><loc>https://agenticqa.io/</loc></url><url><loc>https://agenticqa.io/privacy.html</loc></url>
+<url><loc>https://ai.agenticqa.io/</loc></url><url><loc>https://aiengineering.agenticqa.io/</loc></url>
+<url><loc>https://neetjee.agenticqa.io/</loc></url><url><loc>https://playwrightai.agenticqa.io/</loc></url>
 </urlset>

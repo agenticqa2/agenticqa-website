@@ -43,3 +43,17 @@ git push origin redesign-v4 --tags  # Vercel builds a preview URL for the branch
 git checkout main && git merge --ff-only redesign-v4 && git push origin main
 git tag -a v4-modern -m "v4 modern redesign" && git push origin v4-modern
 ```
+
+## Branch `hub-split` (draft, not live) — 2026-11-05
+
+Built from v7 (`a453389`). Intent: split the single site into a company **hub** (agenticqa.io / www) plus four
+subdomain sites served from ONE Vercel static project via host-based Edge Middleware (`middleware.js`):
+`ai.` (business agents/consulting), `aiengineering.` (LLM/RAG/vector DB/fine-tuning training),
+`neetjee.` (CatalystAI NEET prep), `playwrightai.` (Playwright + AI course). Old v7 pages preserved under `/archive/`.
+To roll back, redeploy `main`/v7 — this branch changes routing for every host.
+
+## hub-split rebuild (2026-11-05)
+- Hub company-first (company > aims/goals/achievements > Ganesan > Moksha > certificates > activities); course language removed from hub.
+- Per-host accents (neural/signal/mint/amber/violet), brand fonts/colours per checklist.
+- admin@agenticqa.io public (footer/contact); ganesh@agenticqa.io on founder section.
+- v7 FAQ relocated to playwrightai; all v7 files preserved in archive/v7/.
