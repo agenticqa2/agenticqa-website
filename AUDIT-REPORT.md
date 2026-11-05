@@ -1,6 +1,7 @@
 # Audit report — hub-split
 
-Generated 2026-11-05 12:44 IST. **== RESULT: 73 pass, 0 fail**
+Generated 2026-11-05 12:51 IST. **== RESULT: 84 pass, 0 fail**
+
 ```
 == 1. Structure
 PASS  exists hub/index.html
@@ -29,11 +30,14 @@ PASS  middleware playwrightai.agenticqa.io/ -> /sites/playwrightai/index.html
 PASS  middleware localhost:3000/ -> /hub/index.html
 PASS  middleware localhost:3000/?site=neetjee -> /sites/neetjee/index.html
 PASS  middleware x-git-hub.vercel.app/?site=ai -> /sites/ai/index.html
+PASS  middleware agenticqa.io/?site=ai -> /sites/ai/index.html
+PASS  middleware ai.agenticqa.io/?site=playwrightai -> /sites/playwrightai/index.html
+PASS  middleware preview.vercel.app/ -> /hub/index.html
 PASS  middleware passes /assets/ through
-PASS  hub card -> https://ai.agenticqa.io/
-PASS  hub card -> https://aiengineering.agenticqa.io/
-PASS  hub card -> https://neetjee.agenticqa.io/
-PASS  hub card -> https://playwrightai.agenticqa.io/
+PASS  hub card preview link /?site=ai
+PASS  hub card preview link /?site=aiengineering
+PASS  hub card preview link /?site=neetjee
+PASS  hub card preview link /?site=playwrightai
 == 2. Link check (local href/src)
 PASS  no broken local href/src
 == 3. Content audit
@@ -68,6 +72,18 @@ PASS  accent mint on sites/aiengineering/index.html
 PASS  accent amber on sites/neetjee/index.html
 PASS  accent violet on sites/playwrightai/index.html
 PASS  no neatjee misspelling
+== 3b. Subdomain content boundaries
+PASS  ai has no course/syllabus/enrol/waitlist/batch/beginner/become a confident
+PASS  ai has no enquiry waitlist-form id
+PASS  ai uses enquiry-form
+PASS  ai h1 is business agents
+PASS  playwrightai has become a confident
+PASS  playwrightai exclusive vs ai
+PASS  aiengineering has no become a confident
+PASS  aiengineering h1 LLMs/RAG
+PASS  neetjee has no become a confident
+PASS  neetjee h1 NEET preparation
+PASS  no neatjee misspelling anywhere
 == 4. Local smoke (python3 -m http.server)
 PASS  HTTP 200 / (200)
 PASS  HTTP 200 /hub/ (200)
@@ -80,5 +96,5 @@ PASS  HTTP 200 /assets/css/styles.css (200)
 PASS  HTTP 200 /assets/js/site.js (200)
 PASS  HTTP 200 /assets/brand/logo.svg (200)
 PASS  HTTP 200 /assets/img/ganesh.webp (200)
-== RESULT: 73 pass, 0 fail
+== RESULT: 84 pass, 0 fail
 ```

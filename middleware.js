@@ -17,9 +17,11 @@ export const config = { matcher: ['/((?!assets/|_vercel|favicon\\.ico).*)'] };
 
 export function resolvePrefix(host, siteParam) {
   const h = (host || '').toLowerCase().split(':')[0];
-  if (HOST_MAP[h]) return HOST_MAP[h];
-  // localhost, *.vercel.app previews, anything else → hub (optionally overridden by ?site=)
+  // ?site= wins first so hub activity cards (/?site=ai) work on *.vercel.app previews
+  // without bouncing reviewers to production subdomain hosts (still on live v7 until cutover).
   if (siteParam && SITE_PARAM[siteParam]) return SITE_PARAM[siteParam];
+  if (HOST_MAP[h]) return HOST_MAP[h];
+  // localhost / preview without ?site= → hub
   return '/hub';
 }
 

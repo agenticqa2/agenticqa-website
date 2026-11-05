@@ -38,6 +38,19 @@
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 
+  // On real agenticqa.io hosts, upgrade preview-friendly /?site= links to production subdomains.
+  // On *.vercel.app / localhost, leave /?site= so preview review does not bounce to live production.
+  (function () {
+    var host = (location.hostname || '').toLowerCase();
+    var isPreview = /\.vercel\.app$/.test(host) || host === 'localhost' || host === '127.0.0.1';
+    if (isPreview) return;
+    if (!/(^|\.)agenticqa\.io$/.test(host)) return;
+    document.querySelectorAll('[data-prod-href]').forEach(function (a) {
+      var prod = a.getAttribute('data-prod-href');
+      if (prod) a.setAttribute('href', prod);
+    });
+  })();
+
   // Scroll reveal
   var els = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
@@ -51,12 +64,12 @@
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('[data-interest="demo"]');
     var sel = document.getElementById('f-interest');
-    if (a && sel) { sel.value = 'Free demo class (30 min)'; var subj = document.querySelector('#waitlist-form [name=_subject]'); if (subj) subj.value = 'Free demo class request'; }
+    if (a && sel) { sel.value = 'Free demo class (30 min)'; var subj = document.querySelector('#waitlist-form [name=_subject], #enquiry-form [name=_subject], form.form[data-ajax] [name=_subject]'); if (subj) subj.value = 'Free demo class request'; }
   });
   if (location.hash === '#contact' && document.getElementById('f-interest')) document.getElementById('f-interest').value = 'Free demo class (30 min)';
 
   // Waitlist / contact form: AJAX to formsubmit.co, fall back to mailto
-  var form = document.getElementById('waitlist-form');
+  var form = document.getElementById('waitlist-form') || document.getElementById('enquiry-form') || document.querySelector('form.form[data-ajax]');
   if (form) {
     var status = form.querySelector('.form-status');
     function mailtoFallback() {
@@ -76,7 +89,9 @@
         .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
         .then(function () {
           status.className = 'form-status ok';
-          status.textContent = 'Thanks! You are on the list — we will email you within 1–2 working days.';
+          status.textContent = form.id === 'enquiry-form'
+            ? 'Thanks! We will email you within 1–2 working days.'
+            : 'Thanks! You are on the list — we will email you within 1–2 working days.';
           form.reset();
         })
         .catch(function () {

@@ -16,18 +16,23 @@ cat > /tmp/mwtest/t.mjs <<'JS'
 import mw from './middleware.mjs';
 const cases=[["agenticqa.io","/","/hub/index.html"],["www.agenticqa.io","/privacy.html","/hub/privacy.html"],["ai.agenticqa.io","/","/sites/ai/index.html"],
 ["aiengineering.agenticqa.io","/","/sites/aiengineering/index.html"],["neetjee.agenticqa.io","/","/sites/neetjee/index.html"],["playwrightai.agenticqa.io","/","/sites/playwrightai/index.html"],
-["localhost:3000","/","/hub/index.html"],["localhost:3000","/?site=neetjee","/sites/neetjee/index.html"],["x-git-hub.vercel.app","/?site=ai","/sites/ai/index.html"]];
+["localhost:3000","/","/hub/index.html"],["localhost:3000","/?site=neetjee","/sites/neetjee/index.html"],["x-git-hub.vercel.app","/?site=ai","/sites/ai/index.html"],
+["agenticqa.io","/?site=ai","/sites/ai/index.html"],["ai.agenticqa.io","/?site=playwrightai","/sites/playwrightai/index.html"],["preview.vercel.app","/","/hub/index.html"]];
 let f=0;for(const[h,p,exp]of cases){const r=mw({url:"https://"+h+p,headers:new Map([["host",h]])});const got=r.rewrite&&new URL(r.rewrite).pathname;
 console.log((got===exp?"PASS":"FAIL")+"  middleware "+h+p+" -> "+got);if(got!==exp)f++}
 const a=mw({url:"https://ai.agenticqa.io/assets/css/styles.css",headers:new Map([["host","ai.agenticqa.io"]])});console.log((a.next?"PASS":"FAIL")+"  middleware passes /assets/ through");if(!a.next)f++;
 process.exit(f?1:0);
 JS
 if out=$(cd /tmp/mwtest && node t.mjs); then echo "$out"; PASS=$((PASS+10)); else echo "$out"; FAIL=$((FAIL+1)); fi
-for s in ai aiengineering neetjee playwrightai; do chk "hub card -> https://$s.agenticqa.io/" "grep -q 'class=\"hub-card reveal\" href=\"https://$s.agenticqa.io/\"' hub/index.html"; done
+for s in ai aiengineering neetjee playwrightai; do
+  chk "hub card preview link /?site=$s" "grep -q 'class=\"hub-card reveal\" href=\"/?site=$s\" data-prod-href=\"https://$s.agenticqa.io/\"' hub/index.html"
+done
 echo "== 2. Link check (local href/src)"
 broken=0
 for f in $PAGES; do
   for u in $(grep -o '\(href\|src\)="[^"#]*' $f | sed 's/^[a-z]*="//' | grep -v '^https\?:\|^mailto:\|^tel:\|^$'); do
+    # Middleware preview routes (/?site=ai) are not filesystem paths — skip them
+    case $u in '/?site='*) continue;; esac
     case $u in /*) t=".${u}";; *) t="$(dirname $f)/$u";; esac
     [ -d "$t" ] && t="$t/index.html"
     [ -e "$t" ] || { echo "   broken: $f -> $u"; broken=1; }
@@ -52,6 +57,24 @@ chk "hub visible text has no course/syllabus/enrol/waitlist/batch/beginner/becom
 chk "hub section order company>founder>cofounder>certificates>activities" "python3 -c \"import re,sys;s=open('hub/index.html').read();i=[s.index('id=\\\"'+k+'\\\"') for k in ['company','about','founder','cofounder','certificates','activities']];sys.exit(0 if i==sorted(i) else 1)\""
 for a in "hub/index.html neural" "sites/ai/index.html signal" "sites/aiengineering/index.html mint" "sites/neetjee/index.html amber" "sites/playwrightai/index.html violet"; do set -- $a; chk "accent $2 on $1" "grep -q 'data-accent=\"$2\"' $1"; done
 chk "no neatjee misspelling" "! grep -rni neatjee hub sites tools middleware.js"
+
+echo "== 3b. Subdomain content boundaries"
+# ai = business only (no course/waitlist/batch/beginner/become a confident)
+chk "ai has no course/syllabus/enrol/waitlist/batch/beginner/become a confident" "! sed 's/<[^>]*>/ /g' sites/ai/index.html | grep -niE 'course|syllabus|enrol|waitlist|batch|beginner|become a confident'"
+chk "ai has no enquiry waitlist-form id" "! grep -q 'id=\"waitlist' sites/ai/index.html"
+chk "ai uses enquiry-form" "grep -q 'id=\"enquiry-form\"' sites/ai/index.html"
+chk "ai h1 is business agents" "grep -q 'Custom AI agents that' sites/ai/index.html"
+# playwrightai exclusive course home
+chk "playwrightai has become a confident" "grep -q 'Become a confident' sites/playwrightai/index.html"
+chk "playwrightai exclusive vs ai" "! cmp -s sites/ai/index.html sites/playwrightai/index.html"
+# aiengineering not a copy of playwright course
+chk "aiengineering has no become a confident" "! grep -qi 'become a confident' sites/aiengineering/index.html"
+chk "aiengineering h1 LLMs/RAG" "grep -q 'LLMs, RAG' sites/aiengineering/index.html"
+# neetjee own content + spelling
+chk "neetjee has no become a confident" "! grep -qi 'become a confident' sites/neetjee/index.html"
+chk "neetjee h1 NEET preparation" "grep -qi 'NEET preparation' sites/neetjee/index.html"
+chk "no neatjee misspelling anywhere" "! grep -ri 'neatjee' hub sites middleware.js tools/build.py --include='*.html' --include='*.js' --include='*.py'"
+
 echo "== 4. Local smoke (python3 -m http.server)"
 python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 & SP=$!; sleep 2
 for u in / /hub/ /hub/privacy.html /sites/ai/ /sites/aiengineering/ /sites/neetjee/ /sites/playwrightai/ /assets/css/styles.css /assets/js/site.js /assets/brand/logo.svg /assets/img/ganesh.webp; do

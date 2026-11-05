@@ -63,7 +63,7 @@ def page(title, desc, canonical, nav, cta, body, tag="", accent="neural", cta_hr
         <a class="brand brand-foot" href="{HUB}/" aria-label="Agentic QA Technologies home"><img class="logo-l" src="/assets/brand/logo.svg" alt="Agentic QA Technologies" width="220" height="58" loading="lazy"><img class="logo-d" src="/assets/brand/logo-dark.svg" alt="" aria-hidden="true" width="220" height="58" loading="lazy"></a>
         <p class="brand-tag">AI automation, AI engineering and learning</p>
       </div>
-      <div><h4>Sites</h4><ul><li><a href="{HUB}/">Agentic QA home</a></li><li><a href="{SITES['ai'][0]}/">AI for Business</a></li><li><a href="{SITES['aiengineering'][0]}/">AI Engineering</a></li><li><a href="{SITES['neetjee'][0]}/">NEET Prep</a></li><li><a href="{SITES['playwrightai'][0]}/">Playwright + AI</a></li></ul></div>
+      <div><h4>Sites</h4><ul><li><a href="{HUB}/" data-prod-href="{HUB}/">Agentic QA home</a></li><li><a href="/?site=ai" data-prod-href="{SITES['ai'][0]}/" data-site="ai">AI for Business</a></li><li><a href="/?site=aiengineering" data-prod-href="{SITES['aiengineering'][0]}/" data-site="aiengineering">AI Engineering</a></li><li><a href="/?site=neetjee" data-prod-href="{SITES['neetjee'][0]}/" data-site="neetjee">NEET Prep</a></li><li><a href="/?site=playwrightai" data-prod-href="{SITES['playwrightai'][0]}/" data-site="playwrightai">Playwright + AI</a></li></ul></div>
       <div><h4>Company</h4><ul><li><a href="{HUB}/#about">About</a></li><li><a href="{HUB}/privacy.html">Privacy</a></li></ul></div>
       <div><h4>Connect</h4><ul><li><a href="tel:+919663434422">+91 96634 34422</a></li><li><a href="https://wa.me/919663434422" rel="noopener">WhatsApp</a></li><li><a href="mailto:admin@agenticqa.io">admin@agenticqa.io</a></li><li><a href="https://www.youtube.com/@AgenticQA" rel="noopener">YouTube @AgenticQA</a></li><li><a href="https://www.linkedin.com/in/ganesan-sivaraman/" rel="noopener">LinkedIn</a></li></ul></div>
     </div>
@@ -91,7 +91,7 @@ def contact(eyebrow, heading, text, subject, interests, profiles, button, sid="w
         <li><a href="https://www.youtube.com/@AgenticQA" rel="noopener">▶ YouTube — @AgenticQA</a></li>
       </ul>
     </div>
-    <form class="form" id="waitlist-form" action="https://formsubmit.co/ganesh@agenticqa.io" data-ajax="https://formsubmit.co/ajax/ganesh@agenticqa.io" method="POST" novalidate>
+    <form class="form" id="{sid}-form" action="https://formsubmit.co/ganesh@agenticqa.io" data-ajax="https://formsubmit.co/ajax/ganesh@agenticqa.io" method="POST" novalidate>
       <input type="hidden" name="_subject" value="{subject}">
       <input type="hidden" name="_template" value="table">
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -136,7 +136,7 @@ hub_cards = [
  ("playwrightai", "Playwright + AI", "Playwright test automation with AI-assisted testing — tutorials, hands-on labs and Playwright MCP, for testers and teams moving into AI-era automation."),
 ]
 cardhtml = '<div class="hub-cards">' + "".join(
- f'<a class="hub-card reveal" href="{SITES[k][0]}/"><span class="host">{SITES[k][0][8:]}</span><h3>{t}</h3><p>{d}</p><span class="go">Open site →</span></a>' for k, t, d in hub_cards) + "</div>"
+ f'<a class="hub-card reveal" href="/?site={k}" data-prod-href="{SITES[k][0]}/" data-site="{k}"><span class="host">{SITES[k][0][8:]}</span><h3>{t}</h3><p>{d}</p><span class="go">Open site →</span></a>' for k, t, d in hub_cards) + "</div>"
 hub_body = f'''<section class="hero" id="company">
   <div class="wrap">
     <span class="pill"><span class="dot" aria-hidden="true"></span>Agentic QA Technologies LLP</span>
@@ -233,7 +233,7 @@ ai_body = f'''<section class="hero"><div class="wrap">
     <li><span>Step 1</span><h3>Discovery call</h3><p>We understand your goals, systems and constraints.</p></li>
     <li><span>Step 2</span><h3>Scoping</h3><p>A written proposal with deliverables, timeline and success measures.</p></li>
     <li><span>Step 3</span><h3>Build &amp; evaluate</h3><p>Iterative delivery with demos and an evaluation suite.</p></li>
-    <li class="cap"><span>Step 4</span><h3>Handover</h3><p>Documentation, training and optional ongoing support.</p></li>
+    <li class="cap"><span>Step 4</span><h3>Handover</h3><p>Documentation, enablement and optional ongoing support.</p></li>
   </ol>
 </div></section>
 <section id="pricing" class="alt"><div class="wrap">
@@ -241,7 +241,7 @@ ai_body = f'''<section class="hero"><div class="wrap">
   <div class="cta-row"><a class="btn btn-primary" href="#contact">Request a pricing call</a></div>
 </div></section>
 ''' + contact("Enquiries", "Tell us what you want to automate.", "Share a short description of your workflow and we will set up a call. Fees are discussed on the call.", "AI for Business enquiry",
-  ["Custom AI agent", "Automation consulting", "AI-native QA", "LLM evaluation", "Pricing call", "Other"], ["Founder / leadership", "Engineering lead", "Product / operations", "Other"], "Request a call")
+  ["Custom AI agent", "Automation consulting", "AI-native QA", "LLM evaluation", "Pricing call", "Other"], ["Founder / leadership", "Engineering lead", "Product / operations", "Other"], "Request a call", "enquiry")
 write("sites/ai/index.html", page("AI for Business — Custom AI agents & automation consulting | Agentic QA", "Custom AI agents, automation consulting and AI-native QA for companies. Fees discussed on a call.", SITES['ai'][0] + "/", [("#services", "Services"), ("#process", "Process"), ("#pricing", "Pricing"), (HUB + "/", "Agentic QA home")], "Book a call", ai_body, "Business", "signal"))
 
 # ---------------- AI Engineering ----------------
