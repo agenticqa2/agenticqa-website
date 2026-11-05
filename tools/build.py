@@ -116,7 +116,15 @@ def head(eyebrow, h2, lede=""):
     l = f'<p class="lede">{lede}</p>' if lede else ""
     return f'<div class="section-head"><span class="eyebrow">{eyebrow}</span><h2>{h2}</h2>{l}</div>'
 
+import random as _r
+def _art(seed):
+    r=_r.Random(seed); pts=[(r.randint(40,520),r.randint(30,420)) for _ in range(16)]
+    ln="".join(f'<line x1="{a[0]}" y1="{a[1]}" x2="{c[0]}" y2="{c[1]}"/>' for i,a in enumerate(pts) for c in pts[i+1:i+3])
+    cs="".join(f'<circle cx="{x}" cy="{y}" r="{r.choice([3,4,5,7])}"/>' for x,y in pts)
+    return f'<svg class="ai-art" viewBox="0 0 560 450" aria-hidden="true" focusable="false"><g>{ln}</g><g>{cs}</g></svg>'
 def write(rel, html):
+    import re as _re
+    html=_re.sub(r'(<section class="hero"[^>]*>)', lambda m: m.group(1)+_art(rel), html, count=1)
     p = os.path.join(ROOT, rel); os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w").write(html)
 

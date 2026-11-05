@@ -1,7 +1,6 @@
 # Audit report — hub-split
 
-Generated 2026-11-05 12:42 IST by `bash tests/run-tests.sh`. **Result: 73 pass, 0 fail**
-
+Generated 2026-11-05 12:44 IST. **== RESULT: 73 pass, 0 fail**
 ```
 == 1. Structure
 PASS  exists hub/index.html
