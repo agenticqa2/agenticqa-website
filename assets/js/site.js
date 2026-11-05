@@ -35,6 +35,9 @@
     });
   }
 
+  var hdr = document.querySelector('.site-header');
+  if (hdr) { var onS = function () { hdr.classList.toggle('scrolled', window.scrollY > 8); }; onS(); addEventListener('scroll', onS, { passive: true }); }
+
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 
@@ -57,7 +60,7 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
     }, { threshold: 0.08 });
-    els.forEach(function (el) { io.observe(el); });
+    els.forEach(function (el) { var k = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0; el.style.transitionDelay = (k % 4) * 80 + 'ms'; io.observe(el); });
   } else { els.forEach(function (el) { el.classList.add('visible'); }); }
 
   // Demo CTA: preselect interest in the form
