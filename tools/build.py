@@ -91,7 +91,7 @@ def contact(eyebrow, heading, text, subject, interests, profiles, button, sid="w
         <li><a href="https://www.youtube.com/@AgenticQA" rel="noopener">▶ YouTube — @AgenticQA</a></li>
       </ul>
     </div>
-    <form class="form" id="{sid}-form" action="https://formsubmit.co/ganesh@agenticqa.io" data-ajax="https://formsubmit.co/ajax/ganesh@agenticqa.io" method="POST" novalidate>
+    <form class="form" id="{sid}-form" action="https://formsubmit.co/admin@agenticqa.io" data-ajax="https://formsubmit.co/ajax/admin@agenticqa.io" method="POST" novalidate>
       <input type="hidden" name="_subject" value="{subject}">
       <input type="hidden" name="_template" value="table">
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -175,7 +175,7 @@ hub_body = f'''<section class="hero" id="company">
       <p class="muted"><strong>AI QA Architect · MCP Servers · LLM &amp; Agent Evaluation · RAG · Playwright + AI</strong><br>Founder, Agentic QA Technologies · Bengaluru</p>
       <p>Ganesh architects AI-native QA: MCP servers, LLM and agent evaluation with DeepEval, Ragas and LangSmith, RAG systems, and Playwright + AI frameworks in TypeScript. His path runs from manual testing to Playwright automation, QA management and AI automation architecture.</p>
       <p>At Symphony Talent he led QA, built a Playwright framework that lifted automated coverage by 80%, set up CI/CD for testing and worked on SkillCheck. At Agentic QA Technologies he leads consulting and delivery and teaches the programmes personally.</p>
-      <p class="muted">Open to: AI QA Architect / SDET Lead roles, MCP and AI evaluation freelance work, consulting, and corporate training.</p>
+      <p class="muted">Open to: AI QA Architect / SDET Lead roles, MCP and AI evaluation freelance work, consulting, and corporate enablement engagements.</p>
       <p class="muted" style="font-size:.95rem">MCA, Bharathidasan University · B.Sc. Mathematics, University of Madras</p>
       <div class="cta-row" style="margin-top:16px"><a class="btn btn-primary btn-sm" href="mailto:ganesh@agenticqa.io?subject=Hello%20Ganesh">✉ ganesh@agenticqa.io</a><a class="btn btn-ghost btn-sm" href="https://www.linkedin.com/in/ganesan-sivaraman/" rel="noopener">LinkedIn profile</a><a class="btn btn-ghost btn-sm" href="https://www.youtube.com/@AgenticQA" rel="noopener">▶ YouTube @AgenticQA</a></div>
     </div>
@@ -192,7 +192,28 @@ hub_body = f'''<section class="hero" id="company">
 </div></section>
 <section id="certificates"><div class="wrap">
   {head("Certificates", "Industry Internship Completion Certificate.", "Graduates of our programmes receive an Industry Internship Completion Certificate from Agentic QA Technologies. It records that the learner completed the programme's hands-on work and capstone project under our team's guidance. It is issued by the company itself, not by an external accreditation body.")}
-  <figure class="success-fig"><img src="/assets/img/certificate-handover.webp" alt="Sivanesan P receiving his Industry Internship Completion Certificate from Ganesan Sivaraman" loading="lazy"><figcaption class="muted">Sivanesan P receiving his Industry Internship Completion Certificate from Ganesan Sivaraman.</figcaption></figure>
+  <div class="cert-layout">
+    <div class="cert-copy">
+      <article class="card">
+        <h3>What it means</h3>
+        <p class="muted">Proof of internship-style delivery work with the company: projects, reviews and a defined scope — not a government or university diploma.</p>
+      </article>
+      <article class="card">
+        <h3>Named graduates</h3>
+        <p class="muted">Names on certificates match programme completion records. Graduate featured on this site:</p>
+        <ul class="cert-names"><li><strong>Sivanesan P</strong> — programme graduate (handover photo below)</li></ul>
+      </article>
+      <article class="card">
+        <h3>Issued by</h3>
+        <p class="muted">Agentic QA Technologies LLP (LLPIN ACV-7177), Puducherry — the same team that runs the work.</p>
+      </article>
+    </div>
+    <figure class="cert-sample">
+      <img src="/assets/img/certificate-sample.svg" alt="Sample Industry Internship Completion Certificate layout from Agentic QA Technologies" width="840" height="594" loading="lazy">
+      <figcaption class="muted">Sample certificate layout — placeholder name only; issued certificates carry the graduate's real name.</figcaption>
+    </figure>
+  </div>
+  <figure class="success-fig" style="margin-top:28px"><img src="/assets/img/certificate-handover.webp" alt="Sivanesan P receiving his Industry Internship Completion Certificate from Ganesan Sivaraman" loading="lazy"><figcaption class="muted">Sivanesan P receiving his Industry Internship Completion Certificate from Ganesan Sivaraman.</figcaption></figure>
 </div></section>
 <section id="activities" class="alt">
   <div class="wrap">
@@ -225,7 +246,7 @@ ai_body = f'''<section class="hero"><div class="wrap">
           ("AI-native QA", "Playwright and API test automation with AI-assisted triage, self-healing locators and CI/CD integration."),
           ("LLM & agent evaluation", "Test suites that measure accuracy, safety and regressions in your LLM features before they reach users."),
           ("RAG over your documents", "Retrieval-augmented assistants that answer from your own knowledge base, with sources shown."),
-          ("Team enablement", "Hands-on workshops so your engineers can maintain and extend what we build.")])}
+          ("Team enablement", "Hands-on enablement sessions so your engineers can maintain and extend what we ship.")])}
 </div></section>
 <section id="process"><div class="wrap">
   {head("How we work", "From first call to production.")}
@@ -248,60 +269,82 @@ write("sites/ai/index.html", page("AI for Business — Custom AI agents & automa
 ae_body = f'''<section class="hero"><div class="wrap">
   <span class="pill"><span class="dot" aria-hidden="true"></span>AI Engineering · aiengineering.agenticqa.io</span>
   <h1>Build real systems with <span class="grad">LLMs, RAG and vector databases.</span></h1>
-  <p class="lede">A hands-on AI engineering track for developers and testers: from your first LLM call to evaluated, production-style RAG applications and fine-tuned models.</p>
+  <p class="lede">The technical builder track for developers and SDETs who want production-style LLM systems — retrieval pipelines, agents over MCP, evaluation harnesses and parameter-efficient fine-tuning — not a Playwright testing syllabus.</p>
   <div class="cta-row"><a class="btn btn-primary" href="#contact">Join the waitlist</a><a class="btn btn-ghost" href="#curriculum">See the curriculum</a></div>
 </div></section>
 <section id="curriculum" class="alt"><div class="wrap">
-  {head("Curriculum", "What you will learn.")}
-  {cards([("Building with LLMs", "Prompt design, structured output, tool calling and streaming with modern LLM APIs."),
-          ("Retrieval-augmented generation", "Chunking, embeddings, retrieval strategies, reranking and citing sources."),
-          ("Vector databases", "Index design and querying with ChromaDB and other vector stores; trade-offs at scale."),
-          ("Agents & MCP", "Multi-step agents, MCP server development and safe tool use."),
-          ("Evaluation", "LLM and agent evaluation: test sets, metrics, regression checks and red-teaming basics."),
-          ("Fine-tuning", "When to fine-tune vs. prompt vs. RAG; dataset preparation and parameter-efficient fine-tuning.")])}
+  {head("Curriculum", "Technical depth across the LLM stack.", "Eight focus areas. Each ends with a working notebook or repo you can keep.")}
+  {cards([("LLM API craft", "Chat and completion APIs, system prompts, structured JSON output, tool calling, streaming and token budgeting."),
+          ("Prompt systems", "Few-shot patterns, chain-of-thought where it helps, guardrails, and failure modes when prompts drift."),
+          ("Embeddings &amp; chunking", "Embedding models, chunk strategies, overlap, metadata filters and hybrid lexical + vector search."),
+          ("RAG pipelines", "Ingest → index → retrieve → rerank → generate with citations; hallucination checks before answers ship."),
+          ("Vector databases", "ChromaDB and comparable stores: collections, indexing choices, freshness and cost at modest scale."),
+          ("Agents &amp; MCP", "Multi-step agents, MCP server design, tool allowlists and human checkpoints for risky actions."),
+          ("Evaluation harnesses", "DeepEval, Ragas and LangSmith-style suites: golden sets, regression gates and red-team probes."),
+          ("Fine-tuning choices", "When to fine-tune vs prompt vs RAG; dataset prep and LoRA / PEFT trade-offs.")], "g2")}
 </div></section>
-<section id="projects"><div class="wrap">
-  {head("Projects", "Real AI projects, not toy demos.", "Learners work on in-house projects like these.")}
+<section id="stack"><div class="wrap">
+  {head("Stack we practise", "Tools you will touch on the builder track.")}
+  <ul class="checklist">
+    <li>Python + TypeScript clients for major LLM APIs</li>
+    <li>ChromaDB (and comparable vector stores) for retrieval labs</li>
+    <li>MCP servers as the bridge between agents and real tools</li>
+    <li>DeepEval / Ragas-style metrics wired into a small CI gate</li>
+    <li>In-house apps (ResumeGenie, StudyMate, FeedbackPulse, MeetingMind) as reference implementations</li>
+  </ul>
+</div></section>
+<section id="projects" class="alt"><div class="wrap">
+  {head("Projects", "Real AI projects, not toy demos.", "Builders work through in-house projects like these.")}
   <div class="grid g2">
-    <article class="card project reveal"><img src="/assets/img/ResumeGenieAI.webp" alt="ResumeGenie AI dashboard" width="1200" height="657" loading="lazy"><div class="body"><span class="tag">RAG · LLM</span><h3>ResumeGenie AI</h3><p>Resume analysis and improvement suggestions powered by LLM feedback.</p></div></article>
-    <article class="card project reveal"><img src="/assets/img/StudyMateAI.webp" alt="StudyMate AI interface" width="1200" height="653" loading="lazy"><div class="body"><span class="tag">RAG · ChromaDB</span><h3>StudyMate AI</h3><p>Ask questions over large PDFs with a retrieval-augmented study assistant.</p></div></article>
-    <article class="card project reveal"><img src="/assets/img/FeedBack_Pulse.webp" alt="FeedbackPulse sentiment dashboard" width="1200" height="664" loading="lazy"><div class="body"><span class="tag">NLP · Sentiment</span><h3>FeedbackPulse AI</h3><p>Batch sentiment analysis of customer reviews for product teams.</p></div></article>
-    <article class="card project reveal"><img src="/assets/img/MeetingMind_AI_.webp" alt="MeetingMind AI screen" width="1200" height="657" loading="lazy"><div class="body"><span class="tag">LLM · Summaries</span><h3>MeetingMind AI</h3><p>AI meeting assistant project.</p></div></article>
+    <article class="card project reveal"><img src="/assets/img/ResumeGenieAI.webp" alt="ResumeGenie AI dashboard" width="1200" height="657" loading="lazy"><div class="body"><span class="tag">RAG · LLM</span><h3>ResumeGenie AI</h3><p>Resume analysis and improvement suggestions powered by LLM feedback with structured critique outputs.</p></div></article>
+    <article class="card project reveal"><img src="/assets/img/StudyMateAI.webp" alt="StudyMate AI interface" width="1200" height="653" loading="lazy"><div class="body"><span class="tag">RAG · ChromaDB</span><h3>StudyMate AI</h3><p>Ask questions over large PDFs with a retrieval-augmented study assistant and source citations.</p></div></article>
+    <article class="card project reveal"><img src="/assets/img/FeedBack_Pulse.webp" alt="FeedbackPulse sentiment dashboard" width="1200" height="664" loading="lazy"><div class="body"><span class="tag">NLP · Sentiment</span><h3>FeedbackPulse AI</h3><p>Batch sentiment analysis of customer reviews for product teams, with theme clustering.</p></div></article>
+    <article class="card project reveal"><img src="/assets/img/MeetingMind_AI_.webp" alt="MeetingMind AI screen" width="1200" height="657" loading="lazy"><div class="body"><span class="tag">LLM · Summaries</span><h3>MeetingMind AI</h3><p>Meeting assistant that summarises discussions and extracts action items with owners.</p></div></article>
   </div>
 </div></section>
-<section id="format" class="alt"><div class="wrap">
+<section id="format"><div class="wrap">
   {head("Format", "Live, hands-on, project-driven.")}
-  <ul class="checklist"><li>Live classes with guided hands-on practice in every session</li><li>Taught by Ganesh and Moksha</li><li>Portfolio-ready projects on GitHub</li><li>Fees and batch dates shared on a quick call</li></ul>
+  <ul class="checklist"><li>Live sessions with guided labs every class</li><li>Taught by Ganesh and Moksha</li><li>Portfolio-ready projects on GitHub</li><li>Fees and batch dates shared on a quick call</li></ul>
 </div></section>
 ''' + contact("Next batch", "Join the AI Engineering waitlist.", "We will email batch dates and an invite to a demo session. Fees are shared on a call.", "AI Engineering waitlist",
-  ["Join the waitlist", "Free demo session", "Team / corporate training", "Other"], ["Developer", "Tester / SDET", "Student / fresher", "Company / team"], "Join the waitlist")
-write("sites/aiengineering/index.html", page("AI Engineering — LLMs, RAG, vector databases & fine-tuning | Agentic QA", "Hands-on AI engineering training: LLMs, RAG, vector databases, agents, evaluation and fine-tuning.", SITES['aiengineering'][0] + "/", [("#curriculum", "Curriculum"), ("#projects", "Projects"), ("#format", "Format"), (HUB + "/", "Agentic QA home")], "Join waitlist", ae_body, "Engineering", "mint"))
+  ["Join the waitlist", "Free demo session", "Team / company cohort", "Other"], ["Developer", "Tester / SDET", "Student / fresher", "Company / team"], "Join the waitlist")
+write("sites/aiengineering/index.html", page("AI Engineering — LLMs, RAG, vector databases & fine-tuning | Agentic QA", "Hands-on AI engineering builder track: LLMs, RAG, vector databases, agents, MCP, evaluation and fine-tuning.", SITES['aiengineering'][0] + "/", [("#curriculum", "Curriculum"), ("#stack", "Stack"), ("#projects", "Projects"), ("#format", "Format"), (HUB + "/", "Agentic QA home")], "Join waitlist", ae_body, "Engineering", "mint"))
 
 # ---------------- NEET ----------------
 nj_body = f'''<section class="hero"><div class="wrap">
   <span class="pill"><span class="dot" aria-hidden="true"></span>CatalystAI · neetjee.agenticqa.io</span>
   <h1>NEET preparation with <span class="grad">a plan that adapts to you.</span></h1>
-  <p class="lede">CatalystAI from Agentic QA Technologies combines AI-powered study plans, visual explanations and doubt-solving for NEET aspirants — NCERT-aligned and focused on your weak areas.</p>
+  <p class="lede">CatalystAI on <strong>neetjee</strong>.agenticqa.io combines AI-powered study plans, visual explanations and doubt-solving for NEET aspirants — NCERT-aligned, weak-area focused, with a growing JEE practice track.</p>
   <div class="cta-row"><a class="btn btn-primary" href="#contact">Join the waitlist</a><a class="btn btn-ghost" href="#syllabus">See the syllabus</a></div>
 </div></section>
 <section id="syllabus" class="alt"><div class="wrap">
-  {head("Syllabus", "NCERT-aligned coverage of all three subjects.")}
+  {head("NEET syllabus", "NCERT-aligned coverage of all three subjects.")}
   {cards([("Biology", "Diversity of living organisms, cell biology, plant and human physiology, genetics and evolution, ecology."),
           ("Chemistry", "Physical, organic and inorganic chemistry with concept maps and reaction practice."),
           ("Physics", "Mechanics, thermodynamics, electrostatics, optics and modern physics with step-by-step problem solving.")])}
 </div></section>
-<section id="mocks"><div class="wrap">
+<section id="jee"><div class="wrap">
+  {head("JEE practice track", "Same CatalystAI approach for JEE aspirants.", "Physics, Chemistry and Mathematics practice sets with timed mocks — alongside the core NEET path.")}
+  {cards([("Physics &amp; Chemistry depth", "JEE-style numericals and multi-concept problems layered on the same NCERT foundation."),
+          ("Mathematics", "Algebra, calculus, coordinate geometry and trigonometry drills with step solutions."),
+          ("Timed JEE mocks", "Full-length practice under exam timing, with weak-topic follow-ups.")])}
+</div></section>
+<section id="mocks" class="alt"><div class="wrap">
   {head("Mock tests", "Practise under exam conditions.")}
   {cards([("Chapter tests", "Short tests after each chapter to lock in concepts."), ("Full-length mocks", "Timed mocks in the NEET pattern with detailed solutions."), ("Weak-area analysis", "AI highlights topics to revisit based on your answers.")])}
 </div></section>
-<section id="plans" class="alt"><div class="wrap">
+<section id="plans"><div class="wrap">
   {head("Study plans", "Small steps every day.")}
   <ul class="checklist"><li>Personalised daily and weekly study plans</li><li>Smart flashcards and spaced revision</li><li>Doubt-solving and follow-ups from our student support team</li><li>Progress check-ins you can share with parents</li></ul>
   <blockquote class="quote-banner">&ldquo;Small steps every day add up to big results on exam day.&rdquo;</blockquote>
 </div></section>
-<section id="team"><div class="wrap">
+<section id="team" class="alt"><div class="wrap">
   {head("Team", "The people behind CatalystAI.")}
   <div class="card" style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+    <img src="/assets/img/pradhidhan.webp" alt="Pradhidhan R G" width="96" height="96" loading="lazy" style="width:96px;height:96px;border-radius:50%;object-fit:cover">
+    <div style="flex:1;min-width:240px"><span class="eyebrow">CatalystAI team</span><h3 style="margin:4px 0">Pradhidhan R G</h3><p class="muted" style="margin:0">Pradhidhan R G works with the CatalystAI team on content and learner experience for NEET and JEE practice.</p></div>
+  </div>
+  <div class="card" style="margin-top:24px;display:flex;gap:20px;align-items:center;flex-wrap:wrap">
     <img src="/assets/img/tanushka-grey.webp" alt="Thanushka Mira" width="96" height="96" loading="lazy" style="width:96px;height:96px;border-radius:50%;object-fit:cover">
     <div style="flex:1;min-width:240px"><span class="eyebrow">Student support</span><h3 style="margin:4px 0">Thanushka Mira</h3><p class="muted" style="margin:0">Thanushka Mira looks after student support for CatalystAI, helping NEET learners with study planning, practice sets and day-to-day doubt follow-ups.</p></div>
   </div>
@@ -311,8 +354,8 @@ nj_body = f'''<section class="hero"><div class="wrap">
   </div>
 </div></section>
 ''' + contact("CatalystAI", "Join the NEET Prep waitlist.", "We will share programme details and next steps. Fees are shared on a call.", "CatalystAI NEET enquiry",
-  ["Join the waitlist", "Mock tests", "Study plan", "Other"], ["Student", "Parent", "School / coaching centre"], "Join the waitlist")
-write("sites/neetjee/index.html", page("NEET Prep — CatalystAI syllabus, mock tests & study plans | Agentic QA", "CatalystAI NEET preparation: NCERT-aligned syllabus, mock tests and AI-powered study plans.", SITES['neetjee'][0] + "/", [("#syllabus", "Syllabus"), ("#mocks", "Mock tests"), ("#plans", "Study plans"), ("#team", "Team"), (HUB + "/", "Agentic QA home")], "Join waitlist", nj_body, "NEET", "amber"))
+  ["Join the waitlist", "NEET mocks", "JEE practice", "Study plan", "Other"], ["Student", "Parent", "School / coaching centre"], "Join the waitlist")
+write("sites/neetjee/index.html", page("NEET Prep — CatalystAI on neetjee | Agentic QA", "CatalystAI NEET and JEE preparation on neetjee.agenticqa.io: NCERT-aligned syllabus, mock tests and AI-powered study plans.", SITES['neetjee'][0] + "/", [("#syllabus", "Syllabus"), ("#jee", "JEE"), ("#mocks", "Mock tests"), ("#plans", "Study plans"), ("#team", "Team"), (HUB + "/", "Agentic QA home")], "Join waitlist", nj_body, "NEET", "amber"))
 
 # ---------------- Playwright AI ----------------
 pw_body = f'''<section class="hero">

@@ -356,3 +356,14 @@ html:not([data-theme="light"])[data-accent="violet"]{--brand:#A78BFA;--accent-so
 .card{transition:transform .25s ease,box-shadow .25s ease}
 @media (max-width:860px){.hero .ai-art{opacity:.18;width:90vw;right:-30vw}}
 @media (prefers-reduced-motion:reduce){.ai-art *{animation:none!important}}
+
+
+/* Certificate layout: names/copy left, sample certificate right */
+.cert-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:start;margin-top:8px}
+.cert-copy{display:grid;gap:16px}
+.cert-names{margin:.55rem 0 0;padding-left:1.15rem}
+.cert-names li{margin:.3rem 0}
+.cert-sample{margin:0;padding:14px;border-radius:18px;border:1px solid var(--line,rgba(15,23,42,.1));background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(247,248,252,.98));box-shadow:0 10px 30px rgba(15,23,42,.06)}
+.cert-sample img{width:100%;height:auto;display:block;border-radius:10px;background:#fff}
+.cert-sample figcaption{margin-top:10px;font-size:.9rem;line-height:1.45}
+@media (max-width:900px){.cert-layout{grid-template-columns:1fr}}

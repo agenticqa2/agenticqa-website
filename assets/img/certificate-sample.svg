@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="594" viewBox="0 0 840 594" role="img" aria-label="Sample Industry Internship Completion Certificate">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5B4BFF"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+  <rect width="840" height="594" fill="#FBFBFE"/>
+  <rect x="24" y="24" width="792" height="546" fill="none" stroke="url(#g)" stroke-width="3" rx="8"/>
+  <rect x="40" y="40" width="760" height="514" fill="none" stroke="#E5E7F0" stroke-width="1" rx="4"/>
+  <text x="420" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#5B4BFF" letter-spacing="3">AGENTIC QA TECHNOLOGIES LLP</text>
+  <text x="420" y="160" text-anchor="middle" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#1A1A2E">Industry Internship Completion Certificate</text>
+  <text x="420" y="210" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#6B7280">This certifies that</text>
+  <text x="420" y="265" text-anchor="middle" font-family="Georgia, serif" font-size="32" font-style="italic" fill="#111827">[Graduate name]</text>
+  <line x1="220" y1="280" x2="620" y2="280" stroke="#D1D5DB" stroke-width="1"/>
+  <text x="420" y="330" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#4B5563">has completed the hands-on programme and capstone project</text>
+  <text x="420" y="355" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#4B5563">under the guidance of Agentic QA Technologies.</text>
+  <text x="420" y="400" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#9CA3AF">Sample layout — issued by the company itself, not an external accreditation body</text>
+  <text x="180" y="480" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6B7280">Ganesan Sivaraman</text>
+  <text x="180" y="500" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#9CA3AF">Founder</text>
+  <text x="660" y="480" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6B7280">LLPIN ACV-7177</text>
+  <text x="660" y="500" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#9CA3AF">Puducherry, India</text>
+</svg>
