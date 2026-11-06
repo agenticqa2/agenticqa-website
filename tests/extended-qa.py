@@ -44,8 +44,7 @@ chk('privacy has zero forms', '<form' not in (ROOT/'hub/privacy.html').read_text
 for p in FORM_PAGES:
   f = re.search(r'<form\b[^>]*>.*?</form>', (ROOT/p).read_text(), re.S).group(0)
   ok_form = (
-    'formsubmit.co/admin@agenticqa.io' in f and
-    'formsubmit.co/ajax/admin@agenticqa.io' in f and
+    'action="/api/contact"' in f and 'data-ajax="/api/contact"' in f and
     'name="_honey"' in f and
     'form-status' in f and
     'novalidate' in f and
@@ -119,7 +118,7 @@ for path, subj in EXPECTED_SUBJECTS.items():
   h = (ROOT/path).read_text()
   f = re.search(r'<form\b[^>]*>.*?</form>', h, re.S).group(0)
   chk(f'form _subject {subj!r} on {path}', f'value="{subj}"' in f and 'name="_subject"' in f)
-  chk(f'form no ganesh@ formsubmit on {path}', 'formsubmit.co/ganesh@' not in f and 'formsubmit.co/ajax/ganesh@' not in f)
+  chk(f'form uses /api/contact not formsubmit on {path}', '/api/contact' in f and 'formsubmit.co' not in f)
 # No FormSubmit API key / random secrets in pages or site.js (email-in-URL only)
 blob = '\n'.join((ROOT/p).read_text() for p in FORM_PAGES) + '\n' + js
 chk('no formsubmit API key / _captcha secret patterns in forms/js',

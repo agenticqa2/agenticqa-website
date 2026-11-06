@@ -21,9 +21,10 @@ const cases=[["agenticqa.io","/","/hub/index.html"],["www.agenticqa.io","/privac
 let f=0;for(const[h,p,exp]of cases){const r=mw({url:"https://"+h+p,headers:new Map([["host",h]])});const got=r.rewrite&&new URL(r.rewrite).pathname;
 console.log((got===exp?"PASS":"FAIL")+"  middleware "+h+p+" -> "+got);if(got!==exp)f++}
 const a=mw({url:"https://ai.agenticqa.io/assets/css/styles.css",headers:new Map([["host","ai.agenticqa.io"]])});console.log((a.next?"PASS":"FAIL")+"  middleware passes /assets/ through");if(!a.next)f++;
+const api=mw({url:"https://www.agenticqa.io/api/contact",headers:new Map([["host","www.agenticqa.io"]])});console.log((api.next?"PASS":"FAIL")+"  middleware passes /api/ through");if(!api.next)f++;
 process.exit(f?1:0);
 JS
-if out=$(cd /tmp/mwtest && node t.mjs); then echo "$out"; PASS=$((PASS+10)); else echo "$out"; FAIL=$((FAIL+1)); fi
+if out=$(cd /tmp/mwtest && node t.mjs); then echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); PASS=$((PASS+n)); else echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); f=$(printf '%s\n' "$out" | grep -c '^FAIL' || true); PASS=$((PASS+n)); FAIL=$((FAIL+f)); fi
 for s in ai aiengineering neetjee playwrightai; do
   chk "hub card preview link /?site=$s" "grep -q 'class=\"hub-card reveal\" href=\"/?site=$s\" data-prod-href=\"https://$s.agenticqa.io/\"' hub/index.html"
 done
@@ -94,6 +95,8 @@ for u in / /hub/ /hub/privacy.html /sites/ai/ /sites/aiengineering/ /sites/neetj
 kill $SP 2>/dev/null || true
 echo "== 5a. FormSubmit handler mock"
 if node tests/formsubmit-handler-mock.mjs; then PASS=$((PASS+7)); else FAIL=$((FAIL+1)); fi
+if out=$(node tests/contact-validate.test.mjs); then echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); PASS=$((PASS+n)); else echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); f=$(printf '%s\n' "$out" | grep -c '^FAIL' || true); PASS=$((PASS+n)); FAIL=$((FAIL+f)); fi
+
 echo "== 5. Extended QA (forms / footer / a11y / CSS / routing / JS risk)"
 if out=$(python3 tests/extended-qa.py); then
   echo "$out"
