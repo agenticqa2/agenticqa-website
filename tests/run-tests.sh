@@ -49,6 +49,10 @@ chk "no PAN/TAN/street address" "! grep -nE '\\bPAN\\b|\\bTAN\\b|[A-Z]{5}[0-9]{4
 chk "no payment QR on new sites" "! grep -n 'qr-payment' $PAGES"
 for f in $PAGES; do chk "LLPIN ACV-7177 + JS year in $f" "grep -q 'LLPIN: <span[^>]*>ACV-7177' $f && grep -q 'id=\"year\"' $f && grep -q '/assets/js/site.js' $f"; done
 for f in $PAGES; do chk "a11y (skip link, theme toggle, all img alt) $f" "grep -q 'class=\"skip\"' $f && grep -q theme-toggle $f && ! grep -o '<img[^>]*>' $f | grep -v 'alt='"; done
+chk "ganesh open-to replaced with organisations line" "grep -q 'Works with organisations on AI quality engineering, MCP integrations, AI evaluation and corporate training.' hub/index.html && ! grep -q 'Open to:' hub/index.html"
+chk "ganesh career timeline roles" "grep -q 'AI Automation Architect' hub/index.html && grep -q 'Symphony Talent' hub/index.html && grep -q 'Harman Connected Services' hub/index.html && grep -q 'First Advantage' hub/index.html"
+chk "moksha career timeline roles" "grep -q 'ePy-Tallent Tech solution' hub/index.html && grep -q 'Automation Engineer' hub/index.html && grep -q 'Co-founder, Director' hub/index.html"
+chk "founder career timelines present" "grep -c 'class=\"timeline career\"' hub/index.html | grep -q '^2$'"
 chk "email/phone/YouTube present on hub" "grep -q ganesh@agenticqa.io hub/index.html && grep -q '+91 96634 34422' hub/index.html && grep -q '@AgenticQA' hub/index.html"
 chk "admin@agenticqa.io in footer of every page" "for f in $PAGES; do grep -q 'mailto:admin@agenticqa.io\">admin@agenticqa.io' \$f || exit 1; done"
 chk "ganesh@ only in hub founder section" "grep -q 'mailto:ganesh@agenticqa.io?subject=Hello' hub/index.html && [ \$(grep -l 'mailto:ganesh@' sites/*/index.html | wc -l) -eq 0 ]"

@@ -261,7 +261,13 @@ hub_body = f'''<section class="hero" id="company">
       <p class="f-role"><strong>AI QA Architect · MCP Servers · LLM &amp; Agent Evaluation · RAG · Playwright + AI</strong><br>Founder, Agentic QA Technologies · Bengaluru</p>
       <p>Ganesh architects AI-native QA: MCP servers, LLM and agent evaluation with DeepEval, Ragas and LangSmith, RAG systems, and Playwright + AI frameworks in TypeScript. His path runs from manual testing to Playwright automation, QA management and AI automation architecture.</p>
       <p>At Symphony Talent he led QA, built a Playwright framework that lifted automated coverage by 80%, set up CI/CD for testing and worked on SkillCheck. At Agentic QA Technologies he leads consulting and delivery and teaches the programmes personally.</p>
-      <p class="muted">Open to: AI QA Architect / SDET Lead roles, MCP and AI evaluation freelance work, consulting, and corporate enablement engagements.</p>
+      <p class="muted">Works with organisations on AI quality engineering, MCP integrations, AI evaluation and corporate training.</p>
+      <ul class="timeline career" aria-label="Career path">
+        <li><b>AI Automation Architect</b> — Agentic QA Technologies<span>May 2025–present</span></li>
+        <li><b>QA Manager</b> — Symphony Talent<span>2018–2025</span></li>
+        <li><b>QA Manager</b> — Harman Connected Services<span>2015–2018</span></li>
+        <li><b>Test Lead</b> — First Advantage<span>2006–2015</span></li>
+      </ul>
       <p class="muted f-edu">MCA, Bharathidasan University · B.Sc. Mathematics, University of Madras</p>
       <div class="cta-row f-cta"><a class="btn btn-primary btn-sm" href="mailto:ganesh@agenticqa.io?subject=Hello%20Ganesh">✉ ganesh@agenticqa.io</a><a class="btn btn-ghost btn-sm" href="https://www.linkedin.com/in/ganesan-sivaraman/" rel="noopener">LinkedIn profile</a><a class="btn btn-ghost btn-sm" href="https://www.youtube.com/@AgenticQA" rel="noopener">▶ YouTube @AgenticQA</a></div>
     </article>
@@ -271,6 +277,10 @@ hub_body = f'''<section class="hero" id="company">
       <h2>Moksha Meera</h2>
       <p class="f-role"><strong>Co-founder &amp; Director · Tech Lead · LLM Engineer · AI &amp; Automation Engineering</strong><br>Agentic QA Technologies · Bengaluru</p>
       <p>Moksha is a co-founder and director of Agentic QA Technologies alongside Ganesh, and works full-time in the company. She leads the technical side, building the in-house projects and tooling, and teaches alongside Ganesh in hands-on sessions.</p>
+      <ul class="timeline career" aria-label="Career path">
+        <li><b>Co-founder, Director &amp; Tech Lead</b> — Agentic QA Technologies<span>Jan 2026–present</span></li>
+        <li><b>Automation Engineer</b> — ePy-Tallent Tech solution<span>May 2024–Dec 2025</span></li>
+      </ul>
       <p class="muted f-edu">M.Sc. Computer Science, Pondicherry University · B.Sc. Computer Science, Pondicherry University</p>
     </article>
   </div>
