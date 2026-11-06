@@ -79,7 +79,7 @@
       var d = new FormData(form);
       var body = 'Name: ' + (d.get('name') || '') + '\nEmail: ' + (d.get('email') || '') +
         '\nInterest: ' + (d.get('interest') || '') + '\nI am: ' + (d.get('profile') || '') + '\n\n' + (d.get('message') || '');
-      window.location.href = 'mailto:ganesh@agenticqa.io?subject=' + encodeURIComponent(d.get('_subject') || 'Agentic QA enquiry') +
+      window.location.href = 'mailto:admin@agenticqa.io?subject=' + encodeURIComponent(d.get('_subject') || 'Agentic QA enquiry') +
         '&body=' + encodeURIComponent(body);
     }
     form.addEventListener('submit', function (e) {

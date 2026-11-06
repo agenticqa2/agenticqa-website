@@ -91,5 +91,17 @@ echo "== 4. Local smoke (python3 -m http.server)"
 python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 & SP=$!; sleep 2
 for u in / /hub/ /hub/privacy.html /sites/ai/ /sites/aiengineering/ /sites/neetjee/ /sites/playwrightai/ /assets/css/styles.css /assets/js/site.js /assets/brand/logo.svg /assets/img/ganesh.webp; do
   c=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8765$u); chk "HTTP 200 $u ($c)" "[ $c = 200 ]"; done
-kill $SP
+kill $SP 2>/dev/null || true
+echo "== 5. Extended QA (forms / footer / a11y / CSS / routing / JS risk)"
+if out=$(python3 tests/extended-qa.py); then
+  echo "$out"
+  # Count PASS lines from extended (exclude EXTENDED RESULT)
+  n=$(printf '%s\n' "$out" | grep -c '^PASS  ' || true)
+  PASS=$((PASS+n))
+else
+  echo "$out"
+  n=$(printf '%s\n' "$out" | grep -c '^PASS  ' || true)
+  f=$(printf '%s\n' "$out" | grep -c '^FAIL  ' || true)
+  PASS=$((PASS+n)); FAIL=$((FAIL+f))
+fi
 echo "== RESULT: $PASS pass, $FAIL fail"; [ $FAIL -eq 0 ]
