@@ -81,6 +81,12 @@ chk "neetjee has no become a confident" "! grep -qi 'become a confident' sites/n
 chk "neetjee h1 NEET preparation" "grep -qi 'NEET preparation' sites/neetjee/index.html"
 chk "no neatjee misspelling anywhere" "! grep -ri 'neatjee' hub sites middleware.js tools/build.py --include='*.html' --include='*.js' --include='*.py'"
 
+
+echo "== 3c. Spell / typo regression (common mistakes only)"
+chk "no classic English typos in pages" "! grep -nEi '\\b(teh|recieve|seperate|occured|accomodate|definately|lenght|untill|sucess|enviroment|perfomance|avaliable|managment|developement|intership|certifcate|completetion|automtion|qualilty|technolgies|playwirght|neatjee)\\b' $PAGES"
+chk "Agentic QA Technologies naming consistent (no Technology singular on pages)" "! grep -nE 'Agentic QA Technology[^I]|AgenticQA Technologies' $PAGES"
+chk "British programme/organisation spellings present where used on hub" "grep -q 'programmes\\|programme' hub/index.html && grep -q 'organisations' hub/index.html"
+
 echo "== 4. Local smoke (python3 -m http.server)"
 python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 & SP=$!; sleep 2
 for u in / /hub/ /hub/privacy.html /sites/ai/ /sites/aiengineering/ /sites/neetjee/ /sites/playwrightai/ /assets/css/styles.css /assets/js/site.js /assets/brand/logo.svg /assets/img/ganesh.webp; do
