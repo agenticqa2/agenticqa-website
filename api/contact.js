@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import { validateContactPayload } from './lib/contact-validate.js';
+import { parseContactBody } from './lib/parse-body.js';
 
 export const config = { maxDuration: 30 };
 
@@ -25,32 +26,6 @@ function rateLimit(ip) {
   return row.count <= MAX_HITS;
 }
 
-function readBody(req) {
-  if (req.body && typeof req.body === 'object' && !Buffer.isBuffer(req.body)) return Promise.resolve(req.body);
-  return new Promise((resolve, reject) => {
-    const chunks = [];
-    req.on('data', (c) => chunks.push(c));
-    req.on('end', () => {
-      const raw = Buffer.concat(chunks).toString('utf8');
-      if (!raw) return resolve({});
-      const ct = String(req.headers['content-type'] || '');
-      try {
-        if (ct.includes('application/json')) return resolve(JSON.parse(raw));
-        if (ct.includes('application/x-www-form-urlencoded')) {
-          const out = {};
-          for (const [k, v] of new URLSearchParams(raw)) out[k] = v;
-          return resolve(out);
-        }
-        // multipart not supported; prefer JSON from site.js
-        return resolve({});
-      } catch (e) {
-        reject(e);
-      }
-    });
-    req.on('error', reject);
-  });
-}
-
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'POST') {
@@ -64,9 +39,16 @@ export default async function handler(req, res) {
 
   let body;
   try {
-    body = await readBody(req);
-  } catch {
-    res.status(400).json({ success: 'false', message: 'Could not read form data.' });
+    body = await parseContactBody(req);
+  } catch (e) {
+    const status = e?.status || 400;
+    const message =
+      status === 413
+        ? 'Payload too large.'
+        : status === 415
+          ? 'Unsupported content type.'
+          : 'Could not read form data.';
+    res.status(status).json({ success: 'false', message });
     return;
   }
 
@@ -118,7 +100,7 @@ export default async function handler(req, res) {
       from: mailFrom,
       to: mailTo,
       replyTo: email,
-      subject: subject,
+      subject,
       text,
     });
     res.status(200).json({ success: 'true', message: 'The form was submitted successfully.' });
