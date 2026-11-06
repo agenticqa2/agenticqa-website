@@ -195,6 +195,11 @@ footer a:hover{color:var(--brand)}
   .site-nav.open{display:flex}
   .site-nav a{padding:12px}
   .hdr-cta{display:none}
+  /* Mobile header: keep brand + theme + menu reachable; badge may shrink */
+  .site-header .wrap{gap:10px;min-width:0}
+  .brand{min-width:0;overflow:hidden;gap:8px}
+  .brand img{flex-shrink:0}
+  .theme-toggle,.nav-toggle{flex-shrink:0}
 }
 @media (max-width:600px){
   body{font-size:16px}
@@ -204,6 +209,8 @@ footer a:hover{color:var(--brand)}
   .format{grid-template-columns:1fr}
   .teaser,.form{padding:26px}
   .brand small{display:none}
+  .site-header .wrap{padding-left:16px;padding-right:16px;gap:8px}
+  .brand img{height:34px}
 }
 
 /* v4.1: instructor photo, timeline, batch + fee notes */
@@ -329,7 +336,19 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand)!important;box-
 .hub-card h3{font-size:1.4rem;margin:0}
 .hub-card p{color:var(--muted);margin:0}
 .hub-card .go{margin-top:auto;font-weight:700;color:var(--brand)}
-.site-tag{font-family:var(--display);font-size:.8rem;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--brand);margin-left:-4px}
+.site-tag{font-family:var(--display);font-size:.8rem;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--brand);margin-left:-4px;white-space:nowrap;flex-shrink:1;min-width:0}
+
+/* Narrow phones: header site-tag overlaps theme/menu (Engineering/Playwright) — hide badge; aria-label still names the site */
+@media (max-width:520px){
+  .site-header .site-tag{display:none}
+  .site-header .wrap{gap:8px}
+}
+@media (max-width:375px){
+  .site-header .wrap{gap:6px;padding-left:12px;padding-right:12px}
+  .brand img{height:30px}
+  .icon-btn{width:36px;height:36px}
+}
+
 .checklist{list-style:none;padding:0;margin:0}
 .checklist li{padding-left:28px;position:relative;margin-bottom:8px}
 .checklist li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}

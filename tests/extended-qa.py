@@ -92,6 +92,18 @@ for p in PAGES:
 css = (ROOT/'assets/css/styles.css').read_text()
 chk('CSS responsive+a11y hooks', all(s in css for s in [
   'max-width:980px','max-width:820px','max-width:600px',':focus-visible','prefers-reduced-motion','.hp{','form-status.ok']))
+# Narrow header: site-tag must hide ≤520px so Engineering/Playwright badges cannot overlap theme/menu
+chk('CSS hides .site-header .site-tag at max-width 520px',
+    '@media (max-width:520px)' in css and '.site-header .site-tag{display:none}' in css)
+chk('CSS mobile header keeps theme/nav flex-shrink 0',
+    '.theme-toggle,.nav-toggle{flex-shrink:0}' in css and '.brand{min-width:0' in css)
+chk('CSS further tightens header at max-width 375px',
+    '@media (max-width:375px)' in css and 'height:30px' in css)
+# Markup: four subdomain brands still carry site-tag (copy unchanged); hub has none
+for site, tag in [('ai','Business'),('aiengineering','Engineering'),('neetjee','NEET'),('playwrightai','Playwright')]:
+  h = (ROOT/f'sites/{site}/index.html').read_text()
+  chk(f'site-tag {tag} present on {site}', f'<span class="site-tag">{tag}</span>' in h)
+chk('hub brand has no site-tag', 'site-tag' not in (ROOT/'hub/index.html').read_text())
 
 hub = (ROOT/'hub/index.html').read_text()
 ai = (ROOT/'sites/ai/index.html').read_text()
