@@ -495,7 +495,7 @@ section{padding:96px 0}
 .cert-facts{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1}
 .cert-facts .card{padding:24px}
 .cert-grad .grad-row{display:flex;gap:20px;align-items:center}
-.cert-grad img{width:112px;height:112px;border-radius:16px;object-fit:cover;flex:none;box-shadow:var(--shadow)}
+.cert-grad img{width:140px;height:180px;border-radius:16px;object-fit:contain;object-position:top center;background:var(--bg-soft);flex:none;box-shadow:var(--shadow)}
 .cert-grad h3{margin:0 0 4px;font-size:1.35rem}
 .cert-grad p{margin:0;font-size:.95rem}
 .cert-sample{display:flex;flex-direction:column;justify-content:center;padding:24px;border-radius:24px;border:1px solid var(--border);background:linear-gradient(160deg,var(--surface),var(--bg-soft));box-shadow:var(--shadow-lg)}

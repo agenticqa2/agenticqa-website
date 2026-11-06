@@ -252,7 +252,7 @@ hub_body = f'''<section class="hero" id="company">
   </div>
 </section>
 <section id="founder"><div class="wrap">
-  {head("Leadership", "The founders.", "Two people run the company day to day — consulting, delivery, in-house products and programmes.")}
+  {head("Leadership", "The founders.", "Turning emerging technology into real-world impact—our founders bring together AI engineering, intelligent automation, quality engineering and modern software development to build solutions and empower the next generation of tech talent.")}
   <div class="founders">
     <article class="founder-card reveal">
       <img class="f-photo" src="/assets/img/ganesh.webp" alt="Ganesan (Ganesh) Sivaraman" width="272" height="272" loading="lazy">
@@ -281,7 +281,7 @@ hub_body = f'''<section class="hero" id="company">
     <div class="cert-copy">
       <article class="card cert-grad reveal">
         <span class="eyebrow">Named graduate</span>
-        <div class="grad-row"><img src="/assets/img/certificate-handover.webp" alt="Sivanesan P receiving his Industry Internship Completion Certificate from Ganesan Sivaraman" width="160" height="160" loading="lazy"><div><h3>Sivanesan P</h3><p class="muted">Programme graduate, receiving his certificate from Ganesan Sivaraman. Names on certificates match programme completion records.</p></div></div>
+        <div class="grad-row"><img src="/assets/img/certificate-handover.webp" alt="Sivanesan P receiving his Industry Internship Completion Certificate from Ganesan Sivaraman" width="140" height="180" loading="lazy"><div><h3>Sivanesan P</h3><p class="muted">Programme graduate, receiving his certificate from Ganesan Sivaraman. Names on certificates match programme completion records.</p></div></div>
       </article>
       <div class="cert-facts">
         <article class="card reveal"><h3>What it means</h3><p class="muted">Proof of internship-style delivery work with the company: projects, reviews and a defined scope — not a government or university diploma.</p></article>
