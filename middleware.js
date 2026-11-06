@@ -28,7 +28,7 @@ export function resolvePrefix(host, siteParam) {
 export default function middleware(request) {
   const url = new URL(request.url);
   const p = url.pathname;
-  if (p.startsWith('/assets/') || p.startsWith('/hub/') || p.startsWith('/sites/') || p === '/robots.txt' || p === '/sitemap.xml') return next();
+  if (p.startsWith('/assets/') || p.startsWith('/api/') || p.startsWith('/hub/') || p.startsWith('/sites/') || p === '/robots.txt' || p === '/sitemap.xml') return next();
   const prefix = resolvePrefix(request.headers.get('host'), url.searchParams.get('site'));
   url.pathname = prefix + (p.endsWith('/') ? p + 'index.html' : p);
   return rewrite(url);

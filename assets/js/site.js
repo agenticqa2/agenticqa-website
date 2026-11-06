@@ -71,7 +71,7 @@
   });
   if (location.hash === '#contact' && document.getElementById('f-interest')) document.getElementById('f-interest').value = 'Free demo class (30 min)';
 
-  // Waitlist / contact form: AJAX to formsubmit.co, fall back to mailto
+  // Waitlist / contact form: AJAX to /api/contact (Titan SMTP), fall back to mailto
   var form = document.getElementById('waitlist-form') || document.getElementById('enquiry-form') || document.querySelector('form.form[data-ajax]');
   if (form) {
     var status = form.querySelector('.form-status');
@@ -83,12 +83,26 @@
         '&body=' + encodeURIComponent(body);
     }
     form.addEventListener('submit', function (e) {
-      if (!window.fetch) return; // native POST to formsubmit.co
+      if (!window.fetch) return; // native POST to /api/contact
       e.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
       var btn = form.querySelector('button[type=submit]');
       btn.disabled = true; status.className = 'form-status'; status.textContent = 'Sending…';
-      fetch(form.getAttribute('data-ajax'), { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
+      var fd = new FormData(form);
+      var payload = {
+        name: fd.get('name') || '',
+        email: fd.get('email') || '',
+        interest: fd.get('interest') || '',
+        profile: fd.get('profile') || '',
+        message: fd.get('message') || '',
+        _subject: fd.get('_subject') || '',
+        _honey: fd.get('_honey') || ''
+      };
+      fetch(form.getAttribute('data-ajax') || '/api/contact', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
         .then(function (r) {
           return r.json().then(function (data) { return { ok: r.ok, status: r.status, data: data || {} }; },
             function () { throw new Error('bad-json:' + r.status); });

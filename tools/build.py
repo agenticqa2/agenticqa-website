@@ -91,7 +91,7 @@ def contact(eyebrow, heading, text, subject, interests, profiles, button, sid="w
         <li><a href="https://www.youtube.com/@AgenticQA" rel="noopener">▶ YouTube — @AgenticQA</a></li>
       </ul>
     </div>
-    <form class="form" id="{sid}-form" action="https://formsubmit.co/admin@agenticqa.io" data-ajax="https://formsubmit.co/ajax/admin@agenticqa.io" method="POST" novalidate>
+    <form class="form" id="{sid}-form" action="/api/contact" data-ajax="/api/contact" method="POST" novalidate>
       <input type="hidden" name="_subject" value="{subject}">
       <input type="hidden" name="_template" value="table">
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
