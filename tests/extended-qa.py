@@ -57,6 +57,8 @@ for p in FORM_PAGES:
 
 js = (ROOT/'assets/js/site.js').read_text()
 chk('site.js checkValidity+reportValidity+ok/err', all(s in js for s in ['checkValidity','reportValidity','form-status ok','form-status err']))
+chk('site.js requires FormSubmit success===true string', "String(data.success) === 'true'" in js)
+chk('site.js catch no false mailto-open claim', 'opening your email app' not in js)
 chk('site.js mailto fallback admin@', 'mailto:admin@agenticqa.io?subject=' in js and 'mailto:ganesh@agenticqa.io?subject=' not in js)
 chk('site.js no eval/innerHTML/document.write/console', not re.search(r'eval\(|\.innerHTML|document\.write|\bconsole\.', js))
 chk('site.js prod-href preview skip', 'isPreview' in js and 'data-prod-href' in js)

@@ -89,8 +89,25 @@
       var btn = form.querySelector('button[type=submit]');
       btn.disabled = true; status.className = 'form-status'; status.textContent = 'Sending…';
       fetch(form.getAttribute('data-ajax'), { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) })
-        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-        .then(function () {
+        .then(function (r) {
+          return r.json().then(function (data) { return { ok: r.ok, status: r.status, data: data || {} }; },
+            function () { throw new Error('bad-json:' + r.status); });
+        })
+        .then(function (res) {
+          var data = res.data || {};
+          var okFlag = String(data.success) === 'true';
+          if (!res.ok || !okFlag) {
+            var msg = (data && data.message) ? String(data.message) : '';
+            status.className = 'form-status err';
+            if (/activat/i.test(msg)) {
+              status.textContent = 'Form delivery is not active for this mailbox yet. Please email admin@agenticqa.io directly, or try again after the form endpoint is confirmed.';
+            } else if (msg) {
+              status.textContent = 'Could not send the enquiry (' + msg.replace(/\s+/g, ' ').slice(0, 160) + '). Please email admin@agenticqa.io.';
+            } else {
+              status.textContent = 'Could not send the enquiry right now. Please email admin@agenticqa.io or try again later.';
+            }
+            return;
+          }
           status.className = 'form-status ok';
           status.textContent = form.id === 'enquiry-form'
             ? 'Thanks! We will email you within 1–2 working days.'
@@ -99,8 +116,7 @@
         })
         .catch(function () {
           status.className = 'form-status err';
-          status.textContent = 'Could not send from the page — opening your email app instead.';
-          mailtoFallback();
+          status.textContent = 'Could not send the enquiry right now. Please email admin@agenticqa.io or try again later.';
         })
         .then(function () { btn.disabled = false; });
     });

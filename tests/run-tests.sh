@@ -92,6 +92,8 @@ python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 & SP=$!; sleep 2
 for u in / /hub/ /hub/privacy.html /sites/ai/ /sites/aiengineering/ /sites/neetjee/ /sites/playwrightai/ /assets/css/styles.css /assets/js/site.js /assets/brand/logo.svg /assets/img/ganesh.webp; do
   c=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8765$u); chk "HTTP 200 $u ($c)" "[ $c = 200 ]"; done
 kill $SP 2>/dev/null || true
+echo "== 5a. FormSubmit handler mock"
+if node tests/formsubmit-handler-mock.mjs; then PASS=$((PASS+7)); else FAIL=$((FAIL+1)); fi
 echo "== 5. Extended QA (forms / footer / a11y / CSS / routing / JS risk)"
 if out=$(python3 tests/extended-qa.py); then
   echo "$out"
