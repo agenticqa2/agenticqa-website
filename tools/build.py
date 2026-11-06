@@ -233,9 +233,9 @@ hub_body = f'''<section class="hero" id="company">
     {cards([("AI-native quality engineering", "Playwright and API automation with AI-assisted triage, CI/CD integration and test strategy for modern web products."),
             ("Custom AI agents", "Task-specific agents connected to company data and tools through APIs and MCP servers, with human checkpoints where they matter."),
             ("LLM &amp; agent evaluation", "Evaluation suites (DeepEval, Ragas, LangSmith) that measure accuracy, safety and regressions in LLM and RAG features."),
-            ("Automation consulting", "Mapping manual workflows, finding high-value automation candidates and delivering a practical roadmap."),
+            ("Automation consulting", "Identify high-value automation opportunities, define API and MCP integration requirements, and create a delivery roadmap covering implementation, evaluation and CI/CD."),
             ("Skill programmes", "Structured, hands-on programmes in AI engineering, Playwright + AI and NEET preparation, each run on its own site."),
-            ("In-house tooling", "Applied AI products built and maintained by our own team, used as reference implementations.")])}
+            ("In-house tooling", "Explore working AI applications built by our team, demonstrating RAG, structured LLM feedback, sentiment analysis and meeting summarisation.")])}
     <div class="grid g2 mv" style="margin-top:40px">
       <article class="mv-card reveal"><h3>Our aims</h3><p>Deliver reliable AI and QA outcomes for business clients, and make engineers job-ready for the AI era by working the way real teams practise: live, hands-on and project-driven.</p></article>
       <article class="mv-card reveal"><h3>Our goals</h3><p>Build durable in-house tooling and programmes; serve companies with consulting and custom agents; and support learners through clear pathways — AI engineering, Playwright + AI, and NEET preparation through CatalystAI.</p></article>
@@ -276,7 +276,7 @@ hub_body = f'''<section class="hero" id="company">
       <span class="eyebrow">Co-founder, Director &amp; Tech Lead</span>
       <h2>Moksha Meera</h2>
       <p class="f-role"><strong>Co-founder &amp; Director · Tech Lead · LLM Engineer · AI &amp; Automation Engineering</strong><br>Agentic QA Technologies · Bengaluru</p>
-      <p>Moksha is a co-founder and director of Agentic QA Technologies alongside Ganesh, and works full-time in the company. She leads the technical side, building the in-house projects and tooling, and teaches alongside Ganesh in hands-on sessions.</p>
+      <p>Moksha leads technical delivery for the company's in-house AI projects and automation tooling, combining hands-on development with practical training alongside Ganesh.</p>
       <ul class="timeline career" aria-label="Career path">
         <li><b>Co-founder, Director &amp; Tech Lead</b> — Agentic QA Technologies<span>Jan 2026–present</span></li>
         <li><b>Automation Engineer</b> — ePy-Tallent Tech solution<span>May 2024–Dec 2025</span></li>
@@ -336,9 +336,9 @@ ai_body = f'''<section class="hero"><div class="wrap hero-grid"><div class="hero
   {cards([("Custom AI agents", "Task-specific agents connected to your data and tools via APIs and MCP servers — with human-in-the-loop checkpoints where it matters."),
           ("Automation consulting", "We map your manual workflows, find the high-value automation candidates and give you a practical roadmap."),
           ("AI-native QA", "Playwright and API test automation with AI-assisted triage, self-healing locators and CI/CD integration."),
-          ("LLM & agent evaluation", "Test suites that measure accuracy, safety and regressions in your LLM features before they reach users."),
+          ("LLM & agent evaluation", "Build evaluation suites using DeepEval, Ragas and LangSmith to assess response quality, retrieval performance and regressions in LLM and RAG applications."),
           ("RAG over your documents", "Retrieval-augmented assistants that answer from your own knowledge base, with sources shown."),
-          ("Team enablement", "Hands-on enablement sessions so your engineers can maintain and extend what we ship.")], icons=["agent","flow","bug","gauge","doc","people"])}
+          ("Team enablement", "Train your engineers to maintain delivered agents, configure MCP integrations, run evaluations and extend Playwright and API test suites.")], icons=["agent","flow","bug","gauge","doc","people"])}
 </div></section>
 <section id="process"><div class="wrap">
   {head("How we work", "From first call to production.")}
