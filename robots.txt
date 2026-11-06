@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://www.agenticqa.io/sitemap.xml
+Sitemap: https://agenticqa.io/sitemap.xml
