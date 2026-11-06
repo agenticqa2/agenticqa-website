@@ -319,7 +319,7 @@ write("hub/index.html", page("Agentic QA Technologies LLP — AI-native quality 
 priv = open(os.path.join(ROOT, "archive/v7/privacy.html")).read()
 pmain = priv.split('<main id="main">')[1].split("</main>")[0]
 pmain = pmain.replace("across agenticqa.io", "across agenticqa.io and its subdomains (ai., aiengineering., neetjee., playwrightai.)")
-write("hub/privacy.html", page("Privacy Policy | Agentic QA Technologies", "Privacy policy for agenticqa.io and its subdomains.", HUB + "/privacy.html", [("./", "Home"), ("./#activities", "Activities")], "Contact", pmain + contact("Questions", "Privacy questions?", "Email us for any data request.", "Privacy request", ["Data request", "Other"], ["Individual", "Company"], "Send")))
+write("hub/privacy.html", page("Privacy Policy | Agentic QA Technologies", "Privacy policy for agenticqa.io and its subdomains.", HUB + "/privacy.html", [("./", "Home"), ("./#activities", "Activities")], "Contact", pmain, cta_href=HUB + "/#contact"))
 
 # ---------------- AI (business) ----------------
 ai_body = f'''<section class="hero"><div class="wrap hero-grid"><div class="hero-copy">

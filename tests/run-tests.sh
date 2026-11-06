@@ -65,6 +65,8 @@ chk "no neatjee misspelling" "! grep -rni neatjee hub sites tools middleware.js"
 echo "== 3b. Subdomain content boundaries"
 # ai = business only (no course/waitlist/batch/beginner/become a confident)
 chk "ai has no course/syllabus/enrol/waitlist/batch/beginner/become a confident" "! sed 's/<[^>]*>/ /g' sites/ai/index.html | grep -niE 'course|syllabus|enrol|waitlist|batch|beginner|become a confident'"
+chk "hub privacy has no waitlist form/section" "! grep -qE 'id=\"waitlist\"|id=\"waitlist-form\"|waitlist-form' hub/privacy.html"
+chk "hub privacy Contact CTA points to hub contact" "grep -q 'hdr-cta\" href=\"https://agenticqa.io/#contact\"' hub/privacy.html || grep -q 'hdr-cta\" href=\"/#contact\"' hub/privacy.html"
 chk "ai has no enquiry waitlist-form id" "! grep -q 'id=\"waitlist' sites/ai/index.html"
 chk "ai uses enquiry-form" "grep -q 'id=\"enquiry-form\"' sites/ai/index.html"
 chk "ai h1 is business agents" "grep -q 'Custom AI agents that' sites/ai/index.html"
