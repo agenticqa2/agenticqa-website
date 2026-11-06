@@ -34,7 +34,9 @@ for f in $PAGES; do
   for u in $(grep -o '\(href\|src\)="[^"#]*' $f | sed 's/^[a-z]*="//' | grep -v '^https\?:\|^mailto:\|^tel:\|^$'); do
     # Middleware preview routes (/?site=ai) are not filesystem paths — skip them
     case $u in '/?site='*) continue;; esac
-    case $u in /*) t=".${u}";; *) t="$(dirname $f)/$u";; esac
+    # strip query/hash for filesystem check (e.g. site.js?v=…)
+    ufile="${u%%\?*}"; ufile="${ufile%%#*}"
+    case $ufile in /*) t=".${ufile}";; *) t="$(dirname $f)/$ufile";; esac
     [ -d "$t" ] && t="$t/index.html"
     [ -e "$t" ] || { echo "   broken: $f -> $u"; broken=1; }
   done
@@ -96,6 +98,8 @@ kill $SP 2>/dev/null || true
 echo "== 5a. FormSubmit handler mock"
 if node tests/formsubmit-handler-mock.mjs; then PASS=$((PASS+7)); else FAIL=$((FAIL+1)); fi
 if out=$(node tests/contact-validate.test.mjs); then echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); PASS=$((PASS+n)); else echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); f=$(printf '%s\n' "$out" | grep -c '^FAIL' || true); PASS=$((PASS+n)); FAIL=$((FAIL+f)); fi
+if out=$(node tests/contact-handler.test.mjs); then echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); PASS=$((PASS+n)); else echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); f=$(printf '%s\n' "$out" | grep -c '^FAIL' || true); PASS=$((PASS+n)); FAIL=$((FAIL+f)); fi
+
 
 echo "== 5. Extended QA (forms / footer / a11y / CSS / routing / JS risk)"
 if out=$(python3 tests/extended-qa.py); then
