@@ -105,6 +105,39 @@ for site, tag in [('ai','Business'),('aiengineering','Engineering'),('neetjee','
   chk(f'site-tag {tag} present on {site}', f'<span class="site-tag">{tag}</span>' in h)
 chk('hub brand has no site-tag', 'site-tag' not in (ROOT/'hub/index.html').read_text())
 
+# Distinct form flows (5) — subjects + admin@ destination; no API keys; invalid empty would fail required
+EXPECTED_SUBJECTS = {
+  'hub/index.html': 'Agentic QA enquiry',
+  'sites/ai/index.html': 'AI for Business enquiry',
+  'sites/aiengineering/index.html': 'AI Engineering waitlist',
+  'sites/neetjee/index.html': 'CatalystAI NEET enquiry',
+  'sites/playwrightai/index.html': 'Playwright AI waitlist',
+}
+for path, subj in EXPECTED_SUBJECTS.items():
+  h = (ROOT/path).read_text()
+  f = re.search(r'<form\b[^>]*>.*?</form>', h, re.S).group(0)
+  chk(f'form _subject {subj!r} on {path}', f'value="{subj}"' in f and 'name="_subject"' in f)
+  chk(f'form no ganesh@ formsubmit on {path}', 'formsubmit.co/ganesh@' not in f and 'formsubmit.co/ajax/ganesh@' not in f)
+# No FormSubmit API key / random secrets in pages or site.js (email-in-URL only)
+blob = '\n'.join((ROOT/p).read_text() for p in FORM_PAGES) + '\n' + js
+chk('no formsubmit API key / _captcha secret patterns in forms/js',
+    not re.search(r'formsubmit\.co/[0-9a-f]{16,}|name="_captcha"|FORM_API|formsubmit.*api[_-]?key', blob, re.I))
+# Static invalid: empty required name/email → HTML5 would fail (attributes present; browser checkValidity not run here)
+for path in EXPECTED_SUBJECTS:
+  f = re.search(r'<form\b[^>]*>.*?</form>', (ROOT/path).read_text(), re.S).group(0)
+  # required name with no value= default empty; email type=email required
+  name_inp = re.search(r'<input[^>]*\bname="name"[^>]*>', f)
+  email_inp = re.search(r'<input[^>]*\bname="email"[^>]*>', f)
+  chk(f'invalid-empty: name required and valueless on {path}',
+      name_inp and 'required' in name_inp.group(0) and 'value=' not in name_inp.group(0))
+  chk(f'invalid-empty: email type=email required valueless on {path}',
+      email_inp and 'type="email"' in email_inp.group(0) and 'required' in email_inp.group(0) and 'value=' not in email_inp.group(0))
+# site.js: preventDefault path only after checkValidity (ordering)
+idx_cv = js.find('checkValidity')
+idx_fetch = js.find('fetch(form.getAttribute')
+chk('site.js checkValidity precedes fetch (no network on invalid)', idx_cv != -1 and idx_fetch != -1 and idx_cv < idx_fetch)
+
+
 hub = (ROOT/'hub/index.html').read_text()
 ai = (ROOT/'sites/ai/index.html').read_text()
 chk('approved copy hub automation consulting', 'Identify high-value automation opportunities, define API and MCP integration requirements, and create a delivery roadmap covering implementation, evaluation and CI/CD.' in hub)
