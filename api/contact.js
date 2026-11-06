@@ -78,16 +78,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { subject, name, email, interest, profile, message, flow } = v.data;
-  const text = [
-    `Flow: ${flow}`,
-    `Name: ${name}`,
-    `Email: ${email}`,
-    `Interest: ${interest || '(none)'}`,
-    `Profile: ${profile || '(none)'}`,
-    '',
-    message || '(no message)',
-  ].join('\n');
+  const { mailSubject, text, email } = v.data;
 
   try {
     const transporter = nodemailer.createTransport({
@@ -100,7 +91,7 @@ export default async function handler(req, res) {
       from: mailFrom,
       to: mailTo,
       replyTo: email,
-      subject,
+      subject: mailSubject,
       text,
     });
     res.status(200).json({ success: 'true', message: 'The form was submitted successfully.' });
