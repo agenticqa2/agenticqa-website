@@ -9,6 +9,8 @@ SITES = {
  "neetjee": ("https://neetjee.agenticqa.io", "NEET Prep"),
  "playwrightai": ("https://playwrightai.agenticqa.io", "Playwright + AI"),
 }
+# Cache-bust query for site.js / batch-date.js (bump on JS changes).
+SITE_JS_V = "20261109batch"
 SUN = '<svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>'
 MENU = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>'
 
@@ -70,7 +72,8 @@ def page(title, desc, canonical, nav, cta, body, tag="", accent="neural", cta_hr
     <p class="copy">© <span id="year">2026</span> Agentic QA Technologies LLP · LLPIN: <span style="white-space:nowrap">ACV-7177</span> · Registered in Puducherry, India</p>
   </div>
 </footer>
-<script src="/assets/js/site.js?v=20261109nav3" defer></script>
+<script src="/assets/js/site.js?v={SITE_JS_V}" defer></script>
+<script type="module" src="/assets/js/batch-date.js?v={SITE_JS_V}"></script>
 </body>
 </html>
 '''
@@ -455,7 +458,7 @@ write("sites/neetjee/index.html", page("NEET Prep — CatalystAI on neetjee | Ag
 pw_body = f'''<section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <span class="pill"><span class="dot" aria-hidden="true"></span>Live Playwright course · next batch starts 15 Nov 2026</span>
+      <span class="pill"><span class="dot" aria-hidden="true"></span>Live Playwright course · next batch starts <span data-batch-date>soon</span></span>
       <h1>Become a confident <span class="grad">AI-ready Playwright automation tester.</span></h1>
       <p class="lede">A beginner-friendly, live course that takes you from your first test to a real Page Object Model framework — with AI-assisted testing and the SDET skills teams hire for.</p>
       <div class="cta-row"><a class="btn btn-primary" href="#contact">Join the waitlist</a><a class="btn btn-ghost" href="#contact">Book a free 30-minute demo class</a></div>
@@ -465,7 +468,7 @@ pw_body = f'''<section class="hero">
       <div class="fact"><dt>Class length</dt><dd>90<small> min</small></dd></div>
       <div class="fact"><dt>Live class days</dt><dd>30</dd></div>
       <div class="fact"><dt>Capstone days</dt><dd>5</dd></div>
-      <div class="fact"><dt>Next batch</dt><dd>15<small> Nov 2026</small></dd></div>
+      <div class="fact"><dt>Next batch</dt><dd data-batch-date data-batch-format="fact">soon</dd></div>
     </dl>
   </div>
   <div class="wrap"><div class="fee-strip reveal"><span>Fees are shared on a quick call — no hidden packages.</span><a class="btn btn-primary btn-sm" href="#contact">Request a call</a></div></div>
@@ -510,7 +513,7 @@ pw_body = f'''<section class="hero">
   <details><summary>What laptop do I need?</summary><p>Any ordinary laptop that can run a modern browser and Node.js. No GPU required.</p></details>
   <details><summary>Will this guarantee me a job?</summary><p>No course can promise that. You will leave with a framework you built, a capstone you can demo and interview practice.</p></details>
 </div></section>
-''' + contact("Next batch · limited seats", "Join the waitlist for the next batch.", "Next batch starts <strong>15 Nov 2026</strong>. Fees are shared on a quick call.", "Playwright AI waitlist",
+''' + contact("Next batch · limited seats", "Join the waitlist for the next batch.", "Next batch starts <strong data-batch-date>soon</strong>. Fees are shared on a quick call.", "Playwright AI waitlist",
   ["Free demo class (30 min)", "Join waitlist / next batch", "A call about fees", "Other question"], ["Student / fresher", "Manual tester moving to automation", "Automation engineer / SDET", "QA lead or manager", "Company / team training"], "Join the waitlist")
 write("sites/playwrightai/index.html", page("Playwright + AI — Live Playwright testing course with AI | Agentic QA", "Live, beginner-friendly Playwright test automation with AI: tutorials, hands-on labs and a capstone framework.", SITES['playwrightai'][0] + "/", [("#course", "Course"), ("#tutorials", "Tutorials"), ("#labs", "Labs"), ("#faq", "FAQ"), ("#instructor", "Instructor"), (HUB + "/", "Agentic QA home")], "Join waitlist", pw_body, "Playwright", "violet"))
 print("built")
