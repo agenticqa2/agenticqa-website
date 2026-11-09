@@ -20,7 +20,7 @@ def chk(msg, cond):
 href_re = re.compile(r'(?<![\w-])href="([^"]*)"')
 EXPECT = {
   'https://agenticqa.io/', '/?site=ai', '/?site=aiengineering', '/?site=neetjee',
-  '/?site=playwrightai', 'https://agenticqa.io/#about', 'https://agenticqa.io/privacy.html',
+  '/?site=playwrightai', 'https://agenticqa.io/#company', 'https://agenticqa.io/privacy.html',
   'tel:+919663434422', 'https://wa.me/919663434422', 'mailto:admin@agenticqa.io',
   'https://www.youtube.com/@AgenticQA', 'https://www.linkedin.com/in/ganesan-sivaraman/',
 }
@@ -141,9 +141,9 @@ chk('site.js checkValidity precedes fetch (no network on invalid)', idx_cv != -1
 
 hub = (ROOT/'hub/index.html').read_text()
 ai = (ROOT/'sites/ai/index.html').read_text()
-chk('approved copy hub automation consulting', 'Identify high-value automation opportunities, define API and MCP integration requirements, and create a delivery roadmap covering implementation, evaluation and CI/CD.' in hub)
-chk('approved copy hub in-house tooling', 'Explore working AI applications built by our team, demonstrating RAG, structured LLM feedback, sentiment analysis and meeting summarisation.' in hub)
-chk('approved copy Moksha delivery bio', "Moksha leads technical delivery for the company's in-house AI projects and automation tooling" in hub)
+chk('approved copy hub AI business body', 'Custom AI agents, automation consulting, and AI-native QA. Scope the workflow, build the agent, evaluate it before users see it.' in hub)
+chk('approved copy hub four sites heading', 'Four sites of work.' in hub)
+chk('approved copy Moksha delivery bio', 'Leads technical delivery for the in-house AI projects and automation tooling, with hands-on development beside Ganesh.' in hub)
 chk('approved copy ai DeepEval evaluation', 'Build evaluation suites using DeepEval, Ragas and LangSmith to assess response quality, retrieval performance and regressions in LLM and RAG applications.' in ai)
 chk('approved copy ai Team enablement', 'Train your engineers to maintain delivered agents, configure MCP integrations, run evaluations and extend Playwright and API test suites.' in ai)
 

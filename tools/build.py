@@ -64,13 +64,13 @@ def page(title, desc, canonical, nav, cta, body, tag="", accent="neural", cta_hr
         <p class="brand-tag">AI automation, AI engineering and learning</p>
       </div>
       <div><h4>Sites</h4><ul><li><a href="{HUB}/" data-prod-href="{HUB}/">Agentic QA home</a></li><li><a href="/?site=ai" data-prod-href="{SITES['ai'][0]}/" data-site="ai">AI for Business</a></li><li><a href="/?site=aiengineering" data-prod-href="{SITES['aiengineering'][0]}/" data-site="aiengineering">AI Engineering</a></li><li><a href="/?site=neetjee" data-prod-href="{SITES['neetjee'][0]}/" data-site="neetjee">NEET Prep</a></li><li><a href="/?site=playwrightai" data-prod-href="{SITES['playwrightai'][0]}/" data-site="playwrightai">Playwright + AI</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="{HUB}/#about">About</a></li><li><a href="{HUB}/privacy.html">Privacy</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="{HUB}/#company">Company</a></li><li><a href="{HUB}/privacy.html">Privacy</a></li></ul></div>
       <div><h4>Connect</h4><ul><li><a href="tel:+919663434422">+91 96634 34422</a></li><li><a href="https://wa.me/919663434422" rel="noopener">WhatsApp</a></li><li><a href="mailto:admin@agenticqa.io">admin@agenticqa.io</a></li><li><a href="https://www.youtube.com/@AgenticQA" rel="noopener">YouTube @AgenticQA</a></li><li><a href="https://www.linkedin.com/in/ganesan-sivaraman/" rel="noopener">LinkedIn</a></li></ul></div>
     </div>
-    <p class="copy">© <span id="year">2026</span> Agentic QA Technologies LLP · LLPIN: <span style="white-space:nowrap">ACV-7177</span> · Registered in Puducherry, India</p>
+    <p class="copy">© <span id="year">2026</span> Agentic QA Technologies LLP · LLPIN ACV-7177</p>
   </div>
 </footer>
-<script src="/assets/js/site.js?v=20261106m1" defer></script>
+<script src="/assets/js/site.js?v=20261109hub" defer></script>
 </body>
 </html>
 '''
@@ -314,7 +314,9 @@ hub_body = f'''<section class="hero" id="company">
   ["AI for Business (agents / consulting)", "AI evaluation / MCP work", "AI Engineering", "NEET Prep", "Playwright + AI", "Partnership / other"],
   ["Company / team", "Working professional", "Student", "Parent", "Other"], "Send enquiry", "enquiry")
 hub_nav = [("#about", "Company"), ("#founder", "Founders"), ("#certificates", "Certificates"), ("#activities", "Activities"), ("#contact", "Contact")]
-write("hub/index.html", page("Agentic QA Technologies LLP — AI-native quality engineering & AI agents", "Agentic QA Technologies LLP: AI-native quality engineering, custom AI agents, LLM evaluation and consulting — with dedicated sites for AI engineering, NEET prep and Playwright + AI.", HUB + "/", hub_nav, "Contact", hub_body))
+# hub/index.html is the canonical revised homepage (2026-11-09). Do not overwrite from legacy hub_body.
+# To refresh: edit hub/index.html directly (or restore from git). Legacy hub_body kept temporarily for reference.
+print("skip hub overwrite — using hub/index.html as source of truth")
 
 priv = open(os.path.join(ROOT, "archive/v7/privacy.html")).read()
 pmain = priv.split('<main id="main">')[1].split("</main>")[0]

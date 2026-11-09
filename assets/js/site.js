@@ -38,6 +38,32 @@
   var hdr = document.querySelector('.site-header');
   if (hdr) { var onS = function () { hdr.classList.toggle('scrolled', window.scrollY > 8); }; onS(); addEventListener('scroll', onS, { passive: true }); }
 
+  // Section scroll-spy for hub nav
+  (function () {
+    var nav = document.querySelector('.site-nav');
+    if (!nav) return;
+    var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+    if (!links.length) return;
+    var map = {};
+    links.forEach(function (a) {
+      var id = a.getAttribute('href').slice(1);
+      var el = document.getElementById(id);
+      if (el) map[id] = a;
+    });
+    var ids = Object.keys(map);
+    if (!ids.length || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (a) { a.removeAttribute('aria-current'); });
+        var a = map[en.target.id];
+        if (a) a.setAttribute('aria-current', 'true');
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    ids.forEach(function (id) { io.observe(document.getElementById(id)); });
+  })();
+
+
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 
@@ -67,7 +93,7 @@
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('[data-interest="demo"]');
     var sel = document.getElementById('f-interest');
-    if (a && sel) { sel.value = 'Free demo class (30 min)'; var subj = document.querySelector('#waitlist-form [name=_subject], #enquiry-form [name=_subject], form.form[data-ajax] [name=_subject]'); if (subj) subj.value = 'Free demo class request'; }
+    if (a && sel) { sel.value = 'Free demo class (30 min)'; /* keep routing _subject allowlisted */ }
   });
   if (location.hash === '#contact' && document.getElementById('f-interest')) document.getElementById('f-interest').value = 'Free demo class (30 min)';
 

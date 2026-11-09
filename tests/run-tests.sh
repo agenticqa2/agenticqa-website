@@ -26,7 +26,7 @@ process.exit(f?1:0);
 JS
 if out=$(cd /tmp/mwtest && node t.mjs); then echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); PASS=$((PASS+n)); else echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); f=$(printf '%s\n' "$out" | grep -c '^FAIL' || true); PASS=$((PASS+n)); FAIL=$((FAIL+f)); fi
 for s in ai aiengineering neetjee playwrightai; do
-  chk "hub card preview link /?site=$s" "grep -q 'class=\"hub-card reveal\" href=\"/?site=$s\" data-prod-href=\"https://$s.agenticqa.io/\"' hub/index.html"
+  chk "hub card preview link /?site=$s" "grep -q 'hub-card reveal\" href=\"/?site=$s\" data-prod-href=\"https://$s.agenticqa.io/\"' hub/index.html"
 done
 echo "== 2. Link check (local href/src)"
 broken=0
@@ -50,18 +50,18 @@ chk "no YouTube iframe/embed" "! grep -niE '<iframe|youtube.com/embed' $PAGES"
 chk "no testimonials / student counts" "! grep -niE 'testimonial|[0-9]+\\+? (students|learners)' $PAGES"
 chk "no PAN/TAN/street address" "! grep -nE '\\bPAN\\b|\\bTAN\\b|[A-Z]{5}[0-9]{4}[A-Z]|Street|Road|Nagar' $PAGES"
 chk "no payment QR on new sites" "! grep -n 'qr-payment' $PAGES"
-for f in $PAGES; do chk "LLPIN ACV-7177 + JS year in $f" "grep -q 'LLPIN: <span[^>]*>ACV-7177' $f && grep -q 'id=\"year\"' $f && grep -q '/assets/js/site.js' $f"; done
+for f in $PAGES; do chk "LLPIN ACV-7177 + JS year in $f" "grep -qE 'LLPIN.*ACV-7177' $f && grep -q 'id=\"year\"' $f && grep -q '/assets/js/site.js' $f"; done
 for f in $PAGES; do chk "a11y (skip link, theme toggle, all img alt) $f" "grep -q 'class=\"skip\"' $f && grep -q theme-toggle $f && ! grep -o '<img[^>]*>' $f | grep -v 'alt='"; done
-chk "ganesh open-to replaced with organisations line" "grep -q 'Works with organisations on AI quality engineering, MCP integrations, AI evaluation and corporate training.' hub/index.html && ! grep -q 'Open to:' hub/index.html"
-chk "ganesh career timeline roles" "grep -q 'AI Automation Architect' hub/index.html && grep -q 'Symphony Talent' hub/index.html && grep -q 'Harman Connected Services' hub/index.html && grep -q 'First Advantage' hub/index.html"
-chk "moksha career timeline roles" "grep -q 'ePy-Tallent Tech solution' hub/index.html && grep -q 'Automation Engineer' hub/index.html && grep -q 'Co-founder, Director' hub/index.html"
-chk "founder career timelines present" "grep -c 'class=\"timeline career\"' hub/index.html | grep -q '^2$'"
+chk "hub founders have no CV timelines" "! grep -q 'timeline career' hub/index.html && ! grep -q 'Symphony Talent' hub/index.html"
+chk "hub sites heading exact" "grep -q '>Four sites of work.</h2>' hub/index.html"
+chk "hub footer LLP only line" "grep -q 'Agentic QA Technologies LLP · LLPIN ACV-7177' hub/index.html && ! grep -qi puducherry hub/index.html"
+chk "hub nav Talk to us" "grep -q 'Talk to us' hub/index.html"
 chk "email/phone/YouTube present on hub" "grep -q ganesh@agenticqa.io hub/index.html && grep -q '+91 96634 34422' hub/index.html && grep -q '@AgenticQA' hub/index.html"
 chk "admin@agenticqa.io in footer of every page" "for f in $PAGES; do grep -q 'mailto:admin@agenticqa.io\">admin@agenticqa.io' \$f || exit 1; done"
 chk "ganesh@ only in hub founder section" "grep -q 'mailto:ganesh@agenticqa.io?subject=Hello' hub/index.html && [ \$(grep -l 'mailto:ganesh@' sites/*/index.html | wc -l) -eq 0 ]"
 echo "== 3a. Hub language ban + order"
 chk "hub visible text has no course/syllabus/enrol/waitlist/batch/beginner/become a confident" "! sed 's/<[^>]*>/ /g' hub/index.html | grep -niE 'course|syllabus|enrol|waitlist|batch|beginner|become a confident'"
-chk "hub section order company>founder>cofounder>certificates>activities" "python3 -c \"import re,sys;s=open('hub/index.html').read();i=[s.index('id=\\\"'+k+'\\\"') for k in ['company','about','founder','cofounder','certificates','activities']];sys.exit(0 if i==sorted(i) else 1)\""
+chk "hub section order sites>company>built>products>founder>certificate>contact" "python3 -c \"import sys;s=open('hub/index.html').read();ks=['sites','company','built','products','founder','certificate','contact'];i=[s.index('id=\\\"'+k+'\\\"') for k in ks];sys.exit(0 if i==sorted(i) else 1)\""
 for a in "hub/index.html neural" "sites/ai/index.html signal" "sites/aiengineering/index.html mint" "sites/neetjee/index.html amber" "sites/playwrightai/index.html violet"; do set -- $a; chk "accent $2 on $1" "grep -q 'data-accent=\"$2\"' $1"; done
 chk "no neatjee misspelling" "! grep -rni neatjee hub sites tools middleware.js"
 
@@ -88,7 +88,7 @@ chk "no neatjee misspelling anywhere" "! grep -ri 'neatjee' hub sites middleware
 echo "== 3c. Spell / typo regression (common mistakes only)"
 chk "no classic English typos in pages" "! grep -nEi '\\b(teh|recieve|seperate|occured|accomodate|definately|lenght|untill|sucess|enviroment|perfomance|avaliable|managment|developement|intership|certifcate|completetion|automtion|qualilty|technolgies|playwirght|neatjee)\\b' $PAGES"
 chk "Agentic QA Technologies naming consistent (no Technology singular on pages)" "! grep -nE 'Agentic QA Technology[^I]|AgenticQA Technologies' $PAGES"
-chk "British programme/organisation spellings present where used on hub" "grep -q 'programmes\\|programme' hub/index.html && grep -q 'organisations' hub/index.html"
+chk "hub uses personalised (British) where present" "grep -q personalised hub/index.html"
 
 echo "== 4. Local smoke (python3 -m http.server)"
 python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 & SP=$!; sleep 2
@@ -102,6 +102,9 @@ if out=$(node tests/contact-handler.test.mjs); then echo "$out"; n=$(printf '%s\
 
 
 if out=$(node tests/enquiry-email.test.mjs); then echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); PASS=$((PASS+n)); else echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); f=$(printf '%s\n' "$out" | grep -c '^FAIL' || true); PASS=$((PASS+n)); FAIL=$((FAIL+f)); fi
+
+echo "== 5b. Hub revise done-criteria"
+if out=$(python3 tests/hub-revise.test.py); then echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); PASS=$((PASS+n)); else echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); f=$(printf '%s\n' "$out" | grep -c '^FAIL' || true); PASS=$((PASS+n)); FAIL=$((FAIL+f)); fi
 
 echo "== 5. Extended QA (forms / footer / a11y / CSS / routing / JS risk)"
 if out=$(python3 tests/extended-qa.py); then

@@ -5,8 +5,8 @@ export const ALLOWED = Object.freeze({
     formId: 'enquiry-form',
     websiteLabel: 'Agentic QA (main)',
     interests: Object.freeze([
-      'AI for Business (agents / consulting)',
-      'AI evaluation / MCP work',
+      'AI for Business',
+      'AI evaluation / MCP',
       'AI Engineering',
       'NEET Prep',
       'Playwright + AI',
