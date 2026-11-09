@@ -33,6 +33,11 @@ chk "hub header CTA still Contact" "grep -q 'hdr-cta\" href=\"#contact\">Contact
 chk "site.js has nav scroll-spy" "grep -q 'Nav scroll-spy' assets/js/site.js && grep -q 'aria-current' assets/js/site.js"
 chk "css highlights aria-current nav" "grep -q 'site-nav a\[aria-current' assets/css/styles.css"
 
+chk "hub who-we-are has no LLP/LLPIN/Puducherry clause" "! grep -q 'LLPIN ACV-7177, registered in Puducherry' hub/index.html && grep -q 'Agentic QA Technologies works where AI systems meet software quality' hub/index.html"
+chk "hub achievements drop registration bullet" "! grep -q 'Registered as Agentic QA Technologies LLP' hub/index.html"
+chk "hub achievements Playwright client frameworks bullet" "grep -q 'Playwright automation frameworks built and run on real client web projects' hub/index.html"
+chk "hub Issued by without LLP/Puducherry" "grep -q 'Agentic QA Technologies — the same team that runs the work.' hub/index.html && ! grep -q 'LLPIN ACV-7177), Puducherry' hub/index.html"
+
 echo "== 2. Link check (local href/src)"
 broken=0
 for f in $PAGES; do
