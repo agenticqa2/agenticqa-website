@@ -119,6 +119,13 @@ if out=$(node tests/contact-handler.test.mjs); then echo "$out"; n=$(printf '%s\
 
 if out=$(node tests/enquiry-email.test.mjs); then echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); PASS=$((PASS+n)); else echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); f=$(printf '%s\n' "$out" | grep -c '^FAIL' || true); PASS=$((PASS+n)); FAIL=$((FAIL+f)); fi
 
+echo "== 4b. Batch date unit tests"
+if out=$(node tests/batch-date.test.mjs); then echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); PASS=$((PASS+n)); else echo "$out"; n=$(printf '%s\n' "$out" | grep -c '^PASS' || true); f=$(printf '%s\n' "$out" | grep -c '^FAIL' || true); PASS=$((PASS+n)); FAIL=$((FAIL+f)); fi
+chk "playwrightai has data-batch-date markers (no stale 15 Nov 2026)" "grep -q 'data-batch-date' sites/playwrightai/index.html && ! grep -q '15 Nov 2026' sites/playwrightai/index.html"
+chk "playwrightai no-JS fallback says soon" "grep -q 'Next batch starts <strong data-batch-date>soon</strong>' sites/playwrightai/index.html"
+chk "batch-date.js shipped" "[ -s assets/js/batch-date.js ]"
+chk "pages load batch-date.js module" "grep -q 'assets/js/batch-date.js' hub/index.html && grep -q 'assets/js/batch-date.js' sites/playwrightai/index.html"
+
 echo "== 5. Extended QA (forms / footer / a11y / CSS / routing / JS risk)"
 if out=$(python3 tests/extended-qa.py); then
   echo "$out"
