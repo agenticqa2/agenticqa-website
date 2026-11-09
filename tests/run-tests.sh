@@ -38,6 +38,12 @@ chk "hub achievements drop registration bullet" "! grep -q 'Registered as Agenti
 chk "hub achievements Playwright client frameworks bullet" "grep -q 'Playwright automation frameworks built and run on real client web projects' hub/index.html"
 chk "hub Issued by without LLP/Puducherry" "grep -q 'Agentic QA Technologies — the same team that runs the work.' hub/index.html && ! grep -q 'LLPIN ACV-7177), Puducherry' hub/index.html"
 
+# Sub-sites: no Contact nav label (CTA may differ); shared scroll-spy covers hash links
+for s in ai aiengineering neetjee playwrightai; do
+  chk "sites/$s nav has no Contact label" "! grep -A20 'id=\"site-nav\"' sites/$s/index.html | grep -q 'href=\"#contact\">Contact</a>'"
+  chk "sites/$s nav has hash section links for spy" "grep -A20 'id=\"site-nav\"' sites/$s/index.html | grep -q 'href=\"#'"
+done
+
 echo "== 2. Link check (local href/src)"
 broken=0
 for f in $PAGES; do
