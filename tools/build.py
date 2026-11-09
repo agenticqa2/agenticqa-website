@@ -70,7 +70,7 @@ def page(title, desc, canonical, nav, cta, body, tag="", accent="neural", cta_hr
     <p class="copy">© <span id="year">2026</span> Agentic QA Technologies LLP · LLPIN: <span style="white-space:nowrap">ACV-7177</span> · Registered in Puducherry, India</p>
   </div>
 </footer>
-<script src="/assets/js/site.js?v=20261106m1" defer></script>
+<script src="/assets/js/site.js?v=20261109nav2" defer></script>
 </body>
 </html>
 '''
@@ -313,7 +313,7 @@ hub_body = f'''<section class="hero" id="company">
 ''' + contact("Contact", "Talk to Agentic QA Technologies.", "Tell us what you are looking for — a project, a partnership or a question — and we will reply or set up a quick call.", "Agentic QA enquiry",
   ["AI for Business (agents / consulting)", "AI evaluation / MCP work", "AI Engineering", "NEET Prep", "Playwright + AI", "Partnership / other"],
   ["Company / team", "Working professional", "Student", "Parent", "Other"], "Send enquiry", "enquiry")
-hub_nav = [("#about", "Company"), ("#founder", "Founders"), ("#certificates", "Certificates"), ("#activities", "Activities"), ("#contact", "Contact")]
+hub_nav = [("#about", "Company"), ("#founder", "Founders"), ("#certificates", "Certificates"), ("#activities", "Activities"), ("#contact", "Talk to Us")]
 write("hub/index.html", page("Agentic QA Technologies LLP — AI-native quality engineering & AI agents", "Agentic QA Technologies LLP: AI-native quality engineering, custom AI agents, LLM evaluation and consulting — with dedicated sites for AI engineering, NEET prep and Playwright + AI.", HUB + "/", hub_nav, "Contact", hub_body))
 
 priv = open(os.path.join(ROOT, "archive/v7/privacy.html")).read()

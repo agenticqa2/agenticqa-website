@@ -28,6 +28,11 @@ if out=$(cd /tmp/mwtest && node t.mjs); then echo "$out"; n=$(printf '%s\n' "$ou
 for s in ai aiengineering neetjee playwrightai; do
   chk "hub card preview link /?site=$s" "grep -q 'class=\"hub-card reveal\" href=\"/?site=$s\" data-prod-href=\"https://$s.agenticqa.io/\"' hub/index.html"
 done
+chk "hub nav Contact label is Talk to Us" "grep -q 'href=\"#contact\">Talk to Us</a>' hub/index.html && ! grep -q 'site-nav[^>]*>.*href=\"#contact\">Contact</a>' hub/index.html"
+chk "hub header CTA still Contact" "grep -q 'hdr-cta\" href=\"#contact\">Contact</a>' hub/index.html"
+chk "site.js has nav scroll-spy" "grep -q 'Nav scroll-spy' assets/js/site.js && grep -q 'aria-current' assets/js/site.js"
+chk "css highlights aria-current nav" "grep -q 'site-nav a\[aria-current="true"\]' assets/css/styles.css"
+
 echo "== 2. Link check (local href/src)"
 broken=0
 for f in $PAGES; do
