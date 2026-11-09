@@ -60,11 +60,18 @@
       setCurrent(ids[0]);
       return;
     }
+    var ratios = {};
+    ids.forEach(function (id) { ratios[id] = 0; });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) setCurrent(en.target.id);
+        ratios[en.target.id] = en.isIntersecting ? en.intersectionRatio : 0;
       });
-    }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+      var best = null, bestR = 0;
+      ids.forEach(function (id) {
+        if (ratios[id] > bestR) { bestR = ratios[id]; best = id; }
+      });
+      if (best) setCurrent(best);
+    }, { rootMargin: '-40% 0px -45% 0px', threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] });
     ids.forEach(function (id) { io.observe(document.getElementById(id)); });
   })();
 

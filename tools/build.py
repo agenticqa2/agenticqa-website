@@ -70,7 +70,7 @@ def page(title, desc, canonical, nav, cta, body, tag="", accent="neural", cta_hr
     <p class="copy">© <span id="year">2026</span> Agentic QA Technologies LLP · LLPIN: <span style="white-space:nowrap">ACV-7177</span> · Registered in Puducherry, India</p>
   </div>
 </footer>
-<script src="/assets/js/site.js?v=20261109nav2" defer></script>
+<script src="/assets/js/site.js?v=20261109nav3" defer></script>
 </body>
 </html>
 '''
