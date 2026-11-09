@@ -535,3 +535,6 @@ section{padding:96px 0}
 .feat .card{padding:24px}
 @media (min-width:1000px){.grid.g4.feat{grid-template-columns:repeat(4,1fr)}.grid.g4.feat>*{grid-column:auto!important}}
 @media (prefers-reduced-motion:reduce){.hv,.hv *,.hero-copy>*{animation:none!important}.hv-bar{transform:none}}
+
+/* nav scroll-spy */
+.site-nav a[aria-current="true"]{color:var(--brand);background:var(--accent-soft)}

@@ -70,7 +70,7 @@ def page(title, desc, canonical, nav, cta, body, tag="", accent="neural", cta_hr
     <p class="copy">© <span id="year">2026</span> Agentic QA Technologies LLP · LLPIN: <span style="white-space:nowrap">ACV-7177</span> · Registered in Puducherry, India</p>
   </div>
 </footer>
-<script src="/assets/js/site.js?v=20261106m1" defer></script>
+<script src="/assets/js/site.js?v=20261109nav3" defer></script>
 </body>
 </html>
 '''
@@ -229,7 +229,7 @@ hub_body = f'''<section class="hero" id="company">
 <div class="trust-band"><div class="wrap"><ul><li><b>LLP</b><span>Registered · LLPIN ACV-7177</span></li><li><b>4</b><span>Focused sites</span></li><li><b>4</b><span>In-house AI products</span></li><li><b>MCP · RAG · Evals</b><span>Core practice areas</span></li></ul></div></div>
 <section id="about" class="alt">
   <div class="wrap">
-    {head("Who we are", "An AI and quality engineering company.", "Agentic QA Technologies LLP (LLPIN ACV-7177, registered in Puducherry, India) works where AI systems meet software quality: building, testing and evaluating AI-powered software, and helping people and teams do the same.")}
+    {head("Who we are", "An AI and quality engineering company.", "Agentic QA Technologies works where AI systems meet software quality: building, testing and evaluating AI-powered software, and helping people and teams do the same.")}
     {cards([("AI-native quality engineering", "Playwright and API automation with AI-assisted triage, CI/CD integration and test strategy for modern web products."),
             ("Custom AI agents", "Task-specific agents connected to company data and tools through APIs and MCP servers, with human checkpoints where they matter."),
             ("LLM &amp; agent evaluation", "Evaluation suites (DeepEval, Ragas, LangSmith) that measure accuracy, safety and regressions in LLM and RAG features."),
@@ -242,8 +242,8 @@ hub_body = f'''<section class="hero" id="company">
     </div>
     <div class="section-head" style="margin-top:48px"><span class="eyebrow">Achievements</span><h3>What we have built so far.</h3></div>
     <ul class="checklist">
-      <li>Registered as Agentic QA Technologies LLP — LLPIN ACV-7177, Puducherry, India</li>
       <li>In-house applied AI projects: FeedbackPulse, MeetingMind, ResumeGenie and StudyMate</li>
+      <li>Playwright automation frameworks built and run on real client web projects — the same practice we teach in the programmes</li>
       <li>Industry Internship Completion Certificates issued to programme graduates</li>
       <li>Four focused sites for business, engineering, exam-prep and automation work</li>
     </ul>
@@ -295,7 +295,7 @@ hub_body = f'''<section class="hero" id="company">
       </article>
       <div class="cert-facts">
         <article class="card reveal"><h3>What it means</h3><p class="muted">Proof of internship-style delivery work with the company: projects, reviews and a defined scope — not a government or university diploma.</p></article>
-        <article class="card reveal"><h3>Issued by</h3><p class="muted">Agentic QA Technologies LLP (LLPIN ACV-7177), Puducherry — the same team that runs the work.</p></article>
+        <article class="card reveal"><h3>Issued by</h3><p class="muted">Agentic QA Technologies — the same team that runs the work.</p></article>
       </div>
     </div>
     <figure class="cert-sample reveal">
@@ -313,7 +313,7 @@ hub_body = f'''<section class="hero" id="company">
 ''' + contact("Contact", "Talk to Agentic QA Technologies.", "Tell us what you are looking for — a project, a partnership or a question — and we will reply or set up a quick call.", "Agentic QA enquiry",
   ["AI for Business (agents / consulting)", "AI evaluation / MCP work", "AI Engineering", "NEET Prep", "Playwright + AI", "Partnership / other"],
   ["Company / team", "Working professional", "Student", "Parent", "Other"], "Send enquiry", "enquiry")
-hub_nav = [("#about", "Company"), ("#founder", "Founders"), ("#certificates", "Certificates"), ("#activities", "Activities"), ("#contact", "Contact")]
+hub_nav = [("#about", "Company"), ("#founder", "Founders"), ("#certificates", "Certificates"), ("#activities", "Activities"), ("#contact", "Talk to Us")]
 write("hub/index.html", page("Agentic QA Technologies LLP — AI-native quality engineering & AI agents", "Agentic QA Technologies LLP: AI-native quality engineering, custom AI agents, LLM evaluation and consulting — with dedicated sites for AI engineering, NEET prep and Playwright + AI.", HUB + "/", hub_nav, "Contact", hub_body))
 
 priv = open(os.path.join(ROOT, "archive/v7/privacy.html")).read()
