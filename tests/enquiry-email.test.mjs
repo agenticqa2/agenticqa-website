@@ -15,7 +15,7 @@ const samples = [
   ['Agentic QA enquiry', 'NEET Prep', 'Website enquiry — NEET Prep', 'Agentic QA (main)'],
   ['AI for Business enquiry', 'Custom AI agent', 'Website enquiry — Custom AI agent', 'AI for Business'],
   ['AI Engineering waitlist', 'Join the waitlist', 'Website enquiry — Join the waitlist', 'AI Engineering'],
-  ['CatalystAI NEET enquiry', 'NEET mocks', 'Website enquiry — NEET mocks', 'CatalystAI NEET & JEE'],
+  ['DawnGuru NEET enquiry', 'NEET mocks', 'Website enquiry — NEET mocks', 'DawnGuru NEET & JEE'],
   ['Playwright AI waitlist', 'Free demo class (30 min)', 'Website enquiry — Free demo class (30 min)', 'Playwright AI'],
 ];
 
@@ -49,12 +49,12 @@ chk('CRLF in name rejected', validateContactPayload({
   _subject: 'Agentic QA enquiry', name: 'A\r\nX', email: 'a@b.co', interest: 'NEET Prep',
 }).ok === false);
 
-const meta = ALLOWED['CatalystAI NEET enquiry'];
+const meta = ALLOWED['DawnGuru NEET enquiry'];
 chk('resolve allowlisted interest', resolveInterestLabel(meta, 'NEET Prep') === 'NEET Prep' || resolveInterestLabel(meta, 'NEET mocks') === 'NEET mocks');
 chk('resolve unknown sanitized', resolveInterestLabel(meta, 'Something custom') === 'Something custom');
 
 const fmt = formatEnquiryEmail({
-  websiteLabel: 'CatalystAI NEET & JEE',
+  websiteLabel: 'DawnGuru NEET & JEE',
   name: 'A',
   email: 'a@b.co',
   interestLabel: 'NEET Prep',
@@ -63,7 +63,7 @@ const fmt = formatEnquiryEmail({
 });
 chk('sample subject NEET Prep', fmt.mailSubject === 'Website enquiry — NEET Prep');
 chk('sample body shape', fmt.text === [
-  'Website: CatalystAI NEET & JEE',
+  'Website: DawnGuru NEET & JEE',
   'Name: A',
   'Email: a@b.co',
   'Interested in: NEET Prep',

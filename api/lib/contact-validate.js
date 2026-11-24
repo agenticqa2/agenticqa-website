@@ -40,10 +40,10 @@ export const ALLOWED = Object.freeze({
       'Free demo class (30 min)',
     ]),
   },
-  'CatalystAI NEET enquiry': {
+  'DawnGuru NEET enquiry': {
     flow: 'neetjee',
     formId: 'waitlist-form',
-    websiteLabel: 'CatalystAI NEET & JEE',
+    websiteLabel: 'DawnGuru NEET & JEE',
     interests: Object.freeze([
       'Join the waitlist',
       'NEET mocks',
