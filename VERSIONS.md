@@ -49,7 +49,7 @@ git tag -a v4-modern -m "v4 modern redesign" && git push origin v4-modern
 Built from v7 (`a453389`). Intent: split the single site into a company **hub** (agenticqa.io / www) plus four
 subdomain sites served from ONE Vercel static project via host-based Edge Middleware (`middleware.js`):
 `ai.` (business agents/consulting), `aiengineering.` (LLM/RAG/vector DB/fine-tuning training),
-`neetjee.` (CatalystAI NEET prep), `playwrightai.` (Playwright + AI course). Old v7 pages preserved under `/archive/`.
+`neetjee.` (DawnGuru NEET prep), `playwrightai.` (Playwright + AI course). Old v7 pages preserved under `/archive/`.
 To roll back, redeploy `main`/v7 — this branch changes routing for every host.
 
 ## hub-split rebuild (2026-11-05)

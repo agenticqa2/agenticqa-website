@@ -202,7 +202,7 @@ def write(rel, html):
 hub_cards = [
  ("ai", "AI for Business", "Custom AI agents, automation consulting and AI-native QA for companies. We scope your workflows, build agents that fit your stack, and evaluate them before they reach users."),
  ("aiengineering", "AI Engineering", "The builder track: LLMs, retrieval-augmented generation, vector databases, agents and MCP, evaluation and fine-tuning — with in-house projects as working examples."),
- ("neetjee", "NEET Prep (CatalystAI)", "CatalystAI-powered NEET preparation: NCERT-aligned subject maps, mock tests and personalised study plans with doubt-solving support."),
+ ("neetjee", "NEET Prep (DawnGuru)", "DawnGuru-powered NEET preparation: NCERT-aligned subject maps, mock tests and personalised study plans with doubt-solving support."),
  ("playwrightai", "Playwright + AI", "Playwright test automation with AI-assisted testing — tutorials, hands-on labs and Playwright MCP, for testers and teams moving into AI-era automation."),
 ]
 HUB_ICO = {
@@ -241,7 +241,7 @@ hub_body = f'''<section class="hero" id="company">
             ("In-house tooling", "Explore working AI applications built by our team, demonstrating RAG, structured LLM feedback, sentiment analysis and meeting summarisation.")])}
     <div class="grid g2 mv" style="margin-top:40px">
       <article class="mv-card reveal"><h3>Our aims</h3><p>Deliver reliable AI and QA outcomes for business clients, and make engineers job-ready for the AI era by working the way real teams practise: live, hands-on and project-driven.</p></article>
-      <article class="mv-card reveal"><h3>Our goals</h3><p>Build durable in-house tooling and programmes; serve companies with consulting and custom agents; and support learners through clear pathways — AI engineering, Playwright + AI, and NEET preparation through CatalystAI.</p></article>
+      <article class="mv-card reveal"><h3>Our goals</h3><p>Build durable in-house tooling and programmes; serve companies with consulting and custom agents; and support learners through clear pathways — AI engineering, Playwright + AI, and NEET preparation through DawnGuru.</p></article>
     </div>
     <div class="section-head" style="margin-top:48px"><span class="eyebrow">Achievements</span><h3>What we have built so far.</h3></div>
     <ul class="checklist">
@@ -417,10 +417,10 @@ write("sites/aiengineering/index.html", page("AI Engineering — LLMs, RAG, vect
 
 # ---------------- NEET ----------------
 nj_body = f'''<section class="hero"><div class="wrap hero-grid"><div class="hero-copy">
-  <span class="pill"><span class="dot" aria-hidden="true"></span>CatalystAI · neetjee.agenticqa.io</span>
+  <span class="pill"><span class="dot" aria-hidden="true"></span>DawnGuru · neetjee.agenticqa.io</span>
   <ul class="stat-chips"><li>NCERT-aligned</li><li>Chapter tests &amp; full mocks</li><li>Personalised study plans</li></ul>
   <h1>NEET preparation with <span class="grad">a plan that adapts to you.</span></h1>
-  <p class="lede">CatalystAI on <strong>neetjee</strong>.agenticqa.io combines AI-powered study plans, visual explanations and doubt-solving for NEET aspirants — NCERT-aligned, weak-area focused, with a growing JEE practice track.</p>
+  <p class="lede">DawnGuru on <strong>neetjee</strong>.agenticqa.io combines AI-powered study plans, visual explanations and doubt-solving for NEET aspirants — NCERT-aligned, weak-area focused, with a growing JEE practice track.</p>
   <div class="cta-row"><a class="btn btn-primary" href="#contact">Join the waitlist</a><a class="btn btn-ghost" href="#syllabus">See the syllabus</a></div>
 </div>
   {hero_art("neet")}
@@ -432,7 +432,7 @@ nj_body = f'''<section class="hero"><div class="wrap hero-grid"><div class="hero
           ("Physics", "Mechanics, thermodynamics, electrostatics, optics and modern physics with step-by-step problem solving.")], "g3 subj", icons=["leaf","flask","atom"])}
 </div></section>
 <section id="jee"><div class="wrap">
-  {head("JEE practice track", "Same CatalystAI approach for JEE aspirants.", "Physics, Chemistry and Mathematics practice sets with timed mocks — alongside the core NEET path.")}
+  {head("JEE practice track", "Same DawnGuru approach for JEE aspirants.", "Physics, Chemistry and Mathematics practice sets with timed mocks — alongside the core NEET path.")}
   {cards([("Physics &amp; Chemistry depth", "JEE-style numericals and multi-concept problems layered on the same NCERT foundation."),
           ("Mathematics", "Algebra, calculus, coordinate geometry and trigonometry drills with step solutions."),
           ("Timed JEE mocks", "Full-length practice under exam timing, with weak-topic follow-ups.")])}
@@ -447,12 +447,12 @@ nj_body = f'''<section class="hero"><div class="wrap hero-grid"><div class="hero
   <blockquote class="quote-banner">&ldquo;Small steps every day add up to big results on exam day.&rdquo;</blockquote>
 </div></section>
 <section id="team" class="alt"><div class="wrap">
-  {head("Team", "The people behind CatalystAI.")}
-  <div class="grid g3 team"><article class="card team-card reveal"><img src="/assets/img/pradhidhan.webp" alt="Pradhidhan R G" width="160" height="160" loading="lazy"><span class="eyebrow">CatalystAI team</span><h3>Pradhidhan R G</h3><p class="muted">Pradhidhan R G works with the CatalystAI team on content and learner experience for NEET and JEE practice.</p></article><article class="card team-card reveal"><img src="/assets/img/tanushka-grey.webp" alt="Thanushka Mira" width="160" height="160" loading="lazy"><span class="eyebrow">Student support</span><h3>Thanushka Mira</h3><p class="muted">Thanushka Mira looks after student support for CatalystAI, helping NEET learners with study planning, practice sets and day-to-day doubt follow-ups.</p></article><article class="card team-card reveal"><img src="/assets/img/heri.webp" alt="Hari Krishna G" width="160" height="160" loading="lazy"><span class="eyebrow">Campus ambassador</span><h3>Hari Krishna G</h3><p class="muted">Hari Krishna G supports the CatalystAI community as campus ambassador, sharing study resources and helping with event sign-ups.</p></article></div>
+  {head("Team", "The people behind DawnGuru.")}
+  <div class="grid g3 team"><article class="card team-card reveal"><img src="/assets/img/pradhidhan.webp" alt="Pradhidhan R G" width="160" height="160" loading="lazy"><span class="eyebrow">DawnGuru team</span><h3>Pradhidhan R G</h3><p class="muted">Pradhidhan R G works with the DawnGuru team on content and learner experience for NEET and JEE practice.</p></article><article class="card team-card reveal"><img src="/assets/img/tanushka-grey.webp" alt="Thanushka Mira" width="160" height="160" loading="lazy"><span class="eyebrow">Student support</span><h3>Thanushka Mira</h3><p class="muted">Thanushka Mira looks after student support for DawnGuru, helping NEET learners with study planning, practice sets and day-to-day doubt follow-ups.</p></article><article class="card team-card reveal"><img src="/assets/img/heri.webp" alt="Hari Krishna G" width="160" height="160" loading="lazy"><span class="eyebrow">Campus ambassador</span><h3>Hari Krishna G</h3><p class="muted">Hari Krishna G supports the DawnGuru community as campus ambassador, sharing study resources and helping with event sign-ups.</p></article></div>
 </div></section>
-''' + contact("CatalystAI", "Join the NEET Prep waitlist.", "We will share programme details and next steps. Fees are shared on a call.", "CatalystAI NEET enquiry",
+''' + contact("DawnGuru", "Join the NEET Prep waitlist.", "We will share programme details and next steps. Fees are shared on a call.", "DawnGuru NEET enquiry",
   ["Join the waitlist", "NEET mocks", "JEE practice", "Study plan", "Other"], ["Student", "Parent", "School / coaching centre"], "Join the waitlist")
-write("sites/neetjee/index.html", page("NEET Prep — CatalystAI on neetjee | Agentic QA", "CatalystAI NEET and JEE preparation on neetjee.agenticqa.io: NCERT-aligned syllabus, mock tests and AI-powered study plans.", SITES['neetjee'][0] + "/", [("#syllabus", "Syllabus"), ("#jee", "JEE"), ("#mocks", "Mock tests"), ("#plans", "Study plans"), ("#team", "Team"), (HUB + "/", "Agentic QA home")], "Join waitlist", nj_body, "NEET", "amber"))
+write("sites/neetjee/index.html", page("NEET Prep — DawnGuru on neetjee | Agentic QA", "DawnGuru NEET and JEE preparation on neetjee.agenticqa.io: NCERT-aligned syllabus, mock tests and AI-powered study plans.", SITES['neetjee'][0] + "/", [("#syllabus", "Syllabus"), ("#jee", "JEE"), ("#mocks", "Mock tests"), ("#plans", "Study plans"), ("#team", "Team"), (HUB + "/", "Agentic QA home")], "Join waitlist", nj_body, "NEET", "amber"))
 
 # ---------------- Playwright AI ----------------
 pw_body = f'''<section class="hero">

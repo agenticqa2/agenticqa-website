@@ -87,7 +87,7 @@ Nothing from the current live / v7 site is throwaway. Inventory and **move**:
 |------------------|-------------|
 | Playwright course hero, syllabus, labs, waitlist/demo, course facts | `playwrightai.agenticqa.io` |
 | AI engineering curriculum / projects | `aiengineering.agenticqa.io` |
-| CatalystAI / NEET (and JEE if present) | `neetjee.agenticqa.io` |
+| DawnGuru / NEET (and JEE if present) | `neetjee.agenticqa.io` |
 | Business consulting / agents / fees-on-a-call | `ai.agenticqa.io` |
 | Company mission, founders (Ganesh, Moksha), certificate story, org schema-level facts, privacy, footer legal | Hub `agenticqa.io` |
 | Shared brand assets, contact channels, LLPIN footer | Every host as appropriate |
@@ -109,7 +109,7 @@ Elaborate, enterprise-level detail:
 - Who we are: **Agentic QA Technologies LLP** (legal name on footer; student-facing brand Agentic QA Technologies).
 - What we do: AI-native quality engineering, automation consulting, custom AI agents for companies, and structured training programs that feed industry-ready skill.
 - Aims / mission: make engineers job-ready for the AI era; teach and deliver the way real teams practise — live, hands-on, project-driven where training applies; deliver reliable AI + QA outcomes for business clients.
-- Goals: build durable in-house tooling and programs; serve companies with consulting and agents; support learners through clear pathways (AI engineering, Playwright + AI, NEET prep via CatalystAI).
+- Goals: build durable in-house tooling and programs; serve companies with consulting and agents; support learners through clear pathways (AI engineering, Playwright + AI, NEET prep via DawnGuru).
 - Achievements (only verifiable, no invented metrics): e.g. Industry Internship Completion Certificate for program graduates; named in-house projects (FeedbackPulse, MeetingMind, ResumeGenie, StudyMate) as proof of applied AI work; LLP registration (LLPIN ACV-7177, Puducherry). Prefer outcomes and artifacts over hype.
 - Contact strip allowed (email, phone, LinkedIn, YouTube channel link as text — no embed).
 
@@ -140,7 +140,7 @@ Activities overview of the four lines of work. **In this section**, include four
 |------|-----|-----------------------------|
 | AI for business | `https://ai.agenticqa.io/` | Custom agents, automation consulting, business-side AI QA |
 | AI engineering | `https://aiengineering.agenticqa.io/` | LLMs, RAG, vector DBs, fine-tuning — builder track |
-| NEET prep | `https://neetjee.agenticqa.io/` | Syllabus, mocks, study plans (CatalystAI) |
+| NEET prep | `https://neetjee.agenticqa.io/` | Syllabus, mocks, study plans (DawnGuru) |
 | Playwright + AI | `https://playwrightai.agenticqa.io/` | Playwright testing with AI — tutorials & labs |
 
 Each card: title, 2–3 sentence summary, clear CTA (“Open site”). Cards must not dump full subdomain curricula onto the hub.
@@ -167,7 +167,7 @@ Each subdomain is a **standalone site**: own hero, nav, sections, footer, SEO ti
 - NCERT-aligned syllabus pathways (Biology, Chemistry, Physics as applicable)
 - Mock tests (chapter / full-length) and weak-area guidance
 - Study plans
-- CatalystAI mentors/support as already featured (no ages/grades)
+- DawnGuru mentors/support as already featured (no ages/grades)
 - Waitlist / ask CTA  
 - Note: if JEE returns later, add explicitly; current rebuild brief is NEET-first unless Ganesh says otherwise.
 
@@ -223,7 +223,7 @@ Hard rules: no fees/prices on site; no years of experience; no fake testimonials
 
 HUB LANGUAGE BAN: agenticqa.io must read as a software/AI company from the first line. Do NOT open with training/course language such as “Become a confident AI-ready Playwright automation tester”, “beginner-friendly live course(s)”, batch-start-as-main-offer, or enroll/waitlist as the primary company CTA. That training-division messaging belongs ONLY on playwrightai.agenticqa.io. Short activity cards on the hub may link there; they must not paste the course hero.
 
-PRESERVE ALL EXISTING CONTENT: do not delete current-site material. Relocate Playwright course/syllabus/labs/waitlist → playwrightai; AI engineering → aiengineering; CatalystAI/NEET → neetjee; business agents/consulting → ai; company/founders/certificate/privacy/legal → hub. Diff against the previous site before finishing.
+PRESERVE ALL EXISTING CONTENT: do not delete current-site material. Relocate Playwright course/syllabus/labs/waitlist → playwrightai; AI engineering → aiengineering; DawnGuru/NEET → neetjee; business agents/consulting → ai; company/founders/certificate/privacy/legal → hub. Diff against the previous site before finishing.
 
 REFERENCE BAR: study enterprise B2B software/AI company sites for structure and professionalism; do not copy their copy or brand.
 
@@ -241,7 +241,7 @@ Each subdomain must also work standalone.
 
 SUBDOMAIN CONTENT:
 - ai: business — custom agents, consulting, pricing-on-call, enquiry.
-- neetjee: NEET prep — syllabus, mocks, study plans, CatalystAI support.
+- neetjee: NEET prep — syllabus, mocks, study plans, DawnGuru support.
 - aiengineering: technical — LLMs, RAG, vector DBs, fine-tuning, builder projects.
 - playwrightai: Playwright + AI — tutorials, labs, live course details (including any former hub course hero lines).
 

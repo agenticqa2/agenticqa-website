@@ -111,7 +111,7 @@ EXPECTED_SUBJECTS = {
   'hub/index.html': 'Agentic QA enquiry',
   'sites/ai/index.html': 'AI for Business enquiry',
   'sites/aiengineering/index.html': 'AI Engineering waitlist',
-  'sites/neetjee/index.html': 'CatalystAI NEET enquiry',
+  'sites/neetjee/index.html': 'DawnGuru NEET enquiry',
   'sites/playwrightai/index.html': 'Playwright AI waitlist',
 }
 for path, subj in EXPECTED_SUBJECTS.items():
