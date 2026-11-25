@@ -3,7 +3,7 @@
 cd "$(dirname "$0")/.."; PASS=0; FAIL=0
 ok(){ echo "PASS  $1"; PASS=$((PASS+1)); }; bad(){ echo "FAIL  $1"; FAIL=$((FAIL+1)); }
 chk(){ if eval "$2" >/dev/null 2>&1; then ok "$1"; else bad "$1"; fi; }
-PAGES="hub/index.html hub/privacy.html sites/ai/index.html sites/aiengineering/index.html sites/neetjee/index.html sites/playwrightai/index.html"
+PAGES="hub/index.html hub/privacy.html hub/terms.html sites/ai/index.html sites/aiengineering/index.html sites/neetjee/index.html sites/playwrightai/index.html"
 echo "== 1. Structure"
 for f in $PAGES index.html middleware.js vercel.json package.json VERSIONS.md assets/css/styles.css assets/js/site.js assets/img/ganesh.webp assets/img/moksha.webp assets/brand/logo.svg; do chk "exists $f" "[ -s $f ]"; done
 chk "site indexes are distinct" "[ \$(md5sum hub/index.html sites/*/index.html | awk '{print \$1}' | sort -u | wc -l) -eq 5 ]"
@@ -14,7 +14,7 @@ echo 'export const rewrite=u=>({rewrite:String(u)});export const next=()=>({next
 cp middleware.js /tmp/mwtest/middleware.mjs
 cat > /tmp/mwtest/t.mjs <<'JS'
 import mw from './middleware.mjs';
-const cases=[["agenticqa.io","/","/hub/index.html"],["www.agenticqa.io","/privacy.html","/hub/privacy.html"],["ai.agenticqa.io","/","/sites/ai/index.html"],
+const cases=[["agenticqa.io","/","/hub/index.html"],["www.agenticqa.io","/privacy.html","/hub/privacy.html"],["www.agenticqa.io","/terms.html","/hub/terms.html"],["ai.agenticqa.io","/","/sites/ai/index.html"],
 ["aiengineering.agenticqa.io","/","/sites/aiengineering/index.html"],["neetjee.agenticqa.io","/","/sites/neetjee/index.html"],["playwrightai.agenticqa.io","/","/sites/playwrightai/index.html"],
 ["localhost:3000","/","/hub/index.html"],["localhost:3000","/?site=neetjee","/sites/neetjee/index.html"],["x-git-hub.vercel.app","/?site=ai","/sites/ai/index.html"],
 ["agenticqa.io","/?site=ai","/sites/ai/index.html"],["ai.agenticqa.io","/?site=playwrightai","/sites/playwrightai/index.html"],["preview.vercel.app","/","/hub/index.html"]];
@@ -71,6 +71,16 @@ for f in $PAGES; do chk "footer has no Registered in Puducherry in $f" "! grep -
 chk "hub keeps Pondicherry University education line" "grep -q 'M.Sc. Computer Science, Pondicherry University · B.Sc. Computer Science, Pondicherry University' hub/index.html"
 chk "certificate-sample.svg has no Puducherry/Pondicherry" "! grep -qiE 'puducherry|pondicherry' assets/img/certificate-sample.svg"
 chk "hub certificate img is cache-busted" "grep -q 'certificate-sample.svg?v=20261125cert' hub/index.html"
+chk "hub terms page exists" "[ -s hub/terms.html ]"
+chk "Terms link in footer of every page" "for f in $PAGES; do grep -q 'terms.html\">Terms</a>' \$f || exit 1; done"
+chk "hub canonical and og:url use www" "grep -q 'rel=\"canonical\" href=\"https://www.agenticqa.io/\"' hub/index.html && grep -q 'property=\"og:url\" content=\"https://www.agenticqa.io/\"' hub/index.html"
+chk "privacy canonical and og:url use www" "grep -q 'rel=\"canonical\" href=\"https://www.agenticqa.io/privacy.html\"' hub/privacy.html && grep -q 'property=\"og:url\" content=\"https://www.agenticqa.io/privacy.html\"' hub/privacy.html"
+chk "terms canonical and og:url use www" "grep -q 'rel=\"canonical\" href=\"https://www.agenticqa.io/terms.html\"' hub/terms.html && grep -q 'property=\"og:url\" content=\"https://www.agenticqa.io/terms.html\"' hub/terms.html"
+chk "privacy has no formsubmit" "! grep -qi formsubmit hub/privacy.html hub/terms.html"
+chk "privacy last updated 25 November 2026" "grep -q 'last updated 25 November 2026' hub/privacy.html"
+chk "terms last updated 25 November 2026" "grep -q 'last updated 25 November 2026' hub/terms.html"
+chk "sitemap and robots use www hub URLs" "grep -q 'https://www.agenticqa.io/</loc>' sitemap.xml && grep -q 'https://www.agenticqa.io/privacy.html' sitemap.xml && grep -q 'https://www.agenticqa.io/terms.html' sitemap.xml && grep -q 'Sitemap: https://www.agenticqa.io/sitemap.xml' robots.txt"
+chk "sitemap does not use apex hub loc" "! grep -q 'https://agenticqa.io/</loc>' sitemap.xml && ! grep -q 'https://agenticqa.io/privacy' sitemap.xml"
 for f in $PAGES; do chk "a11y (skip link, theme toggle, all img alt) $f" "grep -q 'class=\"skip\"' $f && grep -q theme-toggle $f && ! grep -o '<img[^>]*>' $f | grep -v 'alt='"; done
 chk "ganesh open-to replaced with organisations line" "grep -q 'Works with organisations on AI quality engineering, MCP integrations, AI evaluation and corporate training.' hub/index.html && ! grep -q 'Open to:' hub/index.html"
 chk "ganesh career timeline roles" "grep -q 'AI Automation Architect' hub/index.html && grep -q 'Symphony Talent' hub/index.html && grep -q 'Harman Connected Services' hub/index.html && grep -q 'First Advantage' hub/index.html"
@@ -89,7 +99,9 @@ echo "== 3b. Subdomain content boundaries"
 # ai = business only (no course/waitlist/batch/beginner/become a confident)
 chk "ai has no course/syllabus/enrol/waitlist/batch/beginner/become a confident" "! sed 's/<[^>]*>/ /g' sites/ai/index.html | grep -niE 'course|syllabus|enrol|waitlist|batch|beginner|become a confident'"
 chk "hub privacy has no waitlist form/section" "! grep -qE 'id=\"waitlist\"|id=\"waitlist-form\"|waitlist-form' hub/privacy.html"
-chk "hub privacy Contact CTA points to hub contact" "grep -q 'hdr-cta\" href=\"https://agenticqa.io/#contact\"' hub/privacy.html || grep -q 'hdr-cta\" href=\"/#contact\"' hub/privacy.html"
+chk "hub privacy Contact CTA points to hub contact" "grep -q 'hdr-cta\" href=\"https://www.agenticqa.io/#contact\"' hub/privacy.html || grep -q 'hdr-cta\" href=\"/#contact\"' hub/privacy.html"
+chk "hub terms Contact CTA points to hub contact" "grep -q 'hdr-cta\" href=\"https://www.agenticqa.io/#contact\"' hub/terms.html || grep -q 'hdr-cta\" href=\"/#contact\"' hub/terms.html"
+chk "hub terms has no waitlist form/section" "! grep -qE 'id=\"waitlist\"|id=\"waitlist-form\"|waitlist-form' hub/terms.html"
 chk "ai has no enquiry waitlist-form id" "! grep -q 'id=\"waitlist' sites/ai/index.html"
 chk "ai uses enquiry-form" "grep -q 'id=\"enquiry-form\"' sites/ai/index.html"
 chk "ai h1 is business agents" "grep -q 'Custom AI agents that' sites/ai/index.html"
@@ -112,7 +124,7 @@ chk "British programme/organisation spellings present where used on hub" "grep -
 
 echo "== 4. Local smoke (python3 -m http.server)"
 python3 -m http.server 8765 --bind 127.0.0.1 >/dev/null 2>&1 & SP=$!; sleep 2
-for u in / /hub/ /hub/privacy.html /sites/ai/ /sites/aiengineering/ /sites/neetjee/ /sites/playwrightai/ /assets/css/styles.css /assets/js/site.js /assets/brand/logo.svg /assets/img/ganesh.webp; do
+for u in / /hub/ /hub/privacy.html /hub/terms.html /sites/ai/ /sites/aiengineering/ /sites/neetjee/ /sites/playwrightai/ /assets/css/styles.css /assets/js/site.js /assets/brand/logo.svg /assets/img/ganesh.webp; do
   c=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8765$u); chk "HTTP 200 $u ($c)" "[ $c = 200 ]"; done
 kill $SP 2>/dev/null || true
 echo "== 5a. FormSubmit handler mock"

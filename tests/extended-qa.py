@@ -3,11 +3,11 @@
 import re, pathlib, sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PAGES = [
-  'hub/index.html','hub/privacy.html',
+  'hub/index.html','hub/privacy.html','hub/terms.html',
   'sites/ai/index.html','sites/aiengineering/index.html',
   'sites/neetjee/index.html','sites/playwrightai/index.html'
 ]
-FORM_PAGES = [p for p in PAGES if p != 'hub/privacy.html']
+FORM_PAGES = [p for p in PAGES if p not in ('hub/privacy.html', 'hub/terms.html')]
 PASS = FAIL = 0
 
 def ok(msg):
@@ -19,8 +19,9 @@ def chk(msg, cond):
 
 href_re = re.compile(r'(?<![\w-])href="([^"]*)"')
 EXPECT = {
-  'https://agenticqa.io/', '/?site=ai', '/?site=aiengineering', '/?site=neetjee',
-  '/?site=playwrightai', 'https://agenticqa.io/#about', 'https://agenticqa.io/privacy.html',
+  'https://www.agenticqa.io/', '/?site=ai', '/?site=aiengineering', '/?site=neetjee',
+  '/?site=playwrightai', 'https://www.agenticqa.io/#about', 'https://www.agenticqa.io/privacy.html',
+  'https://www.agenticqa.io/terms.html',
   'tel:+919663434422', 'https://wa.me/919663434422', 'mailto:admin@agenticqa.io',
   'https://www.youtube.com/@AgenticQA', 'https://www.linkedin.com/in/ganesan-sivaraman/',
 }
@@ -31,15 +32,16 @@ for p in PAGES:
   foot = re.search(r'<footer\b[^>]*>(.*?)</footer>', (ROOT/p).read_text(), re.S|re.I).group(1)
   hrefs = href_re.findall(foot)
   chk(f'footer destinations exact set on {p}', set(hrefs) == EXPECT)
-  # 12 unique destinations present on this page → 12 inventory cells
+  # 13 unique destinations present on this page → 13 inventory cells
   inventory_cells += len(set(hrefs) & EXPECT)
   href_attrs += len(hrefs)
   chk(f'footer brand-foot on {p}', 'brand-foot' in foot)
-  chk(f'footer 13 href attrs on {p} (brand + 12 dest)', len(hrefs) == 13)
-chk('footer 72 inventory cells (12 dest × 6 pages)', inventory_cells == 72)
-chk('footer 78 raw href attrs (brand duplicates home)', href_attrs == 78)
+  chk(f'footer 14 href attrs on {p} (brand + 13 dest)', len(hrefs) == 14)
+chk('footer 91 inventory cells (13 dest × 7 pages)', inventory_cells == 91)
+chk('footer 98 raw href attrs (brand duplicates home)', href_attrs == 98)
 
 chk('privacy has zero forms', '<form' not in (ROOT/'hub/privacy.html').read_text())
+chk('terms has zero forms', '<form' not in (ROOT/'hub/terms.html').read_text())
 
 for p in FORM_PAGES:
   f = re.search(r'<form\b[^>]*>.*?</form>', (ROOT/p).read_text(), re.S).group(0)
@@ -63,8 +65,9 @@ chk('site.js no eval/innerHTML/document.write/console', not re.search(r'eval\(|\
 chk('site.js prod-href preview skip', 'isPreview' in js and 'data-prod-href' in js)
 
 cans = {
-  'hub/index.html': 'https://agenticqa.io/',
-  'hub/privacy.html': 'https://agenticqa.io/privacy.html',
+  'hub/index.html': 'https://www.agenticqa.io/',
+  'hub/privacy.html': 'https://www.agenticqa.io/privacy.html',
+  'hub/terms.html': 'https://www.agenticqa.io/terms.html',
   'sites/ai/index.html': 'https://ai.agenticqa.io/',
   'sites/aiengineering/index.html': 'https://aiengineering.agenticqa.io/',
   'sites/neetjee/index.html': 'https://neetjee.agenticqa.io/',
@@ -73,6 +76,7 @@ cans = {
 for p, u in cans.items():
   h = (ROOT/p).read_text()
   chk(f'canonical {p}', f'rel="canonical" href="{u}"' in h)
+  chk(f'og:url {p}', f'property="og:url" content="{u}"' in h)
 
 mw = (ROOT/'middleware.js').read_text()
 for s in ["'agenticqa.io': '/hub'","'www.agenticqa.io': '/hub'","'ai.agenticqa.io': '/sites/ai'",
@@ -81,7 +85,7 @@ for s in ["'agenticqa.io': '/hub'","'www.agenticqa.io': '/hub'","'ai.agenticqa.i
   chk(f'HOST_MAP {s}', s in mw)
 
 sm = (ROOT/'sitemap.xml').read_text()
-for u in ['https://agenticqa.io/</loc>','privacy.html','ai.agenticqa.io','aiengineering.agenticqa.io','neetjee.agenticqa.io','playwrightai.agenticqa.io']:
+for u in ['https://www.agenticqa.io/</loc>','https://www.agenticqa.io/privacy.html','https://www.agenticqa.io/terms.html','ai.agenticqa.io','aiengineering.agenticqa.io','neetjee.agenticqa.io','playwrightai.agenticqa.io']:
   chk(f'sitemap has {u}', u in sm)
 
 for p in PAGES:
