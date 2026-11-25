@@ -2,7 +2,7 @@
 """Generates hub + site pages from shared header/footer templates. Run: python3 tools/build.py"""
 import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-HUB = "https://agenticqa.io"
+HUB = "https://www.agenticqa.io"
 SITES = {
  "ai": ("https://ai.agenticqa.io", "AI for Business"),
  "aiengineering": ("https://aiengineering.agenticqa.io", "AI Engineering"),
@@ -31,7 +31,7 @@ def page(title, desc, canonical, nav, cta, body, tag="", accent="neural", cta_hr
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
   <meta property="og:url" content="{canonical}">
-  <meta property="og:image" content="https://agenticqa.io/assets/brand/og-image.png">
+  <meta property="og:image" content="https://www.agenticqa.io/assets/brand/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="/assets/brand/icon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
@@ -66,7 +66,7 @@ def page(title, desc, canonical, nav, cta, body, tag="", accent="neural", cta_hr
         <p class="brand-tag">AI automation, AI engineering and learning</p>
       </div>
       <div><h4>Sites</h4><ul><li><a href="{HUB}/" data-prod-href="{HUB}/">Agentic QA home</a></li><li><a href="/?site=ai" data-prod-href="{SITES['ai'][0]}/" data-site="ai">AI for Business</a></li><li><a href="/?site=aiengineering" data-prod-href="{SITES['aiengineering'][0]}/" data-site="aiengineering">AI Engineering</a></li><li><a href="/?site=neetjee" data-prod-href="{SITES['neetjee'][0]}/" data-site="neetjee">NEET Prep</a></li><li><a href="/?site=playwrightai" data-prod-href="{SITES['playwrightai'][0]}/" data-site="playwrightai">Playwright + AI</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="{HUB}/#about">About</a></li><li><a href="{HUB}/privacy.html">Privacy</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="{HUB}/#about">About</a></li><li><a href="{HUB}/privacy.html">Privacy</a></li><li><a href="{HUB}/terms.html">Terms</a></li></ul></div>
       <div><h4>Connect</h4><ul><li><a href="tel:+919663434422">+91 96634 34422</a></li><li><a href="https://wa.me/919663434422" rel="noopener">WhatsApp</a></li><li><a href="mailto:admin@agenticqa.io">admin@agenticqa.io</a></li><li><a href="https://www.youtube.com/@AgenticQA" rel="noopener">YouTube @AgenticQA</a></li><li><a href="https://www.linkedin.com/in/ganesan-sivaraman/" rel="noopener">LinkedIn</a></li></ul></div>
     </div>
     <p class="copy">© <span id="year">2026</span> Agentic QA Technologies LLP · LLPIN: <span style="white-space:nowrap">ACV-7177</span></p>
@@ -319,10 +319,50 @@ hub_body = f'''<section class="hero" id="company">
 hub_nav = [("#about", "Company"), ("#founder", "Founders"), ("#certificates", "Certificates"), ("#activities", "Activities"), ("#contact", "Talk to Us")]
 write("hub/index.html", page("Agentic QA Technologies LLP — AI-native quality engineering & AI agents", "Agentic QA Technologies LLP: AI-native quality engineering, custom AI agents, LLM evaluation and consulting — with dedicated sites for AI engineering, NEET prep and Playwright + AI.", HUB + "/", hub_nav, "Contact", hub_body))
 
-priv = open(os.path.join(ROOT, "archive/v7/privacy.html")).read()
-pmain = priv.split('<main id="main">')[1].split("</main>")[0]
-pmain = pmain.replace("across agenticqa.io", "across agenticqa.io and its subdomains (ai., aiengineering., neetjee., playwrightai.)")
+pmain = """
+<section class="hero sub"><div class="wrap">
+  <span class="eyebrow">Legal · last updated 25 November 2026</span>
+  <h1>Privacy Policy</h1>
+  <p class="lede">Agentic QA Technologies LLP (“we”, “us”) protects your privacy across agenticqa.io and its subdomains (ai., aiengineering., neetjee., playwrightai.) and our training services. We comply with the GDPR for EU users and applicable data-protection laws in India.</p>
+</div></section>
+<section><div class="wrap prose">
+  <h2>Data controller</h2><p>Agentic QA Technologies LLP, Ganesan Sivaraman (Founder). Contact: <a href="mailto:ganesh@agenticqa.io">ganesh@agenticqa.io</a>.</p>
+  <h2>What we collect</h2><p>Details you give us on the contact forms on this site (name, email, what you are interested in, how you describe yourself, and any message). Those forms are sent through our own contact form on this site and delivered by email to our company mailbox with Titan Mail. Our hosting provider may keep standard request logs, such as IP address and browser. We use your IP address only to limit repeated form submissions. A theme preference may be stored in your browser. Payments go through third-party providers; we never store card numbers.</p>
+  <h2>Why we use it</h2><p>To deliver courses, answer enquiries, process payments and certificates, improve the site and — only with your consent — send course updates.</p>
+  <h2>Sharing and retention</h2><p>We never sell personal data. We share it only with service providers bound by contract (hosting, payments and email), keep it only as long as needed for the purposes above, and protect it with standard technical and organisational measures. Students under 18 should enrol through a parent or guardian.</p>
+  <h2>Your rights</h2><p>You can access, correct or delete your data and withdraw consent at any time; EU users may complain to their supervisory authority. Email <a href="mailto:ganesh@agenticqa.io">ganesh@agenticqa.io</a> for any request.</p>
+</div></section>
+"""
 write("hub/privacy.html", page("Privacy Policy | Agentic QA Technologies", "Privacy policy for agenticqa.io and its subdomains.", HUB + "/privacy.html", [("./", "Home"), ("./#activities", "Activities")], "Contact", pmain, cta_href=HUB + "/#contact"))
+
+tmain = """
+<section class="hero sub"><div class="wrap">
+  <span class="eyebrow">Legal · last updated 25 November 2026</span>
+  <h1>Terms of Use</h1>
+  <p class="lede">These terms explain how you may use the Agentic QA Technologies websites and the programmes and services described on them.</p>
+</div></section>
+<section><div class="wrap prose">
+  <h2>Using this site</h2>
+  <p>These websites (agenticqa.io and its subdomains) are provided by Agentic QA Technologies. By using them, you agree to these terms. If you do not agree, please do not use the sites.</p>
+  <h2>Programmes, services and enquiries</h2>
+  <p>Information on this site about courses, programmes, services, dates and availability is indicative. It is confirmed directly with you before anything is agreed. Sending an enquiry or joining a waitlist does not, on its own, create a booking or a contract.</p>
+  <h2>Intellectual property</h2>
+  <p>The content on these sites — including text, layout, branding, graphics and course descriptions — is owned by Agentic QA Technologies or used with permission. You may not copy, share or use it for your own courses or commercial purposes without our written permission.</p>
+  <h2>Certificates</h2>
+  <p>Certificates we issue are issued by Agentic QA Technologies itself. They record completion of our own programmes. They are not a government or university diploma, and they are not issued or accredited by an external accreditation body.</p>
+  <h2>No warranties</h2>
+  <p>We provide the sites and the information on them in good faith, but we do not warrant that they are complete, up to date or free of errors, or that access will be uninterrupted.</p>
+  <h2>Limitation of liability</h2>
+  <p>To the extent permitted by law, Agentic QA Technologies is not liable for any loss or damage arising from your use of these sites or from relying on information published on them.</p>
+  <h2>External links</h2>
+  <p>These sites may link to third-party websites (for example WhatsApp, YouTube or LinkedIn). We are not responsible for those sites or their content.</p>
+  <h2>Changes</h2>
+  <p>We may update these terms from time to time. The “last updated” date at the top of this page will change when we do. Continued use of the sites after an update means you accept the revised terms.</p>
+  <h2>Contact</h2>
+  <p>Questions about these terms: <a href="mailto:admin@agenticqa.io">admin@agenticqa.io</a>.</p>
+</div></section>
+"""
+write("hub/terms.html", page("Terms of Use | Agentic QA Technologies", "Terms of use for agenticqa.io and its subdomains.", HUB + "/terms.html", [("./", "Home"), ("./#activities", "Activities")], "Contact", tmain, cta_href=HUB + "/#contact"))
 
 # ---------------- AI (business) ----------------
 ai_body = f'''<section class="hero"><div class="wrap hero-grid"><div class="hero-copy">
