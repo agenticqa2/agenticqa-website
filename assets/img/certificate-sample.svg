@@ -18,6 +18,5 @@
   <text x="420" y="400" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#9CA3AF">Sample layout — issued by the company itself, not an external accreditation body</text>
   <text x="180" y="480" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6B7280">Ganesan Sivaraman</text>
   <text x="180" y="500" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#9CA3AF">Founder</text>
-  <text x="660" y="480" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6B7280">LLPIN ACV-7177</text>
-  <text x="660" y="500" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#9CA3AF">Puducherry, India</text>
+  <text x="660" y="490" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6B7280">LLPIN ACV-7177</text>
 </svg>

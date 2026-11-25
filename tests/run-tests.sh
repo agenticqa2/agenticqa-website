@@ -69,6 +69,8 @@ chk "no payment QR on new sites" "! grep -n 'qr-payment' $PAGES"
 for f in $PAGES; do chk "LLPIN ACV-7177 + JS year in $f" "grep -q 'LLPIN: <span[^>]*>ACV-7177' $f && grep -q 'id=\"year\"' $f && grep -q '/assets/js/site.js' $f"; done
 for f in $PAGES; do chk "footer has no Registered in Puducherry in $f" "! grep -q 'Registered in Puducherry' $f"; done
 chk "hub keeps Pondicherry University education line" "grep -q 'M.Sc. Computer Science, Pondicherry University · B.Sc. Computer Science, Pondicherry University' hub/index.html"
+chk "certificate-sample.svg has no Puducherry/Pondicherry" "! grep -qiE 'puducherry|pondicherry' assets/img/certificate-sample.svg"
+chk "hub certificate img is cache-busted" "grep -q 'certificate-sample.svg?v=20261125cert' hub/index.html"
 for f in $PAGES; do chk "a11y (skip link, theme toggle, all img alt) $f" "grep -q 'class=\"skip\"' $f && grep -q theme-toggle $f && ! grep -o '<img[^>]*>' $f | grep -v 'alt='"; done
 chk "ganesh open-to replaced with organisations line" "grep -q 'Works with organisations on AI quality engineering, MCP integrations, AI evaluation and corporate training.' hub/index.html && ! grep -q 'Open to:' hub/index.html"
 chk "ganesh career timeline roles" "grep -q 'AI Automation Architect' hub/index.html && grep -q 'Symphony Talent' hub/index.html && grep -q 'Harman Connected Services' hub/index.html && grep -q 'First Advantage' hub/index.html"
